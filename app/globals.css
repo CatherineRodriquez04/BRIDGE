@@ -2,23 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
+
 @layer base {
-  body {
-      @apply font-primary bg-slate-50 text-black leading-loose;
-  }
-  .h1 {
-      @apply text-[38px] xl:text-[58px] leading-[1.1] font-semibold;
-  }
-  .h2 {
-      @apply text-[28px] xl:text-[48px] leading-[1.1] font-semibold;
-  }
-  .h3 {
-      @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
-  }
-  .text-outline{
-      -webkit-text-stroke: 1px #ffffff;
-  }
-  .text-outline-hover{
-      -webkit-text-stroke: 1px black;
-  }
+    body {
+        @apply font-jersey bg-accent text-accent4 leading-loose;
+    }
+    .h1 {
+        @apply text-[38px] xl:text-[58px] leading-[1.1] font-semibold;
+    }
+    .h2 {
+        @apply text-[28px] xl:text-[48px] leading-[1.1] font-semibold;
+    }
+    .h3 {
+        @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+    }
+    .text-outline{
+        -webkit-text-stroke: 1px #ffffff;
+    }
+    .text-outline-hover{
+        -webkit-text-stroke: 1px black;
+    }
+}
+
+@layer utilities {
+    .font-jersey {
+        font-family: 'Jersey 20', sans-serif;
+    }
+}
+
+@layer utilities {
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+    
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
 }

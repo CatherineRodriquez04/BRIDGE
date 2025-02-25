@@ -36,7 +36,7 @@ const Footer = () => {
       <div className="py-6 mt-12 mx-auto flex flex-col md:flex-row justify-between xl:px-10 px-5">
         <div>
           {/* logo */}
-          <Link href="/">
+          {/* <Link href="/">
             <Image
               src={Logo}
               alt="Logo"
@@ -44,7 +44,7 @@ const Footer = () => {
               height={75}
               className="hover:scale-105 mb-4"
             />
-          </Link>
+          </Link> */}
           <p className="text-2xl font-semibold -mt-2">
             Dead Man's Hand
             <span className="text-[35px] font-semibold text-accent">.</span>

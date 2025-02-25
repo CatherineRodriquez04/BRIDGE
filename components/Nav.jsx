@@ -33,7 +33,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="flex gap-8">
+    <nav className="flex gap-8 text-accent3">
       {links.map((link, index) => {
         return (
           <Link

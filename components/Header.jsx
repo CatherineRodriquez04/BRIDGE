@@ -24,7 +24,7 @@ const Header = () => {
       <div className="xl:ml-3 xl:mr-8 mx-3 flex justify-between items-center relative">
         <div className="flex flex-col xl:flex-row items-center w-full">
           {/* logo - center on mobile */}
-          <Link href="/" className="flex justify-center w-full xl:w-auto">
+          {/* <Link href="/" className="flex justify-center w-full xl:w-auto">
             <Image
               src={Logo}
               alt="Logo"
@@ -32,14 +32,14 @@ const Header = () => {
               height={125}
               className="hover:scale-105"
             />
-          </Link>
+          </Link> */}
 
           <div className="flex-1 text-left mx-[20px] mt-[-15px] mb-2 xl:mt-0 xl:mb-0">
-            <h1 className="h1 text-black xl:text-[35px] text-[22px] mt-2 mb-1 text-center xl:text-left">
+            <h1 className="h1 text-accent3 xl:text-[35px] text-[22px] mt-2 mb-1 text-center xl:text-left">
               Dead Man's Hand
               <span className="text-[40px] font-semibold text-accent">.</span>
             </h1>
-            <p className="h3 xl:text-[20px] text-[17px] text-accent text-center xl:text-left">
+            <p className="h3 text-accent3 xl:text-[20px] text-[17px] text-center xl:text-left">
               Are You Playing the Game, or is the Game Playing You?
             </p>
           </div>
