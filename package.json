@@ -6,7 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start-express": "node server.js",
+    "dev-express": "nodemon server.js"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server.js"
+    ],
+    "ext": "js,json",
+    "ignore": [
+      "*.test.js"
+    ],
+    "delay": "1000"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
@@ -18,8 +30,9 @@
     "bridge-project": "file:",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "express": "^4.21.2",
     "lucide-react": "^0.475.0",
-    "next": "15.1.7",
+    "next": "^15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.1",
@@ -29,7 +42,16 @@
     "@eslint/eslintrc": "^3",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "nodemon": "^3.1.9",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
-  }
+  },
+  "description": "open terminal",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
