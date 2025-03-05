@@ -25,6 +25,7 @@
     }
 }
 
+/* Fonts */
 @layer utilities {
     .font-jersey {
         font-family: 'Jersey 20', sans-serif;
@@ -37,7 +38,7 @@
     }
 }
 
-
+/* Fade In when switching between pages */
 @layer utilities {
     @keyframes fadeIn {
         0% {
@@ -52,3 +53,18 @@
             animation: fadeIn 1.5s ease-in-out;
         }
 }
+
+/* @layer utilities {
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+    
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+} */

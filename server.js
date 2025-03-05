@@ -1,4 +1,7 @@
 // server.js
+
+// When pushing to vercel change from http://localhost:3000 -> https://bridge-ee4859.vercel.app/
+
 const express = require('express');
 const next = require('next');
 

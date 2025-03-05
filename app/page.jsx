@@ -10,8 +10,12 @@ export default function Home() {
   return (
     <div className="h-screen flex justify-center items-center fade-in">
       <div className="flex flex-col">
+
+        {/* Logo for Title */}
         <Image src={logo} width={1000} height={1000} alt="Logo"/>
         <div className="flex text-center justify-center ">
+
+          {/* Button to Introduction Page */}
           <Link href="/intro">
             <button className="rounded-lg bg-white text-black text-[25px] py-1 px-3 hover:scale-105">Enter</button>
           </ Link>
