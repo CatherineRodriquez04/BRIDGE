@@ -12,6 +12,8 @@ import avatar1 from "@/public/assets/avatarTemp.png";
 import avatar2 from "@/public/assets/avatarTemp2.png";
 import avatar3 from "@/public/assets/avatarTemp3.png";
 
+import GameNavbar from "@/components/ui/game-navbar.jsx";
+
 export default function HomeScreen() {
     const [showModal, setShowModal] = useState(false);
     const [playerName, setPlayerName] = useState("");;
@@ -52,8 +54,15 @@ export default function HomeScreen() {
 
         {/* header div */}
         <div className="flex flex-row ">
+
+            <div className="top-6 right-[520px] absolute">
+                <Link href="/collection">
+                    <GameNavbar/>
+                </Link>
+            </div>
+
             {/* player info card */}
-            <div className="border-[10px] border-white min-h-[220px] min-w-[400px] ml-6 mt-6 max-h-[220px] max-w-[370px] flex flex-row overflow-hidden">
+            {/* <div className="border-[10px] border-white min-h-[220px] min-w-[400px] ml-6 mt-6 max-h-[220px] max-w-[370px] flex flex-row overflow-hidden">
                 <div className="">
                     <Image src={avatar || defaultAvatar} width={125} height={125} alt="AvatarTemp" className="mt-6 ml-3 mb-2 border"/>
                     <button className="ml-5 px-2 py-[1px] items-center text-[15px] bg-white text-black rounded-lg hover:scale-105" onClick={handleAccept}>Change Avatar</button>
@@ -70,13 +79,15 @@ export default function HomeScreen() {
                         <p className="text-white mt-2">Coins: 21283</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
             {/* collection button */}
             <div className="top-6 right-[520px] absolute">
                 <Link href="/collection">
                     <button className="px-[3px] text-[15px] rounded-lg text-black bg-accent4 hover:scale-105">COLLECTION</button>
                 </Link>
             </div>
+            
             {/* shop button */}
             <div className="top-6 right-[450px] absolute">
                 <Link href="/shop">
