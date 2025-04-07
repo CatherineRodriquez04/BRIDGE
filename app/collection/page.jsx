@@ -4,13 +4,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import GameNavbar from "@/components/ui/game-navbar.jsx";
 
 export default function Collection() {
   return (
-    <div className="h-screen flex justify-center items-center fade-in">
-      <div className="flex flex-col">
-        <p>Collection Page</p>
+    <>
+      <div className="top-6 right-[520px] absolute">
+      <Link href="/collection">
+          <GameNavbar/>
+      </Link>
       </div>
-    </div>
+    </>
   );
 }
