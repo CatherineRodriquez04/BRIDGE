@@ -15,6 +15,26 @@ export default function Exchange() {
         <GameNavbar/>
     </Link>
     </div>
+      <div className="max-w-6xl mx-auto relative">
+        {/* Grid using Tailwind CSS */}
+        <div className="grid grid-cols-12 gap-2.5 auto-rows-[40px]">
+          {/* First 3 columns span 4 grid columns each */}
+          <div className="col-span-4 bg-[tomato] h-10"></div>
+          <div className="col-span-4 bg-[tomato] h-10"></div>
+          <div className="col-span-4 bg-[tomato] h-10"></div>
+
+          {/* Second-to-last column - starts at row 2, spans from column 3 to 7 */}
+          <div className="col-start-3 col-span-4 row-start-2 bg-[tomato] h-10"></div>
+
+          {/* Last column - starts at row 2, spans from column 7 to 11 */}
+          <div className="col-start-7 col-span-4 row-start-2 bg-[tomato] h-10"></div>
+        </div>
+      </div>
+
+
+    <div className="fixed bottom-0 right-16">
+      <img src={'/assets/sign.svg'} width={300} height={300} alt="Exchange Sign"></img>
+    </div>
     </>
     // <div className="h-screen flex justify-center items-center fade-in">
     //   <div className="flex flex-col">

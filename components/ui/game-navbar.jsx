@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils"
 
   // Hardcoded navigation items
   const navItems = [
+    { label: "HOME", href: "/homescreen" },
     { label: "PACKS", href: "/packs" },
     { label: "SHOP", href: "/shop" },
     { label: "EXCHANGE", href: "/exchange" },
