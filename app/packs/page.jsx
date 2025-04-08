@@ -15,7 +15,7 @@ export default function Packs() {
   return (
     <>
       <div className="top-6 right-[520px] absolute">
-      <Link href="/collection">
+      <Link href="/packs">
           <GameNavbar/>
       </Link>
       </div>
@@ -27,6 +27,7 @@ export default function Packs() {
         <div className="flex">
           <PacksDisplay/>
         </div>
+
       </div>
     </>
   );
