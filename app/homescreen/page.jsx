@@ -88,8 +88,8 @@ export default function HomeScreen() {
             <HomeAnnouncements/>
             <HomeDailyRewards/>
             {/* Logo */}
-             <div className="h-screen flex justify-center items-center fade-in">
-                  <img src={'/assets/logo.png'} width={500} height={500} alt="Deadman's Logo" className=""></img>
+             <div className="absolute flex justify-center items-center top-80 mx-auto right-16 left-0">
+                  <img src={'/assets/logo.png'} width={500} height={500} alt="Deadman's Logo" className="block m-auto"></img>
             </div>
 
             {/* collection button */}
