@@ -14,6 +14,8 @@ import PacksDisplay from "@/components/ui/packs-display.jsx";
 export default function Packs() {
   return (
     <>
+         {/* <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">  (for osme reason, breaks styling / placement of cards*/}
+
       <div className="top-6 right-[520px] absolute">
       <Link href="/packs">
           <GameNavbar/>
@@ -30,6 +32,7 @@ export default function Packs() {
         </div>
 
       </div>
+      {/* </div> */}
     </>
   );
 }
