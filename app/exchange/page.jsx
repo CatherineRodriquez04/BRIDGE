@@ -15,19 +15,32 @@ export default function Exchange() {
         <GameNavbar/>
     </Link>
     </div>
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-8xl mx-auto fixed top-48 left-48 right-0 z-10">
         {/* Grid using Tailwind CSS */}
-        <div className="grid grid-cols-12 gap-2.5 auto-rows-[40px]">
+        <div className="grid grid-cols-12 gap-2.5 auto-rows-[325px]">
           {/* First 3 columns span 4 grid columns each */}
-          <div className="col-span-4 bg-[tomato] h-10"></div>
-          <div className="col-span-4 bg-[tomato] h-10"></div>
-          <div className="col-span-4 bg-[tomato] h-10"></div>
+          <div className="col-span-4 h-[280px] w-[280px]">
+            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
+          </div>
+
+          <div className="col-span-4 h-[280px] w-[280px]">
+            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
+          </div>
+
+          <div className="col-span-4 h-[280px] w-[280px]">
+            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
+          </div>
 
           {/* Second-to-last column - starts at row 2, spans from column 3 to 7 */}
-          <div className="col-start-3 col-span-4 row-start-2 bg-[tomato] h-10"></div>
+          <div className="col-start-3 col-span-4 row-start-2 h-[300px] w-[300px]">
+          <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
+
+          </div>
 
           {/* Last column - starts at row 2, spans from column 7 to 11 */}
-          <div className="col-start-7 col-span-4 row-start-2 bg-[tomato] h-10"></div>
+          <div className="col-start-7 col-span-4 row-start-2 h-[300px] w-[300px]">
+            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
+          </div>
         </div>
       </div>
 
