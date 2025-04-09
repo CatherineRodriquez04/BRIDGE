@@ -21,10 +21,10 @@ export default function Packs() {
       </div>
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}
-          <div className="flex flex-items-center w-[480px] h-full z-1 mr-8">
+          <div className="fixed w-[570px] h-full -z-1 left-24 top-28">
               <img src={'/assets/poster-2.svg'} width={1000} height={1000} alt="Poster"></img>
           </div>
-        <div className="flex">
+        <div className="flex m-auto">
           <PacksDisplay/>
         </div>
 

@@ -11,7 +11,7 @@ export default function HomeAnnouncements() {
 
   // Sample gallery images - replace with your actual images later
   const images = [
-    "/placeholder.svg?height=400&width=400",
+    "/assets/announce-test.svg?height=400&width=400",
     "/placeholder.svg?height=400&width=400",
     "/placeholder.svg?height=400&width=400",
     "/placeholder.svg?height=400&width=400",

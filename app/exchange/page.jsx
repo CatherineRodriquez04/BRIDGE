@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import GameNavbar from "@/components/ui/game-navbar.jsx";
+import ExchangePoster from "@/components/ui/exchange-poster.jsx";
 
 export default function Exchange() {
   return (
@@ -15,23 +16,17 @@ export default function Exchange() {
         <GameNavbar/>
     </Link>
     </div>
-      <div className="max-w-8xl mx-auto fixed top-48 left-48 right-0 z-10">
+      <div className="max-w-8xl mx-auto fixed top-[160px] left-48 right-0 z-10">
         {/* Grid using Tailwind CSS */}
         <div className="grid grid-cols-12 gap-2.5 auto-rows-[325px]">
           {/* First 3 columns span 4 grid columns each */}
-          <div className="col-span-4 h-[280px] w-[280px]">
-            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
-          </div>
+          <ExchangePoster/>
 
-          <div className="col-span-4 h-[280px] w-[280px]">
-            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
-          </div>
+          <ExchangePoster/>
 
-          <div className="col-span-4 h-[280px] w-[280px]">
-            <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
-          </div>
+          <ExchangePoster/>
 
-          {/* Second-to-last column - starts at row 2, spans from column 3 to 7 */}
+          {/* Second-to-last column - starts at row 2, spans from column 3 to 7 / larger */}
           <div className="col-start-3 col-span-4 row-start-2 h-[300px] w-[300px]">
           <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign"></img>
 
