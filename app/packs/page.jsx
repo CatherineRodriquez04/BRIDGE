@@ -19,12 +19,13 @@ export default function Packs() {
           <GameNavbar/>
       </Link>
       </div>
+
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}
-          <div className="fixed w-[570px] h-full -z-1 left-24 top-28">
+          <div className="fixed w-[30%] h-full -z-1 left-24 top-28">
               <img src={'/assets/poster-2.svg'} width={1000} height={1000} alt="Poster"></img>
           </div>
-        <div className="flex m-auto">
+        <div className="flex m-auto w-[20%] items-center">
           <PacksDisplay/>
         </div>
 

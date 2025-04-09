@@ -7,7 +7,7 @@ function PacksDisplay () {
      <>
         {/* 1st pack */}
         {/* fixed h-[400px] w-[260px] bottom-80 right-[505px] */}
-        <div className="flex space-x-8  top-52 absolute">
+        <div className="flex space-x-8 top-52 absolute">
             <div className="">
                 <div className="flex h-[400px] w-[260px] bg-[#0B0C2A] border-4 border-[#C4F7BC] rounded-lg p-4">
                     Gold Pack
