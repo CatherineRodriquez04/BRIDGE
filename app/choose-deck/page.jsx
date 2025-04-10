@@ -7,6 +7,7 @@ import Link from "next/link";
 //import Poster from "/assets/poster.png";
 
 import GameNavbar from "@/components/ui/game-navbar.jsx";
+import CardSelectDisplay from "@/components/ui/card-select-display.jsx"
 
 
 
@@ -21,9 +22,12 @@ function ChooseDeck() {
               <GameNavbar/>
           </Link>
         </div> */}
+
+        <CardSelectDisplay/>
         <div className="flex mx-auto items-center text-3xl">
             Choose Deck Page
         </div>
+        
 
       </div> 
     </>

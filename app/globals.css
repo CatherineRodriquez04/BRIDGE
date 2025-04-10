@@ -68,3 +68,10 @@
             animation: fadeIn 1.5s ease-in-out;
         }
 } */
+
+html {
+    scroll-behavior: smooth;
+    overflow-y: none;
+    /* height:2000px; */
+    
+}
