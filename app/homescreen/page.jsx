@@ -88,9 +88,14 @@ export default function HomeScreen() {
             <HomeAnnouncements/>
             <HomeDailyRewards/>
             {/* Logo */}
-             <div className="absolute flex justify-center items-center top-80 mx-auto right-16 left-0">
-                  <img src={'/assets/logo.png'} width={500} height={500} alt="Deadman's Logo" className="block m-auto"></img>
-            </div> 
+             <div className="absolute flex justify-center items-center top-[360px] right-0 left-0">
+                  <img src={'/assets/logo.png'} width={650} height={650} alt="Deadman's Logo" className="block -z-1"></img>
+                <button className="absolute flex justify-center items-center top-[250px] right-0 left-0 text-4xl z-10 ">
+                    Play
+                </button>
+            </div>      
+
+
         </div>
 
         <HomeLeaderboard/>
