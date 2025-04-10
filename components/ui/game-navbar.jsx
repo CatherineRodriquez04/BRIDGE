@@ -7,7 +7,8 @@ function Navbar() {
   function NavButton({ label, href, index, total }) {
     // Determine which skew direction to use based on position
     const isLeftSide = index < 6 // HOME, PACKS, SHOP are left-side buttons
-    // const isRightSide = index >= 3 // EXCHANGE, COLLECTION, LEADERBOARD are right-side buttons
+    //const isRightSide = index >= 4 // EXCHANGE, COLLECTION, LEADERBOARD are right-side buttons
+    //const isMiddle = index < 3 && index > 4
 
     return (
       <>
@@ -16,8 +17,9 @@ function Navbar() {
           <div
             className={cn(
               "absolute inset-0 bg-[#0B0C2A] border-2 border-[#C8E3B8] rounded-lg transform origin-center",
-              isLeftSide && "skew-x-6",
-              // isRightSide && "-skew-x-6", // EXCHANGE now uses the same skew as COLLECTION and LEADERBOARD
+              isLeftSide && "skew-x-[15deg]",
+              //isRightSide && "-skew-x-[15deg]", // EXCHANGE now uses the same skew as COLLECTION and LEADERBOARD
+              // isMiddle && "skew-x-6",
               //skew-x-[15deg]
             )}
           >
@@ -65,9 +67,11 @@ function Navbar() {
               alt="Deadman's Logo"
               className="inline-block left-2 top-2 absolute"
             ></img>
-            <button className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm">
-              <p className="relative text-4xl text-black font-bold bottom-2 left-[1px]">+</p>
-            </button>
+            <Link href="/exchange">
+              <button className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm">
+                <p className="relative text-4xl text-black font-bold bottom-2 left-[1px]">+</p>
+              </button>
+            </Link>
           </p>
         </div>
         {/* Gem button */}
@@ -81,9 +85,11 @@ function Navbar() {
               alt="Deadman's Logo"
               className="inline-block left-2.5 top-[12px] absolute"
             ></img>
+            <Link href="/exchange">
             <button className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm">
               <p className="relative text-4xl text-black font-bold bottom-2 left-[1px]">+</p>
             </button>
+            </Link>
           </p>
         </div>
       </div>

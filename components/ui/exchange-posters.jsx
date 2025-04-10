@@ -17,9 +17,9 @@ function ExchangePosters() {
                 <div className=" h-[110px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-xl">
                     Image Location
                 </div>
-                <div className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
-                </div>
+                </button>
           </div>
           <div className="col-span-4 h-[300px] w-[300px]">
                 <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign" className="absolute -z-1">
@@ -33,9 +33,9 @@ function ExchangePosters() {
                 <div className=" h-[110px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-xl">
                     Image Location
                 </div>
-                <div className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
-                </div>
+                </button>
           </div>
           <div className="col-span-4 h-[320px] w-[300px]">
                 <img src={'/assets/mini-poster.svg'} width={300} height={300} alt="Exchange Sign" className="absolute -z-1">
@@ -49,9 +49,9 @@ function ExchangePosters() {
                 <div className=" h-[110px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
                     Image Location
                 </div>
-                <div className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
-                </div>
+                </button>
           </div>
 
           {/* Second-to-last column - starts at row 2, spans from column 3 to 7 / larger */}
@@ -66,9 +66,9 @@ function ExchangePosters() {
                 <div className=" h-[145px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
                     Image Location
                 </div>
-                <div className="z-10 h-[65px] w-[185px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[74px] m-auto rounded-lg text-3xl text-bold">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
-                </div>
+                </button>
           </div>
 
           {/* Last column - starts at row 2, spans from column 7 to 11 */}
@@ -83,9 +83,9 @@ function ExchangePosters() {
                 <div className=" h-[145px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
                     Image Location
                 </div>
-                <div className="z-10 h-[65px] w-[185px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[74px] m-auto rounded-lg text-3xl text-bold">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
-                </div>
+                </button>
           </div>
         </div>
       </div>

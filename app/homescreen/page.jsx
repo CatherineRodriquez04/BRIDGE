@@ -89,10 +89,12 @@ export default function HomeScreen() {
             <HomeDailyRewards/>
             {/* Logo */}
              <div className="absolute flex justify-center items-center top-[360px] right-0 left-0">
-                  <img src={'/assets/logo.png'} width={650} height={650} alt="Deadman's Logo" className="block -z-1"></img>
-                <button className="absolute flex justify-center items-center top-[250px] right-0 left-0 text-4xl z-10 ">
-                    Play
-                </button>
+                <img src={'/assets/logo.png'} width={650} height={650} alt="Deadman's Logo" className="block -z-1"></img>
+                 <Link href="/choose-deck"> {/*Replace later with gameplay? */}
+                    <button className="absolute flex justify-center items-center top-[250px] right-0 left-0 text-4xl z-10 ">
+                        Play
+                    </button>
+                </Link>
             </div>      
 
 
