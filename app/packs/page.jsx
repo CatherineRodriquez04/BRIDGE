@@ -25,7 +25,10 @@ export default function Packs() {
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}
           <div className="fixed w-[28%] h-full -z-1 left-[6%] top-[15%]">
-            <img src={'/assets/limited-paper-poster.svg'} width={8000} height={800} alt="Poster"></img>
+            <img src={'/assets/limited-paper-poster.svg'} width={8000} height={800} alt="Poster" className="-z-1"></img>
+              {/* <div className="absolute h-[370px] w-[320px] skew-x-6 inset-0 transform origin-center  top-[48%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-4 border-[#5E4112] text-center text-white text-4xl font-bold ">
+
+              </div>  Inner box for char image in limited poster*/}
           </div>
         <div className="flex m-auto w-[20%] items-center">
           <PacksDisplay/>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import GameNavbar from "@/components/ui/game-navbar.jsx";
-import ExchangePosters from "@/components/ui/exchange-posters.jsx";
+import ExchangeDisplay from "@/components/ui/exchange-display.jsx";
 
 export default function Exchange() {
   return (
@@ -18,9 +18,9 @@ export default function Exchange() {
               <GameNavbar/>
           </Link>
         </div>
-          <ExchangePosters/>
+          <ExchangeDisplay/>
 
-        <div className="absolute bottom-0 right-24 ">
+        <div className="absolute bottom-0 right-16 ">
           <div className=" h-[53px] w-[160px] top-[150px] relative z-10 m-auto text-[#13122A] text-4xl bold flex justify-center  ">
             Conversion
           </div>
@@ -31,7 +31,7 @@ export default function Exchange() {
           <div className="bg-red-500 h-[53px] w-[160px] top-[170px] relative z-10 m-auto text-[#13122A] text-3xl bold flex justify-center">
             <img src={'/assets/icon-coin.svg'} width={300} height={300} alt="Exchange Sign" className=""></img>
           </div>  */}
-          <img src={'/assets/sign.svg'} width={300} height={300} alt="Exchange Sign" className="-z-1"></img>
+          <img src={'/assets/wood-sign.svg'} width={300} height={300} alt="Exchange Sign" className="-z-1"></img> {/*Can Swap with sign.svg for bright version  */}
           
         </div>
     </div>
