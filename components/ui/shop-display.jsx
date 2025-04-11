@@ -12,7 +12,7 @@ function ShopDisplay() {
                 {/* <div className="flex h-[110%] w-[80%] bg-[#0B0C2A] border-4 border-[#C4F7BC] rounded-lg p-4 m-auto -z-1">
                       Gold Pack
                 </div> */}
-                <div className="relative mx-auto flex justify-center h-[110%] w-[80%] overflow-hidden rounded-lg p-4 m-auto -z-1">
+                <div className=" mx-auto flex justify-center h-[110%] w-[80%] overflow-hidden rounded-lg p-4 -z-1">
                   <Card/>
                 </div>
 
@@ -23,7 +23,7 @@ function ShopDisplay() {
 
               {/* Last column - starts at row 2, spans from column 7 to 11 */}
               <div className="col-start-7 col-span-4  h-[300px] w-[300px]">
-              <div className="relative mx-auto flex justify-center h-[110%] w-[80%] overflow-hidden rounded-lg p-4 m-auto -z-1">
+              <div className="relative mx-auto flex justify-center h-[110%] w-[80%] overflow-hidden rounded-lg p-4  -z-1">
                   <Card/>
                 </div>
 

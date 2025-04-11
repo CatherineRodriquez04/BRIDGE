@@ -7,6 +7,7 @@ import Image from "next/image";
 import GameNavbar from "@/components/ui/game-navbar.jsx";
 import CollectionDisplay from "@/components/ui/collection-display.jsx"
 
+
  function Collection() {
   return (
     <>

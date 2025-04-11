@@ -2,38 +2,30 @@
 import PackSlot from "@/components/ui/pack-slot.jsx"
 import CollectionFilter from "@/components/ui/collection-filter.jsx"
 
+import Card from "@/components/ui/card.jsx";
+import CardFlipTest from "@/components/ui/flip-card-test.jsx";
+
 function CollectionDisplay() {
   return (
       <>
       {/* Collection Background Box */}
-        <div className="relative flex mx-auto h-[1000px] w-[80%] top-[280px] border-4 border-[#86CEBC] bg-[#0B0C2A] rounded-lg overflow-y-scroll z-20">
+        <div className="relative flex mx-auto h-[1000px] w-[80%] top-[280px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20">
           {/* Collection Filter */}
           <CollectionFilter/>
 
 {/* Grid container */}
           <div className="relative top-24 grid grid-cols-5 gap-8 left-8 ">
             {/* Each div is individual card slot, 5 per row */}
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            <PackSlot/>
-            
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+
           </div>
         </div>
       </>

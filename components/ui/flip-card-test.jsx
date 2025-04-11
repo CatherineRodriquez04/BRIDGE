@@ -1,16 +1,8 @@
 
-// Goal:
-//Replace all set values (images) with props values to be filled with whatever animal is needed at the time (from database) basically, make this dynamic and reusable for all characters
-//Idea:
-//Set char id
-//get char id (to find in database
-//Char. images, name, stats, etc
-//populate card with this data
-
-function Card() {
+function CardFlipTest() {
     return (
         <>
-                <div className="relative flex h-[360px] w-[260px] bg-[#72E8C9] rounded-3xl overflow:hidden ">
+                <div className="flex h-[360px] w-[260px] bg-[#72E8C9] rounded-3xl">
 
                     {/* Environment Background (element/ environment) (middle layer) */}
                     <div className="absolute mx-0 top-0 left-0 z-0">
@@ -61,5 +53,5 @@ function Card() {
 
 }
 
-export default Card
+export default CardFlipTest
 
