@@ -24,9 +24,9 @@ function ChooseDeck() {
         </div> */}
 
         <CardSelectDisplay/>
-        <div className="flex mx-auto items-center text-3xl">
+        {/* <div className="flex mx-auto items-center text-3xl">
             Choose Deck Page
-        </div>
+        </div> */}
         
 
       </div> 
