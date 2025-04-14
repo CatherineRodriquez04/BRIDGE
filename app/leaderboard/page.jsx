@@ -25,10 +25,8 @@ export default function Leaderboard() {
           <div className="relative top-24 grid grid-cols-5 gap-8 left-8 ">
             <Card/>
             <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            <CardFlipTest/>
+            <CardFlipTest/>
           </div>
           
           {/* <CardFlipTest/> */}

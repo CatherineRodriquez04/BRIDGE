@@ -10,6 +10,7 @@
 function Card() {
     return (
         <>
+            {/* Card Front (Maybe whole component rn) */}
                 <div className="relative flex h-[360px] w-[260px] bg-[#72E8C9] rounded-3xl overflow:hidden ">
 
                     {/* Environment Background (element/ environment) (middle layer) */}
@@ -51,10 +52,12 @@ function Card() {
                         HP
                     </div>
 
+                {/* Card Back (maybe need to fit within larger component) */}
+                    <div className="">
+                        Card Back
+                    </div>
 
                 </div>
-
-
 
         </>
     );
