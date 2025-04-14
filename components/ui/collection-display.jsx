@@ -3,7 +3,6 @@ import PackSlot from "@/components/ui/pack-slot.jsx"
 import CollectionFilter from "@/components/ui/collection-filter.jsx"
 
 import Card from "@/components/ui/card.jsx";
-import CardFlipTest from "@/components/ui/flip-card-test.jsx";
 
 function CollectionDisplay() {
   return (

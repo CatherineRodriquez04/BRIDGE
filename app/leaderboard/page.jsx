@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import GameNavbar from "@/components/ui/game-navbar.jsx";
 import Card from "@/components/ui/card.jsx";
-import CardFlipTest from "@/components/ui/flip-card-test.jsx";
 
 export default function Leaderboard() {
   return (
@@ -25,8 +24,8 @@ export default function Leaderboard() {
           <div className="relative top-24 grid grid-cols-5 gap-8 left-8 ">
             <Card/>
             <Card/>
-            <CardFlipTest/>
-            <CardFlipTest/>
+            <Card/>
+            <Card/>
           </div>
           
           {/* <CardFlipTest/> */}
