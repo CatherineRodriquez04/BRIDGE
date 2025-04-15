@@ -4,7 +4,7 @@ import LeaderboardEntry from '@/components/ui/leaderboard-entry.jsx'
 function LeaderboardDisplay() {
   return (
       <>
-        <div className="fixed flex left-[10%] h-[1000px] w-[80%] top-[480px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20">
+        <div className="fixed left-[10%] h-full w-[80%] top-[480px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20 ">
           <table className="table-fixed w-full h-full text-center text-2xl ">
             <thead className="bg-[#0B0C2A]  text-2xl h-[6%]">
               <tr>
@@ -14,7 +14,7 @@ function LeaderboardDisplay() {
                 <th>Total Collection</th>
               </tr>
             </thead>
-            <tbody className="text-white text-2xl">
+            <tbody className="text-white text-2xl h-full ">
               <LeaderboardEntry/>
               <LeaderboardEntry/>
               <LeaderboardEntry/>
@@ -32,6 +32,11 @@ function LeaderboardDisplay() {
               <LeaderboardEntry/>
               <LeaderboardEntry/>
               <LeaderboardEntry/>
+              <LeaderboardEntry/>
+              <LeaderboardEntry/>
+              <LeaderboardEntry/>
+              <LeaderboardEntry/>
+
             </tbody>
           </table>
         </div>
