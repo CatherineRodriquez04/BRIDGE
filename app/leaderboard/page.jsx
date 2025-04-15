@@ -22,7 +22,8 @@ export default function Leaderboard() {
           <div className="absolute flex justify-center items-center top-[125px] right-0 left-0 text-6xl z-10 ">
             Leaderboard
           </div>
-          <LeaderboardTopDisplay/>     
+          <LeaderboardTopDisplay/>
+          
           <LeaderboardDisplay/>
           
         </div>

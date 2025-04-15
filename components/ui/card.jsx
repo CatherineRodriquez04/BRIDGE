@@ -41,7 +41,7 @@ function Card() {
                             </div>
 
                             <div className="absolute mx-auto top-[2px] left-[100px] z-30 text-white text-3xl ">
-                                Anteater
+                                Capybara
                             </div>
 
                             {/* Type (Image) Bottom Left */}
