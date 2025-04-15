@@ -31,8 +31,10 @@ export default function Leaderboard() {
                 <div className="absolute text-3xl bottom-[130px] ">
                   1st Place
                 </div>
-                <img src="/assets/first-badge.svg" width={850} height={600} alt="First-Place-Badge" className="absolute top-[85px]"></img>
-                  {/* fill with user icon */}
+              {/* fill with user icon */}
+              <img src="/assets/avatarTemp.png" alt="1st-Place-User-Icon" className="absolute"></img>
+
+                <img src="/assets/first-badge.svg" width={160} height={400} alt="First-Place-Badge" className="fixed top-[336px] left-[871px]"></img>
               </div>
 
               {/*Second*/}
@@ -40,7 +42,10 @@ export default function Leaderboard() {
                 <div className="absolute text-3xl bottom-[130px]">
                   3rd Place
                 </div>
-                  <img src="/assets/second-badge.svg" width={850} height={600} alt="First-Place-Badge" className="absolute top-[85px]"></img>
+                {/* UserIcon */}
+                <img src="/assets/avatarTemp3.png" alt="1st-Place-User-Icon" className="absolute"></img>
+
+                  <img src="/assets/second-badge.svg" width={160} height={400} alt="First-Place-Badge" className="fixed top-[373px] left-[679px]"></img>
               </div>
 
               {/* Third  */}
@@ -48,7 +53,10 @@ export default function Leaderboard() {
                 <div className="absolute text-3xl bottom-[130px] ">
                     2nd Place
                   </div>
-                  <img src="/assets/third-badge.svg" width={850} height={600} alt="First-Place-Badge" className="absolute top-[85px]"></img>
+                  {/* UserIcon */}
+                  <img src="/assets/avatarTemp2.png" alt="1st-Place-User-Icon" className="absolute"></img>
+
+                  <img src="/assets/third-badge.svg" width={160} height={400} alt="First-Place-Badge" className="fixed top-[374px] right-[698px] "></img>
               </div>
 
           </div>
