@@ -1,19 +1,16 @@
 
-
+// Make fillable / random to simulate users
+//make fillable specifically for user
+//have way to determine location within based on stats (filter)
 function LeaderboardEntry() {
   return (
       <>
-      <div className="grid grid-cols-1 grid-rows-10 h-[50px] w-full bg-[#221B48] rounded-lg overflow-y-scroll z-20 bl">
-        {/* Entry 1 */}
-        <div className="absolute h-[50px] w-full bg-[#0B0C2A] flex items-center ">
-            Entry 1 
-        </div>
-              {/* Entry 2 */}
-        {/* <div className="absolute h-[50px] w-full bg-[#DBF4ED] text-[#0B0C2A] flex items-center "> 
-          Entry 2
-        </div> */}
-  {/* add top to put below, find way to alternate and stack them */}
-    </div>
+        <tr>
+          <td>1</td>
+          <td>Bodil40</td>
+          <td>1-5</td>
+          <td>0-18</td>
+        </tr>
       </>
   );
 
