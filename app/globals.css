@@ -71,7 +71,7 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-y: none;
+    overflow-y: hidden;
     /* height:2000px; */
     
 }

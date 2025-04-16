@@ -8,12 +8,12 @@ function CollectionDisplay() {
   return (
       <>
       {/* Collection Background Box */}
-        <div className="fixed flex  h-[1000px] w-[80%] left-[10%] top-[280px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20">
+        <div className="relative flex h-[1000px] w-[80%] left-[10%] top-[280px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20 ">
           {/* Collection Filter */}
           <CollectionFilter/>
       
-            {/* Grid container */}
-         ` <div className="relative top-24 grid grid-cols-5 gap-8 left-8 ">
+            {/* Grid */}
+           <div className="absolute top-24 grid gap-8 left-8 grid-cols-5">
             {/* Each div is individual card slot, 5 per row */}
             <Card/>
             <Card/>
@@ -33,9 +33,8 @@ function CollectionDisplay() {
             <Card/>
             <Card/>
             <Card/>
-
           </div>
-        </div>
+          </div>
       </>
   );
 

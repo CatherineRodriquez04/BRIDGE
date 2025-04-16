@@ -8,14 +8,14 @@ import Link from "next/link";
 
 import GameNavbar from "@/components/ui/game-navbar.jsx";
 import CardSelectDisplay from "@/components/ui/card-select-display.jsx"
-
+import CardSelectGrid from "@/components/ui/card-select-grid.jsx"
 
 
 
 function ChooseDeck() {
   return (
     <>
-      <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">{/*  (for some reason, breaks styling / placement of cards*/}
+      <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overscroll-y-none">{/*  (for some reason, breaks styling / placement of cards*/}
         {/* Hide Navbar during gameplay setup? */}
         {/* <div className="top-6 right-[520px] absolute">
           <Link href="/choose-deck">
