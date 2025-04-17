@@ -4,6 +4,8 @@ import CardSelectGrid from "@/components/ui/card-select-grid.jsx"
 import CollectionFilter from "@/components/ui/collection-filter.jsx"
 import Collection from "@/app/collection/page";
 
+import Link from "next/link";
+
 function CardSelectDisplay() {
     return (
         <>
@@ -40,9 +42,10 @@ function CardSelectDisplay() {
                     </p>
                 </div>
             </div>
-
-            <button type="button" className=" absolute w-[25%] top-[115%] left-[33%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-2  border-4">Ready</button>
             
+            <Link href="/battle"> 
+                <button type="button" className=" absolute w-[25%] top-[115%] left-[33%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-2  border-4">Ready</button>
+            </Link>            
         </div>
         <div className="absolute w-[48%] h-[1000px] left-[50%] top-[5%] relative border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20">
         <CollectionFilter/>
