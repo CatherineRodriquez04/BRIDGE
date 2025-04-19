@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@plugin "daisyui";
+
 @import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
 
 @layer base {
@@ -132,3 +134,18 @@ html {
   }  */ 
 
 tr:nth-child(even) {background-color: #0B0C2A;}
+
+.dropdown-center {
+    height: 50px;
+    width: 150px;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    left: 590px;
+}
