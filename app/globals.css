@@ -95,7 +95,7 @@ html {
   
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-    transition-delay: 0.4s; /* Delay before flip starts */
+    /* transition-delay: 0.4s; Delay before flip starts */
   }
   
   .flip-card-front, .flip-card-back {
