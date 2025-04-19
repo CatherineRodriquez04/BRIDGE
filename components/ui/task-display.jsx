@@ -1,6 +1,7 @@
 
 import TaskTabs from "@/components/ui/task-tabs.jsx";
 import TaskResults from "@/components/ui/task-results.jsx";
+import TaskSpending from "@/components/ui/task-spending.jsx";
 
 function TaskDisplay() {
     return (
@@ -25,12 +26,11 @@ const tabData = [
       ),
     },
     {
-      id: "Paris",
-      title: "Paris",
+      id: "Spending",
+      title: "Spending",
       content: (
         <div>
-          <h3 className="text-xl font-semibold mb-2">Paris</h3>
-          <p>Paris is the capital of France.</p>
+          <TaskSpending/>
         </div>
       ),
     },
