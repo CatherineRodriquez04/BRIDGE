@@ -38,7 +38,7 @@ export default function HomeAnnouncements() {
   }
 
   return (
-    <div className="fixed top-20 right-6 w-[480px] h-96 z-10">
+    <div className="fixed top-24 right-6 w-[480px] h-96 z-10">
       <div className="relative w-full rounded-lg overflow-hidden border border-[#4eff91]/30">
         {/* Carousel wrapper */}
         <div className="relative h-64 overflow-hidden rounded-lg bg-[#0B0C2A]">
