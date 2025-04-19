@@ -2,7 +2,8 @@
 import CollectionDisplay from "@/components/ui/collection-display.jsx"
 import CardSelectGrid from "@/components/ui/card-select-grid.jsx"
 import CollectionFilter from "@/components/ui/collection-filter.jsx"
-import Collection from "@/app/collection/page";
+import Card from "@/components/ui/card.jsx"
+// import Collection from "@/app/collection/page";
 
 import Link from "next/link";
 
@@ -49,7 +50,27 @@ function CardSelectDisplay() {
         </div>
         <div className="absolute w-[48%] h-[1000px] left-[50%] top-[5%] relative border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll z-20">
         <CollectionFilter/>
-        <CardSelectGrid/>
+        <div className="absolute top-24 grid gap-8 left-8 grid-cols-3 ">
+            {/* Each div is individual card slot, 5 per row */}
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+          </div>
         </div>
         {/*  */}
         </>
