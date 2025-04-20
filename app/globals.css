@@ -134,3 +134,9 @@ html {
 tr:nth-child(even) {background-color: #0B0C2A;}
 
 
+.tab-text {
+    writing-mode: vertical-rl;
+/* text-orientation: mixed; */
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+}

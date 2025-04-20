@@ -10,9 +10,10 @@ function TaskTabs({ tabs }) {
   }
 
   return (
-    <div className="relative h-[80%] w-[70%] flex m-auto items-center bg-[#0B0C2A] border-4 border-[#C4F7BC] rounded-xl">
+    <>
       {/* Left box - Tab content */}
-      <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden">
+    <div className="relative h-screen w-screen flex justify-center items-center">
+      <div className="relative h-[80%] w-[70%] flex m-auto items-center bg-[#0B0C2A] border-4 border-[#C4F7BC] rounded-xl">
         {tabs.map((tab) => (
           <div key={tab.id} className={`h-full ${activeTab === tab.id ? "block" : "hidden"}`}>
             {tab.content}
@@ -21,14 +22,17 @@ function TaskTabs({ tabs }) {
       </div>
 
       {/* Right box - Tab buttons */}
-      <div className="absolute h-full w-[50%] right-0 bg-[#1E1F33] rounded-r-lg flex flex-col justify-center">
-        <div className="flex flex-col space-y-2 p-4">
+      {/* <div className="absolute h-full w-[50%] right-0 bg-[#1E1F33] rounded-r-lg flex flex-col justify-center"> */}
+      <div className="flex flex-row-reverse absolute left-[85%]">
+        {/* Tabs on the right */}
+        <div className="flex flex-col">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               className={`
-                py-3 px-4 text-left rounded transition-colors duration-300
-                ${activeTab === tab.id ? "bg-[#0B0C2A] text-white font-medium" : "bg-[#1E1F33] hover:bg-[#C4F7BC] hover:text-[#0B0C2A]"}
+                border-4 border-[#C4F7BC] outline-none cursor-pointer py-12 px-4 rounded-r-xl 
+                transition-colors duration-300 text-base text-left tab-text border-l-0 my-2 
+                ${activeTab === tab.id ? "bg-[#0B0C2A] border-r-4 border-l-0 relative z-10 " : "bg-[#C4F7BC] hover:[#C4F7BC] tab-text text-[#0B0C2A] border border-[#0B0C2A] hover:bg-[#0B0C2A] hover:text-[#C4F7BC]"}
               `}
               onClick={() => handleTabClick(tab.id)}
             >
@@ -36,8 +40,10 @@ function TaskTabs({ tabs }) {
             </button>
           ))}
         </div>
+        </div>
       </div>
-    </div>
+      {/* </div> */}
+    </>
   )
 }
 

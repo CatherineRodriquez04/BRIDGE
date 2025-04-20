@@ -57,7 +57,7 @@ function Navbar() {
       
       <div className="relative left-[20px] top-[5px]">
         <Link href="/task">
-        <button type="button" className="h-[43px] w-[200%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-2xl border-2">T.A.S.K</button>
+        <button type="button" className="h-[43px] w-[200%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C8E3B8] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-2xl border-2">T.A.S.K</button>
         </Link>
       </div>
 

@@ -6,8 +6,9 @@ import TaskSpending from "@/components/ui/task-spending.jsx";
 function TaskDisplay() {
     return (
         <>
-            <TaskTabs tabs={tabData} />
-
+            {/* <div className="relative h-[80%] w-[70%] flex m-auto items-center bg-[#0B0C2A] border-4 border-[#C4F7BC] rounded-xl"> */}
+                <TaskTabs tabs={tabData} />
+            {/* </div> */}
         </>
     );
 
