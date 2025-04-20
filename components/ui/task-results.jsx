@@ -9,8 +9,11 @@ function TaskResults() {
                         Results
                     </div>
                     {/* Scores(progressbars) */}
-                    <div className="relative pt-4 flex flex-col items-center top-[30%] h-[30%] w-full text-2xl ">
+                    <div className="relative pt-4 flex flex-col items-center top-[30%] h-[10%] w-full text-2xl ">
                         Progress
+                    </div>
+                    <div className="relative pt-4 flex flex-col items-center top-[30%] h-[20%] w-full border-b-4 text-2xl">
+                        progress Bars
                     </div>
                     {/* Overall Score: */}
                     <div className="relative pt-4 flex flex-col items-center top-[42%] h-[20%] w-full text-4xl">
