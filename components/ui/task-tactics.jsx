@@ -1,32 +1,19 @@
 
-function TaskSpending() {
+function TaskTactics() {
     return (
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
                 {/* Left Page */}
                 <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
-                        Spending
+                        Tactics
                     </div>
                     {/* Scores(progressbars) */}
-                    <div className="relative flex flex-col items-center top-[30%] h-[30%] w-full text-3xl pt-4 border-y-2">
-                        By Currency:
-                        <div className="absolute pt-12 text-2xl left-[15%]">
-                            Gold
-                        </div>
-
-
-                        <div className="absolute pt-12 text-2xl flex justify-center">
-                            Rubies
-                        </div>
-
-                        
-                        <div className="absolute pt-12 text-2xl left-[74%]">
-                            Cash
-                        </div>
+                    <div className="relative flex flex-col items-center top-[30%] h-[30%] w-full text-2xl bg-purple-800">
+                        Used
                     </div>
                     {/* Overall Score: */}
-                    <div className="relative flex flex-col pt-4 items-center top-[30%] h-[20%] w-full text-4xl border-y-2">
+                    <div className="relative flex flex-col items-center top-[30%] h-[20%] w-full text-4xl bg-purple-300">
                         Overall Score:
                         <div className="pt-8 text-2xl">
                             96% Survivability
@@ -46,4 +33,4 @@ function TaskSpending() {
 
 }
 
-export default TaskSpending
+export default TaskTactics
