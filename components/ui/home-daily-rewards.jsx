@@ -1,14 +1,16 @@
 
 import { Check } from "lucide-react"
+import React from "react"
+import { useState } from "react"  
 
 export default function HomeDailyRewards() {
   // Sample data for the daily rewards
   const rewards = [
     { day: 1, coins: 10, claimed: true },
-    { day: 1, coins: 10, claimed: false },
-    { day: 1, coins: 10, claimed: false },
-    { day: 1, coins: 10, claimed: false },
-    { day: 1, coins: 10, claimed: false },
+    { day: 2, coins: 20, claimed: false },
+    { day: 3, coins: 30, claimed: false },
+    { day: 4, coins: 40, claimed: false },
+    { day: 5, coins: 50, claimed: false },
   ]
 
   return (
@@ -27,7 +29,7 @@ export default function HomeDailyRewards() {
                       ? "bg-[#4A6857]"
                       : index === 3
                         ? "bg-[#3A5346]"
-                        : "bg-[#2A3E35]"
+                        : "bg-gradient-to-b from-accent to-accent2"
               }`}
             >
               <div className={`text-center font-bold text-xl ${reward.claimed ? "text-[#0B0C2A]" : "text-white/80"}`}>
@@ -54,7 +56,7 @@ export default function HomeDailyRewards() {
               </div>
 
               {reward.claimed && (
-                <div className="absolute -bottom-3 w-10 h-10 rounded-full bg-[#8BFFB0] border-4 border-[#0B0C2A] flex items-center justify-center">
+                <div className="absolute -bottom-6 w-10 h-10 rounded-full bg-[#8BFFB0] border-4 border-[#0B0C2A] flex items-center justify-center">
                   <Check className="w-5 h-5 text-[#0B0C2A]" />
                 </div>
               )}
@@ -65,16 +67,3 @@ export default function HomeDailyRewards() {
     </div>
   )
 }
-
-
-
-
-// function HomeDailyRewards() {
-//     return (
-//         <>
-        
-//         </>
-//     );
-// }
-
-// export default HomeDailyRewards 
