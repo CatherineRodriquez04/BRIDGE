@@ -25,7 +25,7 @@ function CollectionFilter() {
         onChange={handleFilterChange}
         defaultValue={selectedOption}
         width="150px"
-        className="h-[50px] bg-[#0B0C2A] border-2 border-[#86CEBC] top-4 left-[580px]"
+        className="h-[50px] bg-[#0B0C2A] border-2 border-[#86CEBC] top-6 left-[80%]"
       />
     </div>
   )
