@@ -10,7 +10,7 @@ function TaskTactics() {
                     </div>
                     {/* Scores(progressbars) */}
                     <div className="relative flex flex-col items-center top-[30%] h-[30%] w-full text-2xl bg-purple-800">
-                        Used
+                        Types
                     </div>
                     {/* Overall Score: */}
                     <div className="relative flex flex-col items-center top-[30%] h-[20%] w-full text-4xl bg-purple-300">
