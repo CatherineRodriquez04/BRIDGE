@@ -1,46 +1,83 @@
-// Introduction Page
+"use client";
 
-"use client"
+// firebase imports
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { app, db } from "@/lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
-import Link from "next/link";
-import { useEffect, useState } from 'react';
-
+// next/link and hooks
+import { useState } from "react";
 import Image from "next/image";
 
+// Avatar images
 import avatar1 from "@/public/assets/avatarTemp.png";
 import avatar2 from "@/public/assets/avatarTemp2.png";
 import avatar3 from "@/public/assets/avatarTemp3.png";
 
 export default function Intro() {
+    // Modal and form state
     const [showModal, setShowModal] = useState(false);
-    const [name, setName] = useState('');
-    const [avatar, setAvatar] = useState('');
+    const [mode, setMode] = useState("login"); // 'login' or 'signup'
+    const [name, setName] = useState("");
+    const [avatar, setAvatar] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
+    // Opens the modal when user accepts the introduction
     const handleAccept = () => {
-        setShowModal(true); // Open the modal when button is clicked
+        setShowModal(true);
     };
 
+    // Handles form submission for login / signup
     const handleSubmit = async () => {
-        if (name && avatar) {
-            // save the name and avatar to localStorage
-            localStorage.setItem('playerName', name);
-            localStorage.setItem('avatar', avatar);
+        const auth = getAuth(app);
+
+        if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+        }
+
+        if (mode === "login") {
+        // Login mode
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            // Optionally, load user data here
+            window.location.href = "/homescreen";
+        } catch (error) {
+            alert("Login failed: " + error.message);
+        }
         } else {
-            alert('Please enter a name and select an avatar');
+        // Signup mode: Check additional fields
+        if (!name || !avatar) {
+            alert("Please enter your name and select an avatar.");
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            // Save player info to Firestore under 'players' with uid as document ID
+            await setDoc(doc(db, "players", user.uid), {
+            name,
+            avatar,
+            email,
+            });
+            window.location.href = "/homescreen";
+        } catch (error) {
+            alert("Account creation failed: " + error.message);
+        }
         }
     };
-    
+
     return (
-    <div className="h-screen flex justify-center items-center fade-in">
-        {/* Overlay for the fade effect */}
+        <div className="h-screen flex justify-center items-center fade-in relative">
+        {/* Overlay for the modal fade effect */}
         {showModal && <div className="absolute inset-0 bg-black opacity-70 z-10"></div>}
 
-
-        {/* Storyline for Introduction */}
-        <div className="flex flex-col text-center">
+        {/* Introduction Storyline */}
+        <div className="flex flex-col text-center z-20">
             <h1 className="text-[40px]">BOOM! CRASH! ...</h1>
             <p className="text-[30px]">...</p>
-            {/* <p className="text-[30px]">...</p> */}
             <p className="text-[25px]">What was that?</p>
             <p className="text-[25px]">It seems like an apocalypse has broken out. I, the ruler of this</p>
             <p className="text-[25px]">country must make it back to my castle in order to deal with the</p>
@@ -52,56 +89,123 @@ export default function Intro() {
             <p className="text-[25px] mb-4">Will you play the game, or will the game play you?</p>
             <p className="text-[25px] text-white">WARNING: THE GAME MAY NOT BE WHAT IT SEEMS.</p>
 
-            {/* button to begin game -> leads to profile creation pop up */}
-            <div className="flex text-center justify-center mt-5">
-                <button
-                    className="rounded-lg bg-white text-black text-[20px] py-2 px-4 hover:scale-105"
-                    onClick={handleAccept}
-                >
-                    I ACCEPT
-                </button>
+            {/* Button to begin game (opens modal) */}
+            <div className="flex justify-center mt-5">
+            <button
+                className="rounded-lg bg-white text-black text-[20px] py-2 px-4 hover:scale-105"
+                onClick={handleAccept}
+            >
+                I ACCEPT
+            </button>
             </div>
         </div>
 
-        {/* Modal for profile creation */}
+        {/* Modal for login/signup */}
         {showModal && (
             <div className="fixed inset-0 flex items-center justify-center z-20">
             <div className="bg-accent border-2 border-accent2 p-8 rounded-lg shadow-lg">
-                <h2 className="text-4xl text-center">Create Your Profile</h2>
-                <div className="min-w-[200px] border border-accent4"></div>
+                <h2 className="text-4xl text-center">
+                {mode === "login" ? "Login to Your Profile" : "Create Your Profile"}
+                </h2>
+                <div className="min-w-[200px] border border-accent4 my-4" />
 
-                {/* name input */}
+                {/* Email input */}
                 <input
-                type="text"
-                placeholder="Enter your name"
-                className="border mt-5 border-gray-300 p-2 rounded w-full text-black text-[20px]"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                maxLength={18} //max length is 18 characters
+                type="email"
+                placeholder="Enter your email"
+                className="border mb-3 border-gray-300 p-2 rounded w-full text-black text-[20px]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 />
 
-                {/* avatar selection */}
-                <div>
-                    <p className="mt-2 text-[25px] text-center">Choose your avatar:</p>
-                    <div className="flex justify-center mt-4 gap-4">
-                        <Image src={avatar1} width={125} height={125} alt="Avatar 1" className={`cursor-pointer border hover:border-2 ${avatar === '/assets/avatarTemp.png' ? 'border-accent4 border-2' : ''}`} onClick={() => setAvatar('/assets/avatarTemp.png')} />
-                        <Image src={avatar2} width={125} height={125} alt="Avatar 2" className={`cursor-pointer border hover:border-2 ${avatar === '/assets/avatarTemp2.png' ? 'border-accent4 border-2' : ''}`} onClick={() => setAvatar('/assets/avatarTemp2.png')} />
-                        <Image src={avatar3} width={125} height={125} alt="Avatar 3" className={`cursor-pointer border hover:border-2 ${avatar === '/assets/avatarTemp3.png' ? 'border-accent4 border-2' : ''}`} onClick={() => setAvatar('/assets/avatarTemp3.png')} />
+                {/* Password input */}
+                <input
+                type="password"
+                placeholder="Enter your password"
+                className="border mb-3 border-gray-300 p-2 rounded w-full text-black text-[20px]"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                />
+
+                {/* Show name and avatar inputs only for signup */}
+                {mode === "signup" && (
+                <>
+                    <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="border mb-3 border-gray-300 p-2 rounded w-full text-black text-[20px]"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    maxLength={18}
+                    />
+
+                    <p className="text-[25px] text-center">Choose your avatar:</p>
+                    <div className="flex justify-center mt-2 gap-4 mb-4">
+                    <Image
+                        src={avatar1}
+                        width={125}
+                        height={125}
+                        alt="Avatar 1"
+                        className={`cursor-pointer border hover:border-2 ${avatar === "/assets/avatarTemp.png" ? "border-accent4 border-2" : ""}`}
+                        onClick={() => setAvatar("/assets/avatarTemp.png")}
+                    />
+                    <Image
+                        src={avatar2}
+                        width={125}
+                        height={125}
+                        alt="Avatar 2"
+                        className={`cursor-pointer border hover:border-2 ${avatar === "/assets/avatarTemp2.png" ? "border-accent4 border-2" : ""}`}
+                        onClick={() => setAvatar("/assets/avatarTemp2.png")}
+                    />
+                    <Image
+                        src={avatar3}
+                        width={125}
+                        height={125}
+                        alt="Avatar 3"
+                        className={`cursor-pointer border hover:border-2 ${avatar === "/assets/avatarTemp3.png" ? "border-accent4 border-2" : ""}`}
+                        onClick={() => setAvatar("/assets/avatarTemp3.png")}
+                    />
                     </div>
-                </div>
+                </>
+                )}
+
+                {/* Submit button */}
                 <div className="flex justify-center mt-4">
-                    <Link href="/homescreen">
-                        <button
-                            className="bg-white text-black px-4 py-2 rounded-lg text-[20px] hover:scale-105"
-                            onClick={handleSubmit}
-                        >
-                            Submit
-                        </button>
-                    </Link>
+                <button
+                    className="bg-white text-black px-4 py-2 rounded-lg text-[20px] hover:scale-105"
+                    onClick={handleSubmit}
+                >
+                    {mode === "login" ? "Login" : "Create Account"}
+                </button>
                 </div>
+
+                {/* Toggle between login and signup modes */}
+                <p className="text-center mt-4 text-white text-md">
+                {mode === "login" ? (
+                    <>
+                    Don’t have an account?{" "}
+                    <span
+                        className="text-blue-400 cursor-pointer underline"
+                        onClick={() => setMode("signup")}
+                    >
+                        Create one
+                    </span>
+                    </>
+                ) : (
+                    <>
+                    Already have an account?{" "}
+                    <span
+                        className="text-blue-400 cursor-pointer underline"
+                        onClick={() => setMode("login")}
+                    >
+                        Login
+                    </span>
+                    </>
+                )}
+                </p>
             </div>
             </div>
         )}
-    </div>
+        </div>
     );
 }
