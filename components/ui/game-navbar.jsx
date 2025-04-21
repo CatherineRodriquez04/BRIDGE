@@ -54,10 +54,16 @@ function Navbar() {
           <NavButton key={item.label} label={item.label} href={item.href} index={index} total={navItems.length} />
         ))}
       </nav>
+      
+      <div className="relative left-[20px] top-[5px]">
+        <Link href="/task">
+        <button type="button" className="h-[43px] w-[200%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C8E3B8] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-2xl border-2">T.A.S.K</button>
+        </Link>
+      </div>
 
       <div className="fixed top-0 right-0 left-0 z-10">
         {/* Money button */}
-        <div className="top-6 right-[225px] absolute">
+        <div className="top-8 right-[225px] absolute">
           <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">
             Coins
             <img
@@ -75,7 +81,7 @@ function Navbar() {
           </p>
         </div>
         {/* Gem button */}
-        <div className="top-6 right-[35px] absolute">
+        <div className="top-8 right-[35px] absolute">
           <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">
             Gems
             <img
