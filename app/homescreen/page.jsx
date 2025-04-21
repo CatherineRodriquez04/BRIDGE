@@ -50,7 +50,7 @@ export default function HomeScreen() {
         // Full intro duration = 5s
         setTimeout(() => {
             setShowIntro(false);
-        }, 4000);
+        }, 2000);
         });
     
         return () => unsubscribe();
@@ -75,7 +75,7 @@ export default function HomeScreen() {
     // Intro screen typing: static message
     if (showIntro) {
         return (
-        <div className="h-screen w-screen flex items-center justify-center bg-accent">
+        <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-accent to-accent2">
             {startTyping && playerName && (
                 <h1 className="text-white text-5xl text-center typing">
                     {`Welcome, ${playerName}`}
@@ -115,7 +115,7 @@ export default function HomeScreen() {
 
     // Homescreen (after intro)
     return (
-        <div className="h-screen w-screen flex fade-in transition-opacity duration-1000 bg-accent relative">
+        <div className="h-screen w-screen flex fade-in transition-opacity duration-1000 bg-gradient-to-b from-accent to-accent2 relative">
         {showModal && <div className="absolute inset-0 bg-black opacity-70 z-10"></div>}
 
         <div className="flex flex-row">
