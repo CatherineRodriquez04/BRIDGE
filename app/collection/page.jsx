@@ -11,7 +11,7 @@ import CollectionDisplay from "@/components/ui/collection-display.jsx"
  function Collection() {
   return (
     <>
-      <div className="h-full min-h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 overflow-auto">
+      <div className="h-full min-h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 overflow-hidden">
         {/* Navbar */}
         <div className="top-6 right-[520px] absolute">
           <Link href="/collection">

@@ -10,7 +10,7 @@
 function Card() {
     return (
         <>
-                 <div className="relative flex h-[360px] w-[260px]  rounded-3xl flip-card"> {/* flip card */}
+                 <div className="relative flex h-[360px] w-[260px] rounded-3xl flip-card"> {/* flip card */}
                 {/* Inner card?  */}
                     <div className="relative w-full h-full transition-transform duration-[0.8s] transform-3d flip-card-inner">
 
@@ -41,7 +41,7 @@ function Card() {
                             </div>
 
                             <div className="absolute mx-auto top-[2px] left-[100px] z-30 text-white text-3xl ">
-                                Anteater
+                                Capybara
                             </div>
 
                             {/* Type (Image) Bottom Left */}
