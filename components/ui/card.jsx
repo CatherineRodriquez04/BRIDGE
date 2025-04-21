@@ -13,21 +13,40 @@ import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-function Card() {
+function Card({ cardId }) {
     const [card, setCard] = useState(null);
-    const [currentId, setCurrentId] = useState("01");
+    const [loading, setLoading] = useState(true);
+    console.log("Fetching card ID:", cardId);
 
     useEffect(() => {
+        if (!cardId) return; // Prevent empty fetch
+
         const fetchCard = async () => {
-            const docRef = doc(db, "characterCards", currentId);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                setCard(docSnap.data());
+            try {
+                const docRef = doc(db, "characterCards", cardId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setCard(docSnap.data());
+                } else {
+                    console.warn(`Card ID ${cardId} not found`);
+                }
+            } catch (error) {
+                console.error("Error fetching card:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchCard();
-    }, [currentId]);
+    }, [cardId]);
+
+    if (loading || !card) {
+        return (
+            <div className="flex items-center justify-center h-[360px] w-[260px] rounded-3xl bg-gradient-to-br from-accent2 to-accent text-white text-xl animate-pulse">
+                Loading Card...
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col items-center">
@@ -36,8 +55,8 @@ function Card() {
 
                     {/* Front of card */}
                     <div className="flip-card-front">
-                        <img src={card.typeBg} alt="Card-Environment-Background" className="absolute top-0 left-0 z-0" />
-                        <img src={'/assets/animal-test.svg'} width={150} height={400} alt="Card-Animal-Test" className="absolute top-24 left-[60px] z-10" />
+                        <img src={card?.typeBg || "/assets/card-ground-bg.svg"} alt="Card-Environment-Background" className="absolute top-0 left-0 z-0" />
+                        <img src={card?.charImg || '/assets/animal-test.svg'} width={150} height={400} alt="Card-Animal-Test" className="absolute top-24 left-[60px] z-10" />
                         <img src={'/assets/card-border-front.svg'} alt="Card-Front-Border" className="absolute top-0 left-0 z-20" />
                         <div className="absolute top-[35px] left-[12px] z-30 text-[#72E8C9] text-4xl font-bold">{card.rank}</div>
                         <div className="absolute top-[2px] left-[100px] z-30 text-white text-3xl">{card.name}</div>
@@ -47,8 +66,8 @@ function Card() {
 
                     {/* Back of card */}
                     <div className="flip-card-back">
-                        <img src={card.typeBgMini} alt="Card-Environment-Background" className="absolute top-0 left-24 z-0" />
-                        <img src={'/assets/animal-test.svg'} width={100} height={400} alt="Card-Back-Animal-Test" className="absolute top-[75px] left-[130px] z-10" />
+                        <img src={card?.typeBgMini || "/assets/card-ground-bg.svg"} alt="Card-Environment-Background" className="absolute top-0 left-24 z-0" />
+                        <img src={card?.charImg || '/assets/animal-test.svg'} width={100} height={400} alt="Card-Back-Animal-Test" className="absolute top-[75px] left-[130px] z-10" />
                         <img src={'/assets/card-border-back.svg'} alt="Card-Back-Border" className="absolute top-0 left-0 z-20" />
                         <img src="/assets/dead-man-logo-2.svg" width={170} height={200} alt="Card-Deadman-Logo" className="absolute left-[45px] top-0 z-30" />
                         <div className="absolute top-[55px] left-[130px] z-30 text-white text-2xl font-bold">{card.name}</div>

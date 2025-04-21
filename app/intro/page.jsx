@@ -3,7 +3,7 @@
 // firebase imports
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { app, db } from "@/lib/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { getDocs, collection, query, where, doc, setDoc } from "firebase/firestore";
 
 // next/link and hooks
 import { useState } from "react";
@@ -22,6 +22,9 @@ export default function Intro() {
     const [avatar, setAvatar] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    // Helper to randomly pick one from an array
+    const getRandomCard = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
     // Opens the modal when user accepts the introduction
     const handleAccept = () => {
@@ -53,6 +56,24 @@ export default function Intro() {
             return;
         }
 
+        // Query Firestore for each class
+        const getCardsByClass = async (role) => {
+            const q = query(collection(db, "characterCards"), where("class", "==", role));
+            const snapshot = await getDocs(q);
+            return snapshot.docs.map(doc => doc.id); // use doc.id to store the actual document ID
+        };
+    
+        const tanks = await getCardsByClass("Tank");
+        const attacks = await getCardsByClass("Attack");
+        const supports = await getCardsByClass("Support");
+    
+        const starterDeck = {
+            [getRandomCard(tanks)]: 1,
+            [getRandomCard(attacks)]: 1,
+            [getRandomCard(supports)]: 1
+        };
+
+
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
@@ -61,12 +82,14 @@ export default function Intro() {
             name,
             avatar,
             email,
+            characterCards: starterDeck
             });
             window.location.href = "/homescreen";
         } catch (error) {
             alert("Account creation failed: " + error.message);
         }
         }
+
     };
 
     return (
