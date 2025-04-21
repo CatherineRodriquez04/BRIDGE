@@ -71,7 +71,7 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-y: none;
+    overflow-y: hidden;
     /* height:2000px; */
     
 }
@@ -90,11 +90,12 @@ html {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
   }
   
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    /* transition-delay: 0.4s; Delay before flip starts */
   }
   
   .flip-card-front, .flip-card-back {
@@ -107,7 +108,7 @@ html {
   
   .flip-card-front {
     background-color: transparent;
-    color: black;
+    /* color: black; */
     border-radius: 1.5rem;
   }
   
@@ -117,3 +118,25 @@ html {
     border-radius: 1.5rem;
     transform: rotateY(180deg);
   }
+
+   th {
+    padding: 8px;
+  }
+
+   td {
+    padding: 8px;
+  }
+/* 
+  td {
+
+  }  */ 
+
+tr:nth-child(even) {background-color: #0B0C2A;}
+
+
+.tab-text {
+    writing-mode: vertical-rl;
+/* text-orientation: mixed; */
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+}

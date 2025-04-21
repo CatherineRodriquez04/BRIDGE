@@ -1,18 +1,34 @@
+"use client"
+
+import { useState } from "react"
+import CustomSelect from "/components/ui/custom-select.jsx"
 
 function CollectionFilter() {
-    return (
-        <>
-        <select className=" h-[50px] w-[150px] bg-[#0B0C2A] border-2 border-[#86CEBC] absolute top-4 right-4 flex items-center gap-2">
-            <option className="hidden">Sort By</option>
-            <option className="h-[50px] w-[150px] bg-[#0B0C2A] border-2 border-[#86CEBC] absolute flex items-center gap-2">Rarity</option>
-            <option className="">Rank</option>
-            <option className="">Class</option>
-            <option className="">Type</option>
+  const [selectedOption, setSelectedOption] = useState("0")
 
-        </select>
-        </>
-    );
+  const filterOptions = [
+    { value: "0", label: "Sort By:" },
+    { value: "1", label: "Rank" },
+    { value: "2", label: "Class" },
+    { value: "3", label: "Type" },
+  ]
 
+  const handleFilterChange = (value) => {
+    setSelectedOption(value)
+    // Add any additional logic you need when filter changes
+  }
+
+  return (
+    <div className="relative z-50">
+      <CustomSelect
+        options={filterOptions}
+        onChange={handleFilterChange}
+        defaultValue={selectedOption}
+        width="150px"
+        className="h-[50px] bg-[#0B0C2A] border-2 border-[#86CEBC] top-4 left-[580px]"
+      />
+    </div>
+  )
 }
 
 export default CollectionFilter
