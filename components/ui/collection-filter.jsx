@@ -3,7 +3,7 @@
 import { useState } from "react"
 import CustomSelect from "/components/ui/custom-select.jsx"
 
-function CollectionFilter() {
+function CollectionFilter({ onFilterChange }) {
   const [selectedOption, setSelectedOption] = useState("0")
 
   const filterOptions = [
@@ -15,7 +15,7 @@ function CollectionFilter() {
 
   const handleFilterChange = (value) => {
     setSelectedOption(value)
-    // Add any additional logic you need when filter changes
+    if (onFilterChange) onFilterChange(value)
   }
 
   return (

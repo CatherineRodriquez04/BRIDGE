@@ -1,8 +1,37 @@
+"use client"
+
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "@/lib/firebase";
+
+import { useEffect, useState } from "react";
+
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 // Simple navbar component with no props
 function Navbar() {
+  const [coins, setCoins] = useState("");
+  const [gems, setGems] = useState("");
+
+  useEffect(() => {
+          const auth = getAuth();
+      
+          const unsubscribe = onAuthStateChanged(auth, async (user) => {
+          if (user) {
+              const docRef = doc(db, "players", user.uid);
+              const docSnap = await getDoc(docRef);
+              if (docSnap.exists()) {
+              const data = docSnap.data();
+              setCoins(data.coins || "");
+              setGems(data.gems || "");
+              }
+          }
+        });
+      
+          return () => unsubscribe();
+      }, []);
+
   // Internal function for nav buttons
   function NavButton({ label, href, index, total }) {
     // Determine which skew direction to use based on position
@@ -65,7 +94,7 @@ function Navbar() {
         {/* Money button */}
         <div className="top-8 right-[225px] absolute">
           <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">
-            Coins
+            {coins}
             <img
               src={"/assets/icon-coin.svg"}
               width={25}
@@ -83,7 +112,7 @@ function Navbar() {
         {/* Gem button */}
         <div className="top-8 right-[35px] absolute">
           <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">
-            Gems
+            {gems}
             <img
               src={"/assets/icon-gem.svg"}
               width={25}

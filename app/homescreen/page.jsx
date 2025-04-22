@@ -23,6 +23,9 @@ import HomeDailyRewards from "@/components/ui/home-daily-rewards.jsx";
 export default function HomeScreen() {
     const [playerName, setPlayerName] = useState("");
     const [avatar, setAvatar] = useState("");
+    const [coins, setCoins] = useState("");
+    const [gems, setGems] = useState("");
+    const [days, setDays] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [showIntro, setShowIntro] = useState(true);
     const [startTyping, setStartTyping] = useState(false);
@@ -39,6 +42,9 @@ export default function HomeScreen() {
             const data = docSnap.data();
             setPlayerName(data.name || "");
             setAvatar(data.avatar || "/assets/avatarTemp.png");
+            setCoins(data.coins || "");
+            setGems(data.gems || "");
+            setDays(data.days || "");
             }
         }
     
@@ -78,7 +84,7 @@ export default function HomeScreen() {
         <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-accent to-accent2">
             {startTyping && playerName && (
                 <h1 className="text-white text-5xl text-center typing">
-                    {`Welcome, ${playerName}`}
+                    {`Welcome, ${playerName}!`}
                 </h1>
             )}
 
@@ -146,12 +152,12 @@ export default function HomeScreen() {
                 <p className="text-white text-[25px] mb-[-5px]">{playerName}</p>
                 <div className="min-w-[150px] border border-accent4"></div>
                 <div>
-                <p className="text-white mt-2">Day Survived: 23</p>
+                <p className="text-white mt-2">Days Survived: {days}</p>
                 <p className="text-white">Cards Collected: 21</p>
                 </div>
                 <div className="mt-4 flex flex-row gap-6">
-                <p className="text-white mt-2">Gems: 2121</p>
-                <p className="text-white mt-2">Coins: 21283</p>
+                <p className="text-white mt-2">Gems: {gems}</p>
+                <p className="text-white mt-2">Coins: {coins}</p>
                 </div>
             </div>
             </div>

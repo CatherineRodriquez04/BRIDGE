@@ -82,7 +82,12 @@ export default function Intro() {
             name,
             avatar,
             email,
-            characterCards: starterDeck
+            characterCards: starterDeck,
+            coins: 500,
+            gems: 150,
+            days: 1,
+            wins: 0,
+            score: 0
             });
             window.location.href = "/homescreen";
         } catch (error) {
