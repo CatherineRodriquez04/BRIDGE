@@ -92,7 +92,7 @@ function Navbar() {
         {/* Gem button */}
         <div className="top-8 right-[109px] absolute">
         <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">{gems}</p>
-            <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gems" className="absolute left-2 top-2" />
+            <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gems" className="absolute left-2 top-[11px]" />
             <Link href="/exchange">
               <div className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm flex items-center justify-center">
                 <p className="text-2xl text-black font-bold">+</p>
