@@ -83,7 +83,7 @@ export default function HomeScreen() {
         return (
         <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-accent to-accent2">
             {startTyping && playerName && (
-                <h1 className="text-white text-5xl text-center typing">
+                <h1 className="text-white text-6xl text-center typing">
                     {`Welcome, ${playerName}!`}
                 </h1>
             )}

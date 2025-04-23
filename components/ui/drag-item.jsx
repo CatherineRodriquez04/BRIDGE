@@ -1,27 +1,27 @@
 //DragItem.js
 
-import React from 'react';
-import { useDrag } from 'react-dnd';
-import Card from "/components/ui/card.jsx"
+"use client";
 
-const DragItem = ({ name }) => {
-    const [{ isDragging }, drag] = useDrag(() => ({
-        type: 'item',
-        item: { name },
+import React from "react";
+import { useDrag } from "react-dnd";
+import Card from "/components/ui/card.jsx";
+
+const DragItem = ({ cardId }) => {
+    const [{ isDragging }, dragRef] = useDrag(() => ({
+        type: "item",
+        item: { cardId }, // this is what DropZone will receive
         collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
+        isDragging: monitor.isDragging(),
         }),
-    }));
+    }), [cardId]);
 
     return (
-        <>
-        <div ref={drag} className={`cursor-grab z-20 ${isDragging ? 'opacity-100' : 'opacity-100'}`}>
-         <Card/>
+        <div
+        ref={dragRef}
+        className={`cursor-grab z-20 ${isDragging ? "opacity-50" : "opacity-100"}`}
+        >
+        <Card cardId={cardId} />
         </div>
-         {/* <div ref={drag} className={`h-64 w-32 cursor-move border border-gray-300 p-2.5 rounded-[5px] m-1.5 bg-blue-200 ${isDragging ? 'opacity-50' : 'opacity-100'}`}>
-             {name}
-         </div> */}
-        </>
     );
 };
 

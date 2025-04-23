@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { db } from "@/lib/firebase";
 import CustomSelect from "/components/ui/custom-select.jsx";
 
 function LeaderboardDisplay() {
   const [players, setPlayers] = useState([]);
   const [sortOption, setSortOption] = useState("score");
+  const [currentDay, setCurrentDay] = useState(null);
 
   const sortPlayers = (data, option) => {
     switch (option) {
@@ -28,21 +30,43 @@ function LeaderboardDisplay() {
   };
 
   useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, "players", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setCurrentDay(data.days || 1);
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
     const fetchPlayers = async () => {
       const querySnapshot = await getDocs(collection(db, "players"));
       const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-      const sorted = sortPlayers([...data], sortOption);
+      const sameDayPlayers = data.filter(p => (p.days || 1) === currentDay);
+      const sorted = sortPlayers([...sameDayPlayers], sortOption);
       setPlayers(sorted);
     };
 
-    fetchPlayers();
-  }, [sortOption]);
+    if (currentDay !== null) {
+      fetchPlayers();
+    }
+  }, [sortOption, currentDay]);
 
   const topThree = players.slice(0, 3);
 
   return (
     <>
+      {/* Player's Current Day Display */}
+      <div className="absolute top-[420px] left-[11%] z-30 text-white text-xl bg-[#0B0C2A] border-2 border-[#86CEBC] rounded-lg px-4 py-2">
+        Your Day: {currentDay || "Loading..."}
+      </div>
+
       {/* Filter Dropdown */}
       <div className="absolute top-[420px] right-[11%] z-30">
         <CustomSelect
