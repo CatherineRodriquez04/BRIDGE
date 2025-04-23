@@ -14,8 +14,8 @@ function PacksDisplay () {
                 </div> */}
                 <img src="/assets/temp-card-pack-1.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[280px]"></img>
 
-                <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mx-auto border-2">300 coins</button>
-                <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 mx-auto border-2">300 coins</button>
+                <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mx-auto border-2">Buy 1</button>
+                <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 mx-auto border-2">Buy 10</button>
             </div>
             {/* Add buttons below */}
             {/* 2nd pack */}
@@ -24,9 +24,14 @@ function PacksDisplay () {
                     <img src="/assets/temp-card-pack-1.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-full h-full"></img>
                 </div> */}
                 <img src="/assets/temp-card-pack-1.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[280px]"></img>
-
-                    <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mx-auto border-2">300 coins</button>
-                    <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 mx-auto border-2">300 coins</button>
+                    <div className="ml-6">
+                        <button type="button" className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mr-8 border-2">500 coins</button>
+                        <button type="button" className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10  border-2">150 gems</button>
+                    </div>
+                    <div className="ml-6">
+                        <button type="button" className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center mt-10 mr-8 border-2">2500 coins</button>
+                        <button type="button" className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10  border-2">450 gems</button>
+                    </div>
                     </div>
 
             {/* 3rd pack */}
@@ -35,10 +40,8 @@ function PacksDisplay () {
                     <img src="/assets/temp-card-pack-1.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-full h-full"></img>
                 </div> */}
                 <img src="/assets/temp-card-pack-1.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[280px]"></img>
-
-                    <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mx-auto border-2">300 coins</button>
-                    <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 mx-auto border-2">300 coins</button>
-
+                <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mx-auto border-2">600 gems</button>
+                <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 mx-auto border-2">1200 gems</button>
             </div>
         </div>
      </>
