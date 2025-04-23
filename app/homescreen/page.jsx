@@ -26,6 +26,7 @@ export default function HomeScreen() {
     const [coins, setCoins] = useState("");
     const [gems, setGems] = useState("");
     const [days, setDays] = useState("");
+    const [cards, setCards] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [showIntro, setShowIntro] = useState(true);
     const [startTyping, setStartTyping] = useState(false);
@@ -45,6 +46,7 @@ export default function HomeScreen() {
             setCoins(data.coins || "");
             setGems(data.gems || "");
             setDays(data.days || "");
+            setCards(Object.values(data.characterCards || {}).reduce((a, b) => a + b, 0));
             }
         }
     
@@ -83,7 +85,7 @@ export default function HomeScreen() {
         return (
         <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-accent to-accent2">
             {startTyping && playerName && (
-                <h1 className="text-white text-5xl text-center typing">
+                <h1 className="text-white text-6xl text-center typing">
                     {`Welcome, ${playerName}!`}
                 </h1>
             )}
@@ -153,7 +155,7 @@ export default function HomeScreen() {
                 <div className="min-w-[150px] border border-accent4"></div>
                 <div>
                 <p className="text-white mt-2">Days Survived: {days}</p>
-                <p className="text-white">Cards Collected: 21</p>
+                <p className="text-white">Cards Collected: {cards}</p>
                 </div>
                 <div className="mt-4 flex flex-row gap-6">
                 <p className="text-white mt-2">Gems: {gems}</p>

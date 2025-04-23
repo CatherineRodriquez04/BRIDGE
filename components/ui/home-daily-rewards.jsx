@@ -15,7 +15,7 @@ export default function HomeDailyRewards() {
 
   return (
     <div className="fixed bottom-6 right-8 z-10">
-      <div className="bg-[#0B0C2A] p-4 rounded-lg border border-[#4eff91]/30">
+      <div className="bg-[#0B0C2A] p-4 rounded-lg border border-accent3">
         <div className="flex space-x-2">
           {rewards.map((reward, index) => (
             <div
