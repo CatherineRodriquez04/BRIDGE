@@ -1,7 +1,10 @@
+"use client";
 
-import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { cn } from "@/lib/utils";
 
-// Reduce the size of the RankDisplay component
 function RankDisplay({ rank }) {
   if (rank === 1) {
     return (
@@ -14,7 +17,7 @@ function RankDisplay({ rank }) {
           />
         </svg>
       </div>
-    )
+    );
   } else if (rank === 2) {
     return (
       <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
@@ -26,7 +29,7 @@ function RankDisplay({ rank }) {
           />
         </svg>
       </div>
-    )
+    );
   } else if (rank === 3) {
     return (
       <div className="w-6 h-6 rounded-full bg-orange-300 flex items-center justify-center">
@@ -38,59 +41,58 @@ function RankDisplay({ rank }) {
           />
         </svg>
       </div>
-    )
+    );
   } else {
-    return <div className="w-6 h-6 flex items-center justify-center text-white text-sm">{rank}</div>
+    return <div className="w-6 h-6 flex items-center justify-center text-white text-sm">{rank}</div>;
   }
 }
 
 function HomeLeaderboard() {
-  // Temporary data - will be replaced with database data later
-  const leaderboardData = [
-    { rank: 1, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 2, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 3, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 4, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 5, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 6, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 7, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 8, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 9, name: "name", daysSurvived: 3, totalCollection: 1912 },
-    { rank: 10, name: "name", daysSurvived: 3, totalCollection: 1912 },
-  ]
+  const [leaderboardData, setLeaderboardData] = useState([]);
 
-  // Update the main component with smaller dimensions and font sizes
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, "players"));
+      const data = querySnapshot.docs
+        .map(doc => ({ id: doc.id, ...doc.data() }))
+        .filter(player => player.days === 1)
+        .sort((a, b) => (a.score ?? Infinity) - (b.score ?? Infinity))
+        .slice(0, 10);
+
+      setLeaderboardData(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="fixed bottom-5 left-5 w-[375px] rounded-lg overflow-hidden border border-[#4eff91]/30 text-sm">
-      {/* Leaderboard title */}
+    <div className="fixed bottom-5 left-5 w-[375px] rounded-lg overflow-hidden border border-accent3 text-sm">
       <div className="bg-[#0B0C2A] py-2 text-center">
-        <h2 className="text-[#4eff91] text-xl font-light tracking-wider">Leaderboard</h2>
+        <h2 className="text-accent4 text-xl font-light tracking-wider">Leaderboard</h2>
       </div>
 
-      {/* Header row */}
-      <div className="grid grid-cols-4 bg-[#0F1550] text-white py-1.5 px-3">
+      <div className="grid grid-cols-4 bg-[#0F1550] text-white py-1.5 px-3 text-center">
         <div className="text-sm font-light">Rank</div>
         <div className="text-sm font-light">Name</div>
-        <div className="text-sm font-light">Day Survived</div>
-        <div className="text-sm font-light text-right">Total Collection</div>
+        <div className="text-sm font-light">Day</div>
+        <div className="text-sm font-light">Collection</div>
       </div>
 
-      {/* Leaderboard rows */}
       {leaderboardData.map((player, index) => (
         <div
           key={index}
-          className={cn("grid grid-cols-4 py-1.5 px-3 items-center", index % 2 === 0 ? "bg-[#0B0C2A]" : "bg-[#0D0E35]")}
+          className={cn("grid grid-cols-4 py-1.5 px-3 items-center text-center", index % 2 === 0 ? "bg-[#0B0C2A]" : "bg-[#0D0E35]")}
         >
-          <div>
-            <RankDisplay rank={player.rank} />
+          <div className="flex justify-center">
+            <RankDisplay rank={index + 1} />
           </div>
           <div className="text-white text-sm font-light">{player.name}</div>
-          <div className="text-white text-sm font-light text-center">{player.daysSurvived}</div>
-          <div className="text-white text-sm font-light text-center">{player.totalCollection}</div>
+          <div className="text-white text-sm font-light">{player.days}</div>
+          <div className="text-white text-sm font-light">{Object.values(player.characterCards || {}).reduce((a, b) => a + b, 0)}</div>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default HomeLeaderboard
+export default HomeLeaderboard;
