@@ -50,15 +50,7 @@ export default function HomeScreen() {
             }
         }
     
-        // Wait ~100ms, then begin typing
-        setTimeout(() => {
-            setStartTyping(true);
-        }, 100);
     
-        // Full intro duration = 5s
-        setTimeout(() => {
-            setShowIntro(false);
-        }, 2000);
         });
     
         return () => unsubscribe();
@@ -79,47 +71,6 @@ export default function HomeScreen() {
         alert("Please select an avatar");
         }
     };
-
-    // Intro screen typing: static message
-    if (showIntro) {
-        return (
-        <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-accent to-accent2">
-            {startTyping && playerName && (
-                <h1 className="text-white text-6xl text-center typing">
-                    {`Welcome, ${playerName}!`}
-                </h1>
-            )}
-
-    
-            <style jsx>{`
-            .typing {
-                overflow: hidden;
-                white-space: nowrap;
-                border-right: 2px solid white;
-                width: 0;
-                animation:
-                typing 4.5s steps(40, end) forwards,
-                blink 0.7s step-end infinite;
-            }
-    
-            @keyframes typing {
-                from {
-                width: 0;
-                }
-                to {
-                width: 100%;
-                }
-            }
-    
-            @keyframes blink {
-                50% {
-                border-color: transparent;
-                }
-            }
-            `}</style>
-        </div>
-        );
-    }
 
     // Homescreen (after intro)
     return (

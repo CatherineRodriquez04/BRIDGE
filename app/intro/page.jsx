@@ -87,7 +87,8 @@ export default function Intro() {
             gems: 150,
             days: 1,
             wins: 0,
-            score: 0
+            score: 0,
+            cash: 100
             });
             window.location.href = "/homescreen";
         } catch (error) {

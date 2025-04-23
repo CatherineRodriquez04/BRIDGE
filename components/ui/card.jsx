@@ -80,7 +80,7 @@ function Card({ cardId }) {
                         <div className="absolute top-[165px] left-[10px] z-30 text-white text-2xl font-bold underline">Ult. Ability</div>
                         <img src={card.classIcon} width={35} height={35} alt="Card-Ability-Icon" className="absolute top-[202px] left-[10px] z-30" />
                         <div className="absolute top-[198px] left-[58px] z-30 text-white text-3xl font-bold">{card.ability}</div>
-                        <p className="absolute top-[245px] left-[10px] z-30 text-white text-lg">The attack class specializes in dealing damage to enemies.</p>
+                        <div className="absolute top-[245px] left-[10px] z-30 text-white text-lg">{card.phrase}</div>
                     </div>
 
                 </div>
