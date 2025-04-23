@@ -21,11 +21,11 @@ function LeaderboardDisplay() {
             Object.values(b.characterCards || {}).reduce((acc, val) => acc + val, 0) -
             Object.values(a.characterCards || {}).reduce((acc, val) => acc + val, 0)
         );
-      case "scores":
-        return data.sort((a, b) => (a.score ?? Infinity) - (b.score ?? Infinity));
-      case "score":
+      case "coins":
+        return data.sort((a, b) => (b.coins ?? Infinity) - (a.coins ?? Infinity));
+      case "coin":
       default:
-        return data.sort((a, b) => (a.score ?? Infinity) - (b.score ?? Infinity));
+        return data.sort((a, b) => (b.coins ?? Infinity) - (a.coins ?? Infinity));
     }
   };
 
@@ -64,15 +64,15 @@ function LeaderboardDisplay() {
     <>
       {/* Player's Current Day Display */}
       <div className="absolute top-[420px] left-[11%] z-30 text-white text-xl bg-[#0B0C2A] border-2 border-[#86CEBC] rounded-lg px-4 py-2">
-        Your Day: {currentDay || "Loading..."}
+        Current Day: {currentDay || "Loading..."}
       </div>
 
       {/* Filter Dropdown */}
       <div className="absolute top-[420px] right-[11%] z-30">
         <CustomSelect
           options={[
-            { value: "score", label: "Score" },
-            { value: "scores", label: "Score" },
+            { value: "coin", label: "Coins" },
+            { value: "coins", label: "Coins" },
             { value: "wins", label: "Most Wins" },
             { value: "collection", label: "Biggest Collection" },
           ]}
@@ -117,7 +117,7 @@ function LeaderboardDisplay() {
             <tr>
               <th>Rank</th>
               <th>Name</th>
-              <th>Score</th>
+              <th>Coins</th>
               <th>Days Survived</th>
               <th>Wins</th>
               <th>Total Collection</th>
@@ -129,7 +129,7 @@ function LeaderboardDisplay() {
                 key={player.id}
                 rank={index + 1}
                 name={player.name || "Unknown"}
-                score={player.score || 0}
+                coins={player.coins || 0}
                 days={player.days || 0}
                 wins={player.wins || 0}
                 collection={Object.values(player.characterCards || {}).reduce((a, b) => a + b, 0)}
@@ -142,12 +142,12 @@ function LeaderboardDisplay() {
   );
 }
 
-function LeaderboardEntry({ rank, name, score, days, wins, collection }) {
+function LeaderboardEntry({ rank, name, coins, days, wins, collection }) {
   return (
     <tr>
       <td>{rank}</td>
       <td>{name}</td>
-      <td>{score}</td>
+      <td>{coins}</td>
       <td>{days}</td>
       <td>{wins}</td>
       <td>{collection}</td>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { db } from "@/lib/firebase";
 import { cn } from "@/lib/utils";
 
@@ -49,17 +50,29 @@ function RankDisplay({ rank }) {
 
 function HomeLeaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
+  const [currentDay, setCurrentDay] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const playerRef = doc(db, "players", user.uid);
+      const playerSnap = await getDoc(playerRef);
+      if (!playerSnap.exists()) return;
+
+      const userDay = playerSnap.data().days;
+      setCurrentDay(userDay);
+
       const querySnapshot = await getDocs(collection(db, "players"));
-      const data = querySnapshot.docs
+      const filtered = querySnapshot.docs
         .map(doc => ({ id: doc.id, ...doc.data() }))
-        .filter(player => player.days === 1)
-        .sort((a, b) => (a.score ?? Infinity) - (b.score ?? Infinity))
+        .filter(player => player.days === userDay)
+        .sort((a, b) => (b.coins ?? Infinity) - (a.coins ?? Infinity))
         .slice(0, 10);
 
-      setLeaderboardData(data);
+      setLeaderboardData(filtered);
     };
 
     fetchData();
@@ -74,7 +87,7 @@ function HomeLeaderboard() {
       <div className="grid grid-cols-4 bg-[#0F1550] text-white py-1.5 px-3 text-center">
         <div className="text-sm font-light">Rank</div>
         <div className="text-sm font-light">Name</div>
-        <div className="text-sm font-light">Day</div>
+        <div className="text-sm font-light">Coins</div>
         <div className="text-sm font-light">Collection</div>
       </div>
 
@@ -87,7 +100,7 @@ function HomeLeaderboard() {
             <RankDisplay rank={index + 1} />
           </div>
           <div className="text-white text-sm font-light">{player.name}</div>
-          <div className="text-white text-sm font-light">{player.days}</div>
+          <div className="text-white text-sm font-light">{player.coins}</div>
           <div className="text-white text-sm font-light">{Object.values(player.characterCards || {}).reduce((a, b) => a + b, 0)}</div>
         </div>
       ))}
