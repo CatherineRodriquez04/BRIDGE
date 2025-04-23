@@ -66,7 +66,7 @@ function TaskResults() {
                             </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
 
                     {/* Overall Score:
                     <div className="relative pt-4 flex flex-col items-center top-[30%] h-[20%] w-full text-4xl border-y-2">

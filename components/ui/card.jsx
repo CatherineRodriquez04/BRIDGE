@@ -58,7 +58,7 @@ function Card({ cardId }) {
                         <img src={card?.typeBg || "/assets/card-ground-bg.svg"} alt="Card-Environment-Background" className="absolute top-0 left-0 z-0" />
                         <img src={card?.charImg || '/assets/animal-test.svg'} width={150} height={400} alt="Card-Animal-Test" className="absolute top-24 left-[60px] z-10" />
                         <img src={'/assets/card-border-front.svg'} alt="Card-Front-Border" className="absolute top-0 left-0 z-20" />
-                        <div className="absolute top-[35px] left-[12px] z-30 text-[#72E8C9] text-4xl font-bold">{card.rank}</div>
+                        <div className="absolute top-[35px] left-[15px] text-center z-30 text-[#72E8C9] text-4xl font-bold">{card.rank}</div>
                         <div className="absolute top-[2px] left-[100px] z-30 text-white text-3xl">{card.name}</div>
                         <img src={card.classIcon} alt="Card-Front-Type" className="absolute top-[303px] left-[30px] z-30" />
                         <div className="absolute top-[300px] left-[205px] z-30 text-red-600 text-4xl font-bold">HP</div>
