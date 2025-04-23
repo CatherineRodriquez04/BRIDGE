@@ -9,8 +9,8 @@ function TaskTactics() {
                         Tactics
                     </div>
                     {/* Scores(progressbars) */}
-                    <div className="absolute w-full text-[#a3ffb0] top-[32%]">
-                        <h2 className="text-center text-2xl tracking-wide mb-6">TIME SPENT ON EACH PAGE</h2>
+                    <div className="absolute w-full text-[#a3ffb0] top-[30%]">
+                        {/* <h2 className="text-center text-2xl tracking-wide mb-6">SCORE</h2> */}
 
                         <div className="relative w-full mx-auto pt-16">
                             {/* Top row - 3 items */}
