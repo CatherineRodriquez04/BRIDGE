@@ -14,12 +14,16 @@ import PacksDisplay from "@/components/ui/packs-display.jsx";
 export default function Packs() {
   return (
     <>
-          <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">{/*  (for some reason, breaks styling / placement of cards*/}
+      <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">{/*  (for some reason, breaks styling / placement of cards*/}
 
       <div className="top-6 right-[520px] absolute">
       <Link href="/packs">
           <GameNavbar/>
       </Link>
+      </div>
+
+      <div className="relative top-[12%] text-6xl left-[58%]">
+            Packs
       </div>
 
       <div className="flex items-center h-screen fade-in">
@@ -42,6 +46,8 @@ export default function Packs() {
 
               </div>  Inner box for char image in limited*/}
           </div>
+
+        
         <div className="flex m-auto w-[20%] items-center">
           <PacksDisplay/>
         </div>
