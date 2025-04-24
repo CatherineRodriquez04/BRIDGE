@@ -20,17 +20,7 @@ function PackOpenCarousel({ cards, isOpen, onClose }) {
   const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
 
 
-//   Prevent body scroll when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "auto"
-    }
-    return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [isOpen])
+
 
   const goToNext = () => {
     if (isTransitioning) return
@@ -49,19 +39,19 @@ function PackOpenCarousel({ cards, isOpen, onClose }) {
    if (!isOpen || !cards || cards.length === 0) return null
 
   return (
-    <div className="relative flex h-[80%] w-[80%] bg-[#0B0C2A] border-4 border-[#C4F7BC] rounded-lg p-4 z-50  items-center justify-center mx-auto my-auto overflow-y-none space-x-10">
+    <div className="relative flex h-[80%] w-[80%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4 z-50  items-center justify-center mx-auto my-auto overflow-y-none space-x-10">
       <div className="relative w-full max-w-8xl h-[104%] p-6 flex flex-col" ref={carouselRef}>
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-2 text-white hover:text-gray-300 transition-colors"
+          className="absolute top-4 right-2 text-white hover:text-gray-300 transition-colors z-30"
           aria-label="Close"
         >
           <X size={32} />
         </button>
 
         {/* Carousel container */}
-        <div className="flex-1 flex items-center justify-center relative">
+        <div className="flex-1 flex items-center justify-center relative z-10">
           {/* Navigation buttons */}
           <button
             onClick={goToPrevious}
@@ -93,19 +83,19 @@ function PackOpenCarousel({ cards, isOpen, onClose }) {
                 zIndex = 30
               } else if (position === -1) {
                 // Left card
-                positionClass = "-translate-x-52 scale-90 opacity-90"
+                positionClass = "-translate-x-52 scale-90 opacity-100" //originially 90
                 zIndex = 20
               } else if (position === 1) {
                 // Right card
-                positionClass = "translate-x-52 scale-90 opacity-90"
+                positionClass = "translate-x-52 scale-90 opacity-100" //originally 90
                 zIndex = 20
               } else if (position === -2) {
                 // Far left card
-                positionClass = "-translate-x-80 scale-75 opacity-70"
+                positionClass = "-translate-x-80 scale-75 opacity-95" //originally 70
                 zIndex = 10
               } else if (position === 2) {
                 // Far right card
-                positionClass = "translate-x-80 scale-75 opacity-70"
+                positionClass = "translate-x-80 scale-75 opacity-95" //originally 70
                 zIndex = 10
               } else {
                 // Hide other cards
