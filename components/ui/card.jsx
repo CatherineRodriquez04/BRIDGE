@@ -56,7 +56,7 @@ function Card({ cardId }) {
                     {/* Front of card */}
                     <div className="flip-card-front">
                         <img src={card?.typeBg || "/assets/card-ground-bg.svg"} alt="Card-Environment-Background" className="absolute top-0 left-0 z-0" />
-                        <img src={card?.charImg || '/assets/animal-test.svg'} width={150} height={400} alt="Card-Animal-Test" className="absolute top-24 left-[60px] z-10" />
+                        <img src={card?.charImg || '/assets/capybara.svg'} width={185} height={435} alt="Card-Animal-Test" className="absolute top-20 left-[50px] z-10" />
                         <img src={'/assets/card-border-front.svg'} alt="Card-Front-Border" className="absolute top-0 left-0 z-20" />
                         <div className="absolute top-[35px] left-[15px] text-center z-30 text-[#72E8C9] text-4xl font-bold">{card.rank}</div>
                         <div className="absolute top-[2px] left-[100px] z-30 text-white text-3xl">{card.name}</div>
@@ -67,7 +67,7 @@ function Card({ cardId }) {
                     {/* Back of card */}
                     <div className="flip-card-back">
                         <img src={card?.typeBgMini || "/assets/card-ground-bg.svg"} alt="Card-Environment-Background" className="absolute top-0 left-24 z-0" />
-                        <img src={card?.charImg || '/assets/animal-test.svg'} width={100} height={400} alt="Card-Back-Animal-Test" className="absolute top-[75px] left-[130px] z-10" />
+                        <img src={card?.charImg || '/assets/capybara.svg'} width={100} height={400} alt="Card-Back-Animal-Test" className="absolute top-[80px] left-[130px] z-10" />
                         <img src={'/assets/card-border-back.svg'} alt="Card-Back-Border" className="absolute top-0 left-0 z-20" />
                         <img src="/assets/dead-man-logo-2.svg" width={170} height={200} alt="Card-Deadman-Logo" className="absolute left-[45px] top-0 z-30" />
                         <div className="absolute top-[55px] left-[130px] z-30 text-white text-2xl font-bold">{card.name}</div>

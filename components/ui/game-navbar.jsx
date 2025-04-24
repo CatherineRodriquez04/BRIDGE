@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 function Navbar() {
   const [coins, setCoins] = useState("");
   const [gems, setGems] = useState("");
+  const [days, setDays] = useState("");
 
   useEffect(() => {
     const auth = getAuth();
@@ -22,6 +23,7 @@ function Navbar() {
           const data = docSnap.data();
           setCoins(data.coins || "");
           setGems(data.gems || "");
+          setDays(data.days || "1");
         }
       }
     });
@@ -77,41 +79,41 @@ function Navbar() {
       </div>
 
       <div className="fixed top-0 right-0 left-0 z-10">
-        {/* Money button */}
+        {/* Coins */}
         <div className="top-8 right-[270px] absolute">
-          <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">{coins}</p>
-            <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="absolute left-2 top-2" />
-            <Link href="/exchange">
-              <div className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm flex items-center justify-center">
-                <p className="text-2xl text-black font-bold">+</p>
-              </div>
-            </Link>
-          </div>
-        
-      
-        {/* Gem button */}
-        <div className="top-8 right-[109px] absolute">
-        <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center ">{gems}</p>
-            <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gems" className="absolute left-2 top-[11px]" />
-            <Link href="/exchange">
-              <div className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm flex items-center justify-center">
-                <p className="text-2xl text-black font-bold">+</p>
-              </div>
-            </Link>
+          <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
+            {coins}
+          </p>
+          <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="absolute left-2 top-2" />
+          <Link href="/exchange">
+            <div className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm flex items-center justify-center">
+              <p className="text-2xl text-black font-bold">+</p>
+            </div>
+          </Link>
         </div>
-      
-        {/*Day Display   */}
-        <div className="absolute h-20 w-20 top-2 right-0 flex items-center justify-center right-[15px] text-[32px] text-semibold leading-none">
-          <div className="z-10 text-black ">
+
+        {/* Gems */}
+        <div className="top-8 right-[109px] absolute">
+          <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
+            {gems}
+          </p>
+          <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gems" className="absolute left-2 top-[11px]" />
+          <Link href="/exchange">
+            <div className="h-6 w-6 bg-[#C8E3B8] hover:scale-105 absolute right-2 top-2 rounded-sm flex items-center justify-center">
+              <p className="text-2xl text-black font-bold">+</p>
+            </div>
+          </Link>
+        </div>
+
+        {/* Day Display */}
+        <div className="absolute h-20 w-20 top-2 right-[15px] flex items-center justify-center text-[32px] font-semibold leading-none">
+          <div className="z-10 text-black text-center">
             Day
-              <div className="text-center">
-                5{/* # Switch with the days */}
-              </div>
+            <div>{days}</div>
           </div>
-            <img src={'/assets/paper-mini-poster.svg'} width={300} height={300} alt="Exchange Sign" className=" absolute -z-1"></img>
+          <img src="/assets/paper-mini-poster.svg" width={300} height={300} alt="Day Poster" className="absolute -z-1" />
         </div>
       </div>
-
     </>
   );
 }
