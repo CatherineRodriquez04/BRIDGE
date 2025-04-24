@@ -3,32 +3,51 @@
 "use client"
 
 import Link from "next/link";
+import { useState } from "react";
+import { useMemo } from "react";
+
 
 //import Poster from "/assets/poster.png";
 
 import GameNavbar from "@/components/ui/game-navbar.jsx";
 
-import PacksDisplay from "@/components/ui/packs-display.jsx";
-import PackOpen from '/components/ui/pack-open.jsx';
+import PackOpenCarousel from "@/components/ui/pack-open-carousel.jsx";
 
+const cardPack = [
+  {id: "1"},
+  {id: "2"},
+  {id: "3"},
+  {id: "4"},
+  {id: "5"},
+]
+
+function getRandomId() {
+  const num = Math.floor(Math.random() * 18) + 1; // 1–18
+  return num < 10 ? `0${num}` : `${num}`; // pad with leading zero
+}
 
 export default function Packs() {
+  const [isCarouselOpen, setIsCarouselOpen] = useState(false)
+  const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
   
+
+
   return (
     <>
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
         
-      <div className="top-6 right-[520px] absolute">
-      <Link href="/packs">
-          <GameNavbar/>
-      </Link>
-      </div>
+        <div className="top-6 right-[520px] absolute">
+          <Link href="/packs">
+              <GameNavbar/>
+          </Link>
+        </div>
 
       <div className="relative top-[12%] text-6xl left-[58%]">
             Packs
       </div>
       {/* Conditionally render when opening a pack */}
-      {/* <PackOpen/> */}
+      <PackOpenCarousel cards={cardPack} isOpen={isCarouselOpen} onClose={() => setIsCarouselOpen(false)} />
+
 
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}
@@ -53,7 +72,63 @@ export default function Packs() {
 
         
         <div className="flex m-auto w-[20%] items-center">
-          <PacksDisplay/>
+          {/* <PacksDisplay/> */}
+            <div className="flex space-x-8 top-[250px] absolute right-[200px]">
+              {/* 1st pack */}
+              <div className="absolute bottom-[21%] -left-6 text-4xl">
+                  Buy 1
+              </div>
+              <div className="absolute bottom-[7%] -left-16 text-4xl">
+                  Buy 10
+              </div>
+              <div className="">   
+                  <img src="/assets/standard-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[280px]"></img>
+                  <button type="button" onClick={() => setIsCarouselOpen(true)}  className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                      <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
+                      100 Coins
+                  </button>
+                  <button type="button" onClick={() => setIsCarouselOpen(true)} className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                      <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
+                      750 Coins
+                  </button>
+              </div>
+              {/* Add buttons below */}
+              {/* 2nd pack */}
+              <div className="relative bottom-4">
+                  <img src="/assets/medium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[300px] "></img>
+                      <div className="ml-2">
+                          <button type="button" onClick={() => setIsCarouselOpen(true)} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                              <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
+                              500 coins
+                              </button>
+                          <button type="button" onClick={() => setIsCarouselOpen(true)} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
+                              <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
+                              150 Gems
+                          </button>
+                      </div>
+                      <div className="">
+                          <button type="button" onClick={() => setIsCarouselOpen(true)} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                              <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
+                              2500 coins</button>
+                          <button type="button" onClick={() => setIsCarouselOpen(true)} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
+                              <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
+                              450 gems</button>
+                      </div>
+                      </div>
+
+              {/* 3rd pack */}
+              <div className="">
+                  <img src="/assets/premium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[280px]"></img>
+                  <button type="button" onClick={() => setIsCarouselOpen(true)} className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
+                      600 gems
+                  </button>
+                  <button type="button" onClick={() => setIsCarouselOpen(true)} className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>                    
+                      1200 gems
+                  </button>
+              </div>
+          </div>
         </div>
 
       </div>
