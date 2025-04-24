@@ -9,13 +9,15 @@ import Link from "next/link";
 import GameNavbar from "@/components/ui/game-navbar.jsx";
 
 import PacksDisplay from "@/components/ui/packs-display.jsx";
+import PackOpen from '/components/ui/pack-open.jsx';
 
 
 export default function Packs() {
+  
   return (
     <>
-      <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">{/*  (for some reason, breaks styling / placement of cards*/}
-
+      <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
+        
       <div className="top-6 right-[520px] absolute">
       <Link href="/packs">
           <GameNavbar/>
@@ -25,6 +27,8 @@ export default function Packs() {
       <div className="relative top-[12%] text-6xl left-[58%]">
             Packs
       </div>
+      {/* Conditionally render when opening a pack */}
+      {/* <PackOpen/> */}
 
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}

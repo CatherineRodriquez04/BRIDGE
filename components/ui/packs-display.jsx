@@ -1,19 +1,22 @@
 
 
-// import PackOpen from '/components/ui/pack-open.jsx';
+import PackOpen from '/components/ui/pack-open.jsx';
+import {useState} from "react"
 
 
 function PacksDisplay () {
     return (
      <>
-        {/* fixed h-[400px] w-[260px] bottom-80 right-[505px] */}
         <div className="flex space-x-8 top-[250px] absolute right-[200px]">
             {/* 1st pack */}
-            <div className=""> 
+            <div className="absolute bottom-[21%] -left-6 text-4xl">
+                Buy 1
+            </div>
+            <div className="absolute bottom-[7%] -left-16 text-4xl">
+                Buy 10
+            </div>
+            <div className="">   
                 <img src="/assets/standard-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className="w-[280px]"></img>
-                {/* <div className="">
-                    abd
-                </div> */}
                 <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                     <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                     100 Coins
