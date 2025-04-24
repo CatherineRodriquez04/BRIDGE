@@ -97,6 +97,16 @@ html {
     transform: rotateY(180deg);
     /* transition-delay: 0.4s; Delay before flip starts */
   }
+
+  .flip-card:hover .flip-pack-inner {
+    transform: rotateY(180deg);
+    /* transition-delay: 0.4s; Delay before flip starts */
+  }
+
+  .flip-pack-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
   
   .flip-card-front, .flip-card-back {
     position: absolute;
