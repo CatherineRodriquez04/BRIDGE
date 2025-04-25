@@ -20,6 +20,8 @@ import HomeAnnouncements from "@/components/ui/home-announcements.jsx";
 import GameNavbar from "@/components/ui/game-navbar.jsx";
 import HomeDailyRewards from "@/components/ui/home-daily-rewards.jsx";
 
+import DailyRewardPopup from "@/components/ui/daily-reward-popup.jsx"
+
 export default function HomeScreen() {
     const [playerName, setPlayerName] = useState("");
     const [avatar, setAvatar] = useState("");
@@ -84,6 +86,7 @@ export default function HomeScreen() {
             </Link>
             </div>
 
+
             {/* Player Info */}
             <div className="border-[5px] border-accent4 min-h-[220px] min-w-[400px] ml-6 mt-24 max-h-[220px] max-w-[370px] flex flex-row overflow-hidden">
             <div>
@@ -114,7 +117,7 @@ export default function HomeScreen() {
                 </div>
             </div>
             </div>
-
+            {/* <DailyRewardPopup/> */}
             <HomeAnnouncements />
             <HomeDailyRewards />
 
