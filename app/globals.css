@@ -97,6 +97,29 @@ html {
     transform: rotateY(180deg);
     /* transition-delay: 0.4s; Delay before flip starts */
   }
+
+  .flip-card:hover .flip-pack-inner {
+    transform: rotateY(180deg);
+    /* transition-delay: 0.4s; Delay before flip starts */
+  }
+
+  .flip-pack-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes spinY {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .flip-pack-inner.animate-spin {
+    animation: spinY 0.8s ease-in-out;
+  }
   
   .flip-card-front, .flip-card-back {
     position: absolute;
