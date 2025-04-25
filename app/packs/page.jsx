@@ -66,7 +66,7 @@ export default function Packs() {
 
             <button
                 type="button"
-                className="absolute w-[40%] left-[30%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-8 border-4">
+                className="absolute w-[40%] left-[30%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-4 border-4">
               Go to Shop
               </button>
 
@@ -79,7 +79,7 @@ export default function Packs() {
         
         <div className="flex m-auto w-[20%] items-center">
           {/* Packs Display */}
-            <div className="flex space-x-8 top-[250px] absolute right-[200px]">
+            <div className="flex space-x-8 top-[30%] absolute right-[10%]">
               {/* 1st pack */}
               <div className="absolute bottom-[17%] -left-6 text-4xl">
                   Buy 1

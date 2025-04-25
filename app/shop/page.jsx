@@ -18,6 +18,10 @@ function Shop() {
             <GameNavbar/>
         </Link>
 
+        <div className="fixed top-[10%] text-6xl left-[47%]">
+            Shop
+        </div>
+
           <ShopDisplay/>
         </div>
       </div>

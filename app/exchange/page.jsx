@@ -18,6 +18,9 @@ export default function Exchange() {
               <GameNavbar/>
           </Link>
         </div>
+        <div className="fixed top-[9%] text-6xl left-[43%]">
+            Exchange
+        </div>
           <ExchangeDisplay/>
 
         <div className="absolute bottom-0 right-16 ">
