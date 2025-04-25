@@ -64,7 +64,7 @@ function ExchangeDisplay() {
                     Crate of Gems
                 </div>
                 <p className="z-10  text-[20px] top-[40px] relative flex justify-center text-2xl ">
-                    1000 Gems
+                    1250 Gems
                 </p>
                 <div className=" h-[145px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
                     Image Location
@@ -84,7 +84,7 @@ function ExchangeDisplay() {
                     Stockpile of Gems
                 </div>
                 <p className="z-10  text-[20px] top-[40px] relative flex justify-center text-2xl ">
-                    2000 Gems
+                    3000 Gems
                 </p>
                 <div className=" h-[145px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
                     Image Location
@@ -118,7 +118,7 @@ export default ExchangeDisplay
 //paper (tan) variant
 {/* <img src={'/assets/paper-mini-poster.svg'} width={300} height={300} alt="Exchange Sign" className=" absolute -z-1">
 </img>
-<div className="bg-[C9B080] h-[53px] w-[160px] m-auto border-4 border-[#5E4112] text-black top-8 relative z-10 text-center flex justify-center items-center text-2xl ">
+<div className="bg-[#C9B080] h-[53px] w-[160px] m-auto border-4 border-[#5E4112] text-black top-8 relative z-10 text-center flex justify-center items-center text-2xl ">
     Pile of Gems
 </div>
 <p className="z-10 text-[20px] top-[40px] relative flex justify-center text-[#5E4112] text-xl ">
