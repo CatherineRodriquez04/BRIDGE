@@ -1,4 +1,8 @@
-
+// Trigger at beginnign of each day
+//have corner X button to close(use from pack open carousel)
+//know day and show the reward for that day
+//have claim reward button
+//auto close once grab reward? or have close button too?
 
 function DailyRewardPopup() {
   return (

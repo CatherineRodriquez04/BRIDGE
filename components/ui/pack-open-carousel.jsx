@@ -39,7 +39,7 @@ function PackOpenCarousel({ cards, isOpen, onClose }) {
    if (!isOpen || !cards || cards.length === 0) return null
 
   return (
-    <div className="relative flex h-[80%] w-[80%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4 z-50  items-center justify-center mx-auto my-auto overflow-y-none space-x-10">
+    <div className="relative flex h-[80%] w-[60%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4 z-50  items-center justify-center mx-auto my-auto overflow-y-none space-x-10">
       <div className="relative w-full max-w-8xl h-[104%] p-6 flex flex-col" ref={carouselRef}>
         {/* Close button */}
         <button
