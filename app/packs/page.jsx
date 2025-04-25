@@ -89,11 +89,11 @@ export default function Packs() {
               </div>
               <div className="flip-card">   
                   <img src="/assets/standard-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
-                  <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                  <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                   <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                       100 Coins
                   </button>
-                  <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }}  className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                  <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }}  className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
                       <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                       750 Coins
                   </button>
@@ -103,20 +103,20 @@ export default function Packs() {
               <div className="relative bottom-4 flip-card">
                   <img src="/assets/medium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-2" id="pack2"className={`w-[280px] flip-pack-inner ${animatingPack === 'pack2' ? 'animate-spin' : ''}`}></img>
                       <div className="ml-2">
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                               500 coins
                               </button>
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
+                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
                               <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
                               150 Gems
                           </button>
                       </div>
                       <div className="">
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                               2500 coins</button>
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
+                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
                               <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
                               450 gems</button>
                       </div>
@@ -125,11 +125,11 @@ export default function Packs() {
               {/* 3rd pack */}
               <div className="flip-card">
                   <img src="/assets/premium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-3" id="pack3" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack3' ? 'animate-spin' : ''}`}></img>
-                  <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                  <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                       <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
                       600 gems
                   </button>
-                  <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                  <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
                       <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>                    
                       1200 gems
                   </button>
