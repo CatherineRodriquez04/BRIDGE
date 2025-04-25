@@ -8,11 +8,38 @@ import { getDocs, collection, query, where, doc, setDoc } from "firebase/firesto
 // next/link and hooks
 import { useState } from "react";
 import Image from "next/image";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { cn } from "@/lib/utils";
+
 
 // Avatar images
-import avatar1 from "@/public/assets/avatarTemp.png";
-import avatar2 from "@/public/assets/avatarTemp2.png";
-import avatar3 from "@/public/assets/avatarTemp3.png";
+import avatar1 from "@/public/assets/owl.svg";
+import avatar2 from "@/public/assets/polar-bear.svg";
+import avatar3 from "@/public/assets/pufferfish.svg";
+import avatar4 from "@/public/assets/racoon.svg";
+import avatar5 from "@/public/assets/swan.svg";
+import avatar6 from "@/public/assets/whale.svg";
+// import avatar7 from "@/public/assets/platypus.svg";
+// import avatar8 from "@/public/assets/squid.svg";
+// import avatar9 from "@/public/assets/parrot.svg";
+// import avatar10 from "@/public/assets/swordfish.svg";
+// import avatar11 from "@/public/assets/hippo.svg";
+// import avatar12 from "@/public/assets/harpy-eagle.svg";
+// import avatar13 from "@/public/assets/crow.svg";
+// import avatar14 from "@/public/assets/orca.svg";
+// import avatar15 from "@/public/assets/hamster.svg";
+// import avatar16 from "@/public/assets/dragonfly.svg";
+// import avatar17 from "@/public/assets/anchovy.svg";
+// import avatar18 from "@/public/assets/capybara.svg";
+
+const avatars = [
+    { src: "/assets/owl.svg", image: avatar1 },
+    { src: "/assets/polar-bear.svg", image: avatar2 },
+    { src: "/assets/pufferfish.svg", image: avatar3 },
+    { src: "/assets/racoon.svg", image: avatar4 },
+    { src: "/assets/swan.svg", image: avatar5 },
+    { src: "/assets/whale.svg", image: avatar6 }
+];
 
 export default function Intro() {
     // Modal and form state
@@ -22,6 +49,21 @@ export default function Intro() {
     const [avatar, setAvatar] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [avatarIndex, setAvatarIndex] = useState(0);
+
+    const visibleAvatars = [
+        avatars[(avatarIndex) % avatars.length],
+        avatars[(avatarIndex + 1) % avatars.length],
+        avatars[(avatarIndex + 2) % avatars.length],
+    ];
+        
+    const handlePrev = () => {
+            setAvatarIndex((prev) => (prev - 1 + avatars.length) % avatars.length);
+    };
+        
+    const handleNext = () => {
+            setAvatarIndex((prev) => (prev + 1) % avatars.length);
+    };
 
     // Helper to randomly pick one from an array
     const getRandomCard = (arr) => arr[Math.floor(Math.random() * arr.length)];
@@ -104,19 +146,19 @@ export default function Intro() {
         {showModal && <div className="absolute inset-0 bg-black opacity-70 z-10"></div>}
 
         {/* Introduction Storyline */}
-        <div className="flex flex-col text-center z-20">
-            <h1 className="text-[40px]">BOOM! CRASH! ...</h1>
-            <p className="text-[30px]">...</p>
-            <p className="text-[25px]">What was that?</p>
-            <p className="text-[25px]">It seems like an apocalypse has broken out. I, the ruler of this</p>
-            <p className="text-[25px]">country must make it back to my castle in order to deal with the</p>
-            <p className="text-[25px]">catastrophe. It seems like animals have transformed into zombies. It</p>
-            <p className="text-[25px]">seems I will not be able to make it back without having an army of my</p>
-            <p className="text-[25px]">own. I need to defeat and tame the strongest beast if I wish to bring</p>
-            <p className="text-[25px] mb-2">back order to my kingdom.</p>
-            <p className="text-[25px]">It will be risky. Are you willing to walk into a no man's land?</p>
-            <p className="text-[25px] mb-4">Will you play the game, or will the game play you?</p>
-            <p className="text-[25px] text-white">WARNING: THE GAME MAY NOT BE WHAT IT SEEMS.</p>
+        <div className={`flex flex-col text-center z-20 ${showModal ? 'opacity-40 pointer-events-none' : 'opacity-100'}`}>
+            <h1 className="text-[45px]">BOOM! CRASH! ...</h1>
+            <p className="text-[35px]">...</p>
+            <p className="text-[30px]">What was that?</p>
+            <p className="text-[30px]">It seems like an apocalypse has broken out. I, the ruler of this</p>
+            <p className="text-[30px]">country must make it back to my castle in order to deal with the</p>
+            <p className="text-[30px]">catastrophe. It seems like animals have transformed into zombies. It</p>
+            <p className="text-[30px]">seems I will not be able to make it back without having an army of my</p>
+            <p className="text-[30px]">own. I need to defeat and tame the strongest beast if I wish to bring</p>
+            <p className="text-[30px] mb-2">back order to my kingdom.</p>
+            <p className="text-[30px]">It will be risky. Are you willing to walk into a no man's land?</p>
+            <p className="text-[30px] mb-4">Will you play the game, or will the game play you?</p>
+            <p className="text-[30px] text-white">WARNING: THE GAME MAY NOT BE WHAT IT SEEMS.</p>
 
             {/* Button to begin game (opens modal) */}
             <div className="flex justify-center mt-5">
@@ -169,31 +211,30 @@ export default function Intro() {
                     />
 
                     <p className="text-[25px] text-center">Choose your avatar:</p>
-                    <div className="flex justify-center mt-2 gap-4 mb-4">
-                    <Image
-                        src={avatar1}
-                        width={125}
-                        height={125}
-                        alt="Avatar 1"
-                        className={`cursor-pointer border hover:border-2 ${avatar === "/assets/avatarTemp.png" ? "border-accent4 border-2" : ""}`}
-                        onClick={() => setAvatar("/assets/avatarTemp.png")}
-                    />
-                    <Image
-                        src={avatar2}
-                        width={125}
-                        height={125}
-                        alt="Avatar 2"
-                        className={`cursor-pointer border hover:border-2 ${avatar === "/assets/avatarTemp2.png" ? "border-accent4 border-2" : ""}`}
-                        onClick={() => setAvatar("/assets/avatarTemp2.png")}
-                    />
-                    <Image
-                        src={avatar3}
-                        width={125}
-                        height={125}
-                        alt="Avatar 3"
-                        className={`cursor-pointer border hover:border-2 ${avatar === "/assets/avatarTemp3.png" ? "border-accent4 border-2" : ""}`}
-                        onClick={() => setAvatar("/assets/avatarTemp3.png")}
-                    />
+                    <div className="flex justify-center items-center gap-4 mt-2 mb-4 p-2">
+                    <button onClick={handlePrev}>
+                        <FaArrowLeft className="text-white text-xl" />
+                    </button>
+                    {/* <div className="flex gap-4 transition-transform duration-300 ease-in-out"> */}
+                    <div className="flex gap-4 overflow-hidden min-h-[140px] items-end">
+
+                        {visibleAvatars.map((av, i) => (
+                        <Image
+                            key={av.src}
+                            src={av.image}
+                            width={135}
+                            height={135}
+                            alt={`Avatar ${avatarIndex + i + 1}`}
+                            className={cn(
+                                "cursor-pointer border hover:border-2 transition-all duration-300 object-contain",
+                                avatar === av.src ? "border-accent4 border-2 scale-105" : ""
+                            )}
+                        />
+                        ))}
+                    </div>
+                    <button onClick={handleNext}>
+                        <FaArrowRight className="text-white text-xl" />
+                    </button>
                     </div>
                 </>
                 )}
@@ -209,7 +250,7 @@ export default function Intro() {
                 </div>
 
                 {/* Toggle between login and signup modes */}
-                <p className="text-center mt-4 text-white text-md">
+                <p className="text-center mt-4 text-white text-lg">
                 {mode === "login" ? (
                     <>
                     Don’t have an account?{" "}

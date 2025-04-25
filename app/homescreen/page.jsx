@@ -89,10 +89,10 @@ export default function HomeScreen() {
             <div>
                 <Image
                 src={avatar || defaultAvatar}
-                width={125}
-                height={125}
+                width={100}
+                height={100}
                 alt="Avatar"
-                className="mt-6 ml-3 mb-2 border"
+                className="mt-5 ml-6 mb-2"
                 />
                 <button
                 className="ml-5 px-2 py-[1px] items-center text-[15px] bg-white text-black rounded-lg hover:scale-105"

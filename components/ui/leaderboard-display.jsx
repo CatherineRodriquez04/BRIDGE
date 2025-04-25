@@ -88,7 +88,7 @@ function LeaderboardDisplay() {
         {topThree[0] && (
           <div className="absolute h-[14%] w-[7%] top-[250px] left-[46%] flex bg-black border-4 border-[#C4F7BC]">
             <div className="absolute text-3xl bottom-[145px]">1st Place</div>
-            <img src={topThree[0].avatar || "/assets/avatarTemp.png"} alt="1st-Place-User-Icon" className="absolute" />
+            <img src={topThree[0].avatar || "/assets/avatarTemp.png"} width={100} height={330} alt="1st-Place-User-Icon" className="absolute left-[10px]" />
             <img src="/assets/first-badge.svg" width={160} height={400} alt="First-Place-Badge" className="fixed top-[336px] left-[871px]" />
           </div>
         )}
@@ -96,7 +96,7 @@ function LeaderboardDisplay() {
         {topThree[2] && (
           <div className="absolute h-[14%] w-[7%] top-[290px] left-[36%] flex bg-black border-4 border-[#C4F7BC]">
             <div className="absolute text-3xl bottom-[145px]">3rd Place</div>
-            <img src={topThree[2].avatar || "/assets/avatarTemp3.png"} alt="3rd-Place-User-Icon" className="absolute" />
+            <img src={topThree[2].avatar || "/assets/avatarTemp3.png"} width={100} height={330} alt="3rd-Place-User-Icon" className="absolute left-[10px]" />
             <img src="/assets/second-badge.svg" width={160} height={400} alt="Second-Place-Badge" className="fixed top-[373px] left-[679px]" />
           </div>
         )}
@@ -104,7 +104,7 @@ function LeaderboardDisplay() {
         {topThree[1] && (
           <div className="absolute h-[14%] w-[7%] top-[290px] left-[56%] flex bg-black border-4 border-[#C4F7BC]">
             <div className="absolute text-3xl bottom-[145px]">2nd Place</div>
-            <img src={topThree[1].avatar || "/assets/avatarTemp2.png"} alt="2nd-Place-User-Icon" className="absolute" />
+            <img src={topThree[1].avatar || "/assets/avatarTemp2.png"} width={100} height={330} alt="2nd-Place-User-Icon" className="absolute left-[10px]" />
             <img src="/assets/third-badge.svg" width={160} height={400} alt="Third-Place-Badge" className="fixed top-[374px] right-[698px]" />
           </div>
         )}
