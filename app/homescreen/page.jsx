@@ -117,7 +117,7 @@ export default function HomeScreen() {
                 </div>
             </div>
             </div>
-            {/* <DailyRewardPopup/> */}
+            <DailyRewardPopup/>
             <HomeAnnouncements />
             <HomeDailyRewards />
 
