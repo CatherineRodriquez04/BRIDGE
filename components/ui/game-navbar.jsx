@@ -8,10 +8,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+import DayModal from "@/components/ui/day-modal.jsx";
+
 function Navbar() {
   const [coins, setCoins] = useState("");
   const [gems, setGems] = useState("");
   const [days, setDays] = useState("");
+
+  const [isDayModalOpen, setIsDayModalOpen] = useState(false)
+
 
   useEffect(() => {
     const auth = getAuth();
@@ -106,13 +111,15 @@ function Navbar() {
         </div>
 
         {/* Day Display */}
-        <div className="absolute h-20 w-20 top-2 right-[15px] flex items-center justify-center text-[32px] font-semibold leading-none">
-          <div className="z-10 text-black text-center">
-            Day
-            <div>{days}</div>
-          </div>
-          <img src="/assets/paper-mini-poster.svg" width={300} height={300} alt="Day Poster" className="absolute -z-1" />
-        </div>
+        <button type="button" onClick={() => setIsDailyRewardPopupOpen(true)} className="absolute h-20 w-20 top-2 right-[15px] flex items-center justify-center text-[32px] font-semibold leading-none">
+            <div className="z-10 text-black text-center">
+              Day
+              <div>{days}</div>
+            </div>
+              <img src="/assets/paper-mini-poster.svg" width={300} height={300} alt="Day Poster" className="absolute " />    
+        </button>
+        {/* <DayModal isOpen={isDayModalOpen} onClose={() => setIsDayModalOpen(false)}/>  */}
+
       </div>
     </>
   );
