@@ -32,9 +32,11 @@ export default function HomeDailyRewards() {
                         : "bg-gradient-to-b from-accent to-accent2"
               }`}
             >
+              
               <div className={`text-center font-bold text-xl ${reward.claimed ? "text-[#0B0C2A]" : "text-white/80"}`}>
                 DAY {reward.day}
               </div>
+              
 
               <div className="relative">
                 {/* Coin stack - 3 overlapping coins */}

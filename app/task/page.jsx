@@ -23,6 +23,9 @@ function Task() {
                         Return to Game
                     </button>
                 </Link> 
+              <div className="absolute top-[2%] text-6xl left-[46%] flex justify-center">
+                T.A.S.K.
+              </div>
             {/* Main box */}
             <TaskDisplay/>
         </div> 

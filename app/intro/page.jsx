@@ -8,7 +8,7 @@ import { getDocs, collection, query, where, doc, setDoc } from "firebase/firesto
 // next/link and hooks
 import { useState } from "react";
 import Image from "next/image";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+// import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 
