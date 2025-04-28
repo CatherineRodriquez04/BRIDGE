@@ -13,7 +13,7 @@ export default function Exchange() {
     <>
     <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative"></div>
-        <div className="top-6 right-[520px] absolute">
+        <div className="top-6 right-[520px] absolute z-50">
           <Link href="/exchange">
               <GameNavbar/>
           </Link>

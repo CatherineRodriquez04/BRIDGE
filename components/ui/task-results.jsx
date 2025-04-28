@@ -25,56 +25,82 @@ function TaskResults() {
                 </div>
 
                 {/* Right Page */}
-                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4">
+                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
-                        Time Spent
+                        Score Breakdown
                     </div>
                     {/* Scores(progressbars) */}
-                    <div className="absolute w-full text-[#a3ffb0] top-[32%]">
-                        <h2 className="text-center text-2xl tracking-wide mb-6">TIME SPENT ON EACH PAGE</h2>
+                    <div className="absolute w-full text-[#a3ffb0] top-[25%]">
+                        <h2 className="text-center text-3xl tracking-wide mb-6">By Category</h2>
 
                         <div className="relative w-full mx-auto">
                             {/* Top row - 3 items */}
                             <div className="flex justify-between mb-8">
                             <div className="text-center w-1/3">
-                                <p className="text-3xl mb-1">Packs</p>
-                                <p className="text-2xl "># hrs # mins</p>
+                                <p className="text-3xl mb-1">Spending</p>
+                                <p className="text-2xl ">/500</p>
                                 {/* Fillable value later */}
                             </div>
 
                             <div className="text-center w-1/3">
-                                <p className="text-3xl mb-1">Shop</p>
-                                <p className="text-2xl ">2 hrs 30 mins</p>
+                                <p className="text-3xl mb-1">Gatcha</p>
+                                <p className="text-2xl ">/500</p>
                             </div>
 
                             <div className="text-center w-1/3">
-                                <p className="text-3xl mb-1">Exchange</p>
-                                <p className="text-2xl">2 hrs 30 mins</p>
+                                <p className="text-3xl mb-1">Tactics</p>
+                                <p className="text-2xl">%?/500</p>
                             </div>
                             </div>
 
                             {/* Bottom row - 2 items positioned in the gaps */}
                             <div className="flex justify-evenly">
-                            <div className="text-center w-1/3 ml-[8.33%]">
+                            {/* <div className="text-center w-1/3 ml-[8.33%]">
                                 <p className="text-3xl mb-1">Leaderboard</p>
                                 <p className="text-2xl">2 hrs 30 mins</p>
-                            </div>
+                            </div> */}
 
-                            <div className="text-center w-1/3 mr-[8.33%]">
+                            {/* <div className="text-center w-1/3 mr-[8.33%]">
                                 <p className="text-3xl mb-1">Collection</p>
                                 <p className="text-2xl">2 hrs 30 mins.</p>
+                            </div> */}
                             </div>
-                            </div>
+                            <h2 className="text-center text-3xl tracking-wide mb-6">Category Breakdown</h2>
+
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Spending</h3>
+                                <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
+                                    The spending category tracks your spending habits, including how much of each currency is spent, where it is spent, and 
+                                    conversions made. These include conversion of real money to gems and gems to coins. You begin with a full score of 500,
+                                    and as you spend premium currency, you are penalized accordingly based on the ammount. The goal of this score is to track
+                                    how willing you were to spend premium currency, which often means you fell for the tactics established by the simulation.
+                                    Tip: To maximize this score, it is best to play "free to play", that is, stick to freebies & freemium currency. This takes
+                                    dedication, patience, and willpower, which this simulation hopes to nurture.
+                                </p>
+
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Gatcha</h3>
+                                <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
+                                    Gatcha, or a packs/ lottery system, works by encouraging users to exchange real money or currency for the chance of gaining 
+                                    a specific item / reward. This is often done through packs, loot boxes, drops, crates, or other visual forms of bundling items.
+                                    These items often include cosmetics, useful gameplay items, backgrounds, and other earnable content. This concept mimics gambling
+                                    or slot machines, as it obscures the exchange of currency for items into a game of chance. In order to recieve a specific item,
+                                    players are required to buy an untold amount of "wishes" or chances to earn them. This can often take many attempts, inflating the 
+                                    average price of each item. This can turn off many smart players, so companies have resorted to other incentives, including guaranteed
+                                    pulls often called "wishing". Through wishing, players are promised a guaranteed type of item after fulfilling a certain condition. This 
+                                    can range from a set # of purchases, a spending amount, or other milestones that encourage the purchasing of more chances. Like a carrot on
+                                    a stick, the reward of a guaranteed item is dangled in front of players, who are pushed to spend more than desired to hedge their bets. This
+                                    method is so potent, that even more advanced players have been observed attempting to "game the system" by saving up these wishes for special
+                                    events. While noble, this strategy ultimately suffers the same fate, as excess spending occurs and the use of real money is inevitably pressured.
+                                    Tip: To maximize this score, it is best to have patience and earn currency through playing the game and progressing. While slower and less lucrative,
+                                    it is best for combatting this manipulative tactic. It is best to use your natural progression and sense of earning your way to help stay true to this 
+                                    strategy, as the feeling of FOMO can be difficult to escape.
+                                </p>
+
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Tactics</h3>
+                                <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
+                                    Fill in later
+                                </p>
                         </div>
                     </div>
-
-                    {/* Overall Score:
-                    <div className="relative pt-4 flex flex-col items-center top-[30%] h-[20%] w-full text-4xl border-y-2">
-                        Temp
-                        <div className="pt-8 text-2xl">
-                            df
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </>

@@ -26,10 +26,6 @@ const cardPack = [
   {id: "5"},
 ]
 
-function getRandomId() {
-  const num = Math.floor(Math.random() * 18) + 1; // 1–18
-  return num < 10 ? `0${num}` : `${num}`; // pad with leading zero
-}
 
 export default function Packs() {
   const { coins, gems, setCoins, setGems, userId } = usePlayer();
@@ -66,12 +62,11 @@ export default function Packs() {
     setTimeout(() => setAnimatingPack(null), 800);
     setTimeout(() => setIsCarouselOpen(true), 900);
   };
-
   return (
     <>
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
         
-        <div className="top-6 right-[520px] absolute">
+        <div className="top-6 right-[520px] absolute z-50">
           <Link href="/packs">
               <GameNavbar/>
           </Link>

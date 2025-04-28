@@ -140,9 +140,7 @@ export default function HomeScreen() {
 
         <div className="flex flex-row">
             <div className="top-6 right-[520px] absolute">
-            <Link href="/collection">
                 <GameNavbar />
-            </Link>
             </div>
 
 
@@ -194,7 +192,7 @@ export default function HomeScreen() {
             <div className="absolute flex justify-center items-center top-[360px] right-0 left-0">
             <img src={"/assets/logo.png"} width={650} height={650} alt="Logo" className="block -z-1" />
             <Link href="/choose-deck">
-                <button className="absolute flex justify-center items-center top-[250px] right-0 left-0 text-4xl z-10">
+                <button className="absolute flex justify-center items-center top-[250px] right-0 left-0 text-4xl">
                 Play
                 </button>
             </Link>
