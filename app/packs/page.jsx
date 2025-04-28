@@ -31,12 +31,7 @@ export default function Packs() {
   const [isAnimating, setIsAnimating] = useState(false); //pack psin opening animation
 
   const [animatingPack, setAnimatingPack] = useState(null);
-
-  
-
   const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
-  
-
 
   return (
     <>
@@ -79,16 +74,21 @@ export default function Packs() {
         
         <div className="flex m-auto w-[20%] items-center">
           {/* Packs Display */}
-            <div className="flex space-x-8 top-[30%] absolute right-[10%]">
+            <div className="flex space-x-8 top-[25%] absolute right-[10%]">
               {/* 1st pack */}
               <div className="absolute bottom-[17%] -left-6 text-4xl">
                   Buy 1
               </div>
               <div className="absolute bottom-[2%] -left-16 text-4xl">
-                  Buy 10
+                  Buy 3
               </div>
               <div className="flip-card">   
                   <img src="/assets/standard-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
+                  {/* Wish display/ tracker */}
+                    <div className="relative  flex justify-center mx-auto text-3xl top-4">
+                      Wish:  3/5
+                    </div>
+                  {/* Purchase buttons */}
                   <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                   <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                       100 Coins
@@ -98,11 +98,15 @@ export default function Packs() {
                       750 Coins
                   </button>
               </div>
-              {/* Add buttons below */}
               {/* 2nd pack */}
-              <div className="relative bottom-4 flip-card">
+              <div className="relative bottom-4 flip-card left-3.5">
                   <img src="/assets/medium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-2" id="pack2"className={`w-[280px] flip-pack-inner ${animatingPack === 'pack2' ? 'animate-spin' : ''}`}></img>
                       <div className="ml-2">
+                        {/* Wish display/ tracker */}
+                        <div className="relative flex justify-center mx-auto text-3xl top-4 -left-2">
+                          Wish:  3/15
+                        </div>
+                  {/* Purchase buttons */}
                           <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                               500 coins
@@ -125,6 +129,11 @@ export default function Packs() {
               {/* 3rd pack */}
               <div className="flip-card">
                   <img src="/assets/premium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-3" id="pack3" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack3' ? 'animate-spin' : ''}`}></img>
+                    {/* Wish display/ tracker */}
+                    <div className="relative  flex justify-center mx-auto text-3xl top-4">
+                      Wish:  3/10
+                    </div>
+                  {/* Purchase buttons */}
                   <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                       <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
                       600 gems
