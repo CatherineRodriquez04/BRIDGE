@@ -38,7 +38,19 @@ const avatars = [
     { src: "/assets/pufferfish.svg", image: avatar3 },
     { src: "/assets/racoon.svg", image: avatar4 },
     { src: "/assets/swan.svg", image: avatar5 },
-    { src: "/assets/orca.svg", image: avatar6 }
+    { src: "/assets/orca.svg", image: avatar6 },
+    // { src: "/assets/platypus.svg", image: avatar7 },
+    // { src: "/assets/squid.svg", image: avatar8 },
+    // { src: "/assets/parrot.svg", image: avatar9 },
+    // { src: "/assets/swordfish.svg", image: avatar10 },
+    // { src: "/assets/hippo.svg", image: avatar11 },
+    // { src: "/assets/harpy-eagle.svg", image: avatar12 },
+    // { src: "/assets/crow.svg", image: avatar13 },
+    // { src: "/assets/whale.svg", image: avatar14 },
+    // { src: "/assets/hamster.svg", image: avatar15 },
+    // { src: "/assets/dragonfly.svg", image: avatar16 },
+    // { src: "/assets/anchovy.svg", image: avatar17 },
+    // { src: "/assets/capybara.svg", image: avatar18 }
 ];
 
 export default function Intro() {
