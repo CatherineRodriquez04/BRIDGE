@@ -56,7 +56,7 @@ function ShopDisplay() {
 
   return (
     <>
-      <div className="max-w-[100%] w-[100%] mx-auto fixed top-[15%] left-44 right-0 z-10">
+      <div className="max-w-[100%] w-[100%] mx-auto fixed top-[15%] left-44 right-0 ç">
         <div className="grid grid-cols-12 gap-3 auto-rows-[50%]">
           {randomCardIds.map((cardId, index) => (
             <div

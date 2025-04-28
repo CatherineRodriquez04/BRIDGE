@@ -157,7 +157,16 @@ const ChooseDeck = () => {
             </div>
           ))}
 
+
+          
+            {/* Ready Up Button (start battle / go to page) */}
           <div className="absolute top-[77%] left-[12%] w-[40%]">
+          {/* Limit / battle chances per day */}
+          {/* Battle Limit Display */}
+          {/* Right above Ready button for now */}
+          <div className=" absolute bottom-[35%] left-[38%] text-[#0B0C2A] z-20 text-white text-4xl">
+              Limit {}#/5 {/*daily battle limit to be insterted here      */}
+          </div>
             <Link href="/battle">
               <button
                 type="button"
