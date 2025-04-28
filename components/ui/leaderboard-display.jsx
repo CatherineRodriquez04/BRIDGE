@@ -71,8 +71,8 @@ function LeaderboardDisplay() {
       <div className="absolute top-[420px] right-[11%] z-30">
         <CustomSelect
           options={[
-            { value: "coin", label: "Coins" },
-            { value: "coins", label: "Coins" },
+            { value: "coin", label: "Most Coins" },
+            { value: "coins", label: "Most Coins" },
             { value: "wins", label: "Most Wins" },
             { value: "collection", label: "Biggest Collection" },
           ]}

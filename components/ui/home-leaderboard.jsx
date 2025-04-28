@@ -53,29 +53,32 @@ function HomeLeaderboard() {
   const [currentDay, setCurrentDay] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const auth = getAuth();
-      const user = auth.currentUser;
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) return;
 
-      const playerRef = doc(db, "players", user.uid);
-      const playerSnap = await getDoc(playerRef);
-      if (!playerSnap.exists()) return;
+      try {
+        const playerRef = doc(db, "players", user.uid);
+        const playerSnap = await getDoc(playerRef);
+        if (!playerSnap.exists()) return;
 
-      const userDay = playerSnap.data().days;
-      setCurrentDay(userDay);
+        const userDay = playerSnap.data().days;
+        setCurrentDay(userDay);
 
-      const querySnapshot = await getDocs(collection(db, "players"));
-      const filtered = querySnapshot.docs
-        .map(doc => ({ id: doc.id, ...doc.data() }))
-        .filter(player => player.days === userDay)
-        .sort((a, b) => (b.coins ?? Infinity) - (a.coins ?? Infinity))
-        .slice(0, 10);
+        const querySnapshot = await getDocs(collection(db, "players"));
+        const filtered = querySnapshot.docs
+          .map(doc => ({ id: doc.id, ...doc.data() }))
+          .filter(player => player.days === userDay)
+          .sort((a, b) => (b.coins ?? Infinity) - (a.coins ?? Infinity))
+          .slice(0, 10);
 
-      setLeaderboardData(filtered);
-    };
+        setLeaderboardData(filtered);
+      } catch (error) {
+        console.error("Error loading leaderboard:", error);
+      }
+    });
 
-    fetchData();
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -93,7 +96,7 @@ function HomeLeaderboard() {
 
       {leaderboardData.map((player, index) => (
         <div
-          key={index}
+          key={player.id}
           className={cn("grid grid-cols-4 py-1.5 px-3 items-center text-center", index % 2 === 0 ? "bg-[#0B0C2A]" : "bg-[#0D0E35]")}
         >
           <div className="flex justify-center">
@@ -101,7 +104,9 @@ function HomeLeaderboard() {
           </div>
           <div className="text-white text-sm font-light">{player.name}</div>
           <div className="text-white text-sm font-light">{player.coins}</div>
-          <div className="text-white text-sm font-light">{Object.values(player.characterCards || {}).reduce((a, b) => a + b, 0)}</div>
+          <div className="text-white text-sm font-light">
+            {Object.values(player.characterCards || {}).reduce((a, b) => a + b, 0)}
+          </div>
         </div>
       ))}
     </div>

@@ -19,7 +19,7 @@ function PackOpenCarousel({ cards, isOpen, onClose }) {
 
   const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
 
-
+ 
 
 
   const goToNext = () => {
