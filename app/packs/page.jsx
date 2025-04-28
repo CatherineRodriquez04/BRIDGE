@@ -26,12 +26,12 @@ export default function Packs() {
   const [isCarouselOpen, setIsCarouselOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false); //pack psin opening animation
   const [animatingPack, setAnimatingPack] = useState(null);
-
+ 
   return (
     <>
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
         
-        <div className="top-6 right-[520px] absolute">
+        <div className="top-6 right-[520px] absolute z-50">
           <Link href="/packs">
               <GameNavbar/>
           </Link>

@@ -27,7 +27,7 @@ function TaskTactics() {
                             </div>
 
                             <div className="text-center w-1/3">
-                                <button className="text-3xl mb-1">Exchange</button>
+                                <button className="text-3xl mb-1">Currency Manipulation</button>
                                 <p className="text-2xl">3/5</p>
                             </div>
                             </div>

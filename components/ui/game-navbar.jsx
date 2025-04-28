@@ -111,14 +111,14 @@ function Navbar() {
         </div>
 
         {/* Day Display */}
-        <button type="button" onClick={() => setIsDailyRewardPopupOpen(true)} className="absolute h-20 w-20 top-2 right-[15px] flex items-center justify-center text-[32px] font-semibold leading-none">
+        <button type="button" onClick={() => setIsDayModalOpen(true)} className="absolute h-20 w-20 top-2 right-[15px] flex items-center justify-center text-[32px] font-semibold leading-none">
             <div className="z-10 text-black text-center">
               Day
               <div>{days}</div>
             </div>
               <img src="/assets/paper-mini-poster.svg" width={300} height={300} alt="Day Poster" className="absolute " />    
         </button>
-        {/* <DayModal isOpen={isDayModalOpen} onClose={() => setIsDayModalOpen(false)}/>  */}
+        <DayModal isOpen={isDayModalOpen} onClose={() => setIsDayModalOpen(false)}/> 
 
       </div>
     </>

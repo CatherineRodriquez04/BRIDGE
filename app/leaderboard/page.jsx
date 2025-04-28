@@ -12,7 +12,7 @@ export default function Leaderboard() {
     <>
       <div className="h-full min-h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 overflow-hidden">
         {/* Navbar directly rendered without Link wrapper */}
-        <div className="top-6 right-[520px] absolute">
+        <div className="top-6 right-[520px] absolute z-50">
           <GameNavbar />
         </div>
 
