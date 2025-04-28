@@ -6,13 +6,13 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "@/lib/firebase";
 
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { cn } from "@/lib/utils";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import avatar1 from "@/public/assets/avatarTemp.png";
-import avatar2 from "@/public/assets/avatarTemp2.png";
-import avatar3 from "@/public/assets/avatarTemp3.png";
 import defaultAvatar from "@/public/assets/avatarTemp.png";
 
 import HomeLeaderboard from "@/components/ui/home-leaderboard.jsx";
@@ -21,6 +21,35 @@ import GameNavbar from "@/components/ui/game-navbar.jsx";
 import HomeDailyRewards from "@/components/ui/home-daily-rewards.jsx";
 
 import DailyRewardPopup from "@/components/ui/daily-reward-popup.jsx"
+
+// Avatar images
+import avatar1 from "@/public/assets/owl.svg";
+import avatar2 from "@/public/assets/polar-bear.svg";
+import avatar3 from "@/public/assets/pufferfish.svg";
+import avatar4 from "@/public/assets/racoon.svg";
+import avatar5 from "@/public/assets/swan.svg";
+import avatar6 from "@/public/assets/orca.svg";
+// import avatar7 from "@/public/assets/platypus.svg";
+// import avatar8 from "@/public/assets/squid.svg";
+// import avatar9 from "@/public/assets/parrot.svg";
+// import avatar10 from "@/public/assets/swordfish.svg";
+// import avatar11 from "@/public/assets/hippo.svg";
+// import avatar12 from "@/public/assets/harpy-eagle.svg";
+// import avatar13 from "@/public/assets/crow.svg";
+// import avatar14 from "@/public/assets/whale.svg";
+// import avatar15 from "@/public/assets/hamster.svg";
+// import avatar16 from "@/public/assets/dragonfly.svg";
+// import avatar17 from "@/public/assets/anchovy.svg";
+// import avatar18 from "@/public/assets/capybara.svg";
+
+const avatars = [
+    { src: "/assets/owl.svg", image: avatar1 },
+    { src: "/assets/polar-bear.svg", image: avatar2 },
+    { src: "/assets/pufferfish.svg", image: avatar3 },
+    { src: "/assets/racoon.svg", image: avatar4 },
+    { src: "/assets/swan.svg", image: avatar5 },
+    { src: "/assets/orca.svg", image: avatar6 }
+];
 
 export default function HomeScreen() {
     const [playerName, setPlayerName] = useState("");
@@ -32,6 +61,21 @@ export default function HomeScreen() {
     const [showModal, setShowModal] = useState(false);
     const [showIntro, setShowIntro] = useState(true);
     const [startTyping, setStartTyping] = useState(false);
+    const [avatarIndex, setAvatarIndex] = useState(0);
+    
+        const visibleAvatars = [
+            avatars[(avatarIndex) % avatars.length],
+            avatars[(avatarIndex + 1) % avatars.length],
+            avatars[(avatarIndex + 2) % avatars.length],
+        ];
+            
+        const handlePrev = () => {
+                setAvatarIndex((prev) => (prev - 1 + avatars.length) % avatars.length);
+        };
+            
+        const handleNext = () => {
+                setAvatarIndex((prev) => (prev + 1) % avatars.length);
+        };
 
     // Fetch player info in background
     useEffect(() => {
@@ -92,10 +136,10 @@ export default function HomeScreen() {
             <div>
                 <Image
                 src={avatar || defaultAvatar}
-                width={100}
-                height={100}
+                width={95}
+                height={95}
                 alt="Avatar"
-                className="mt-5 ml-6 mb-2"
+                className="mt-4 ml-6 mb-1"
                 />
                 <button
                 className="ml-5 px-2 py-[1px] items-center text-[15px] bg-white text-black rounded-lg hover:scale-105"
@@ -143,24 +187,32 @@ export default function HomeScreen() {
                 </button>
                 <h2 className="text-4xl mt-[-5px] text-center">Change Your Avatar</h2>
                 <div className="min-w-[200px] border border-accent4 mb-4"></div>
-                <div className="flex justify-center gap-4">
-                {[avatar1, avatar2, avatar3].map((img, i) => {
-                    const path = `/assets/avatarTemp${i ? i + 1 : ""}.png`;
-                    return (
-                    <Image
-                        key={path}
-                        src={img}
-                        width={125}
-                        height={125}
-                        alt={`Avatar ${i + 1}`}
-                        className={`cursor-pointer border hover:border-2 ${
-                        avatar === path ? "border-accent4 border-2" : ""
-                        }`}
-                        onClick={() => setAvatar(path)}
-                    />
-                    );
-                })}
-                </div>
+                <div className="flex justify-center items-center gap-4 mt-2 mb-4 p-2">
+                                    <button onClick={handlePrev}>
+                                        <FaArrowLeft className="text-white text-xl" />
+                                    </button>
+                                    <div className="flex gap-4 transition-transform duration-300 ease-in-out h-[200px]">
+                                    {/* <div className="flex gap-4 overflow-hidden min-h-[140px] items-end"> */}
+                
+                                        {visibleAvatars.map((av, i) => (
+                                        <Image
+                                            key={av.src}
+                                            src={av.image}
+                                            width={145}
+                                            height={145}
+                                            alt={`Avatar ${avatarIndex + i + 1}`}
+                                            className={cn(
+                                                "cursor-pointer border hover:border-2 transition-all duration-300 object-contain",
+                                                avatar === av.src ? "border-accent4 border-2 scale-105" : ""
+                                            )}
+                                            onClick={() => setAvatar(av.src)}
+                                        />
+                                        ))}
+                                    </div>
+                                    <button onClick={handleNext}>
+                                        <FaArrowRight className="text-white text-xl" />
+                                    </button>
+                                    </div>
                 <div className="flex justify-center mt-4">
                 <button
                     className="bg-white text-black px-4 py-1 rounded-lg text-[20px] hover:scale-105"

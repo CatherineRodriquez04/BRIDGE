@@ -38,7 +38,7 @@ const avatars = [
     { src: "/assets/pufferfish.svg", image: avatar3 },
     { src: "/assets/racoon.svg", image: avatar4 },
     { src: "/assets/swan.svg", image: avatar5 },
-    { src: "/assets/whale.svg", image: avatar6 }
+    { src: "/assets/orca.svg", image: avatar6 }
 ];
 
 export default function Intro() {
@@ -215,20 +215,21 @@ export default function Intro() {
                     <button onClick={handlePrev}>
                         <FaArrowLeft className="text-white text-xl" />
                     </button>
-                    {/* <div className="flex gap-4 transition-transform duration-300 ease-in-out"> */}
-                    <div className="flex gap-4 overflow-hidden min-h-[140px] items-end">
+                    <div className="flex gap-4 transition-transform duration-300 ease-in-out h-[200px]">
+                    {/* <div className="flex gap-4 overflow-hidden min-h-[140px] items-end"> */}
 
                         {visibleAvatars.map((av, i) => (
                         <Image
                             key={av.src}
                             src={av.image}
-                            width={135}
-                            height={135}
+                            width={145}
+                            height={145}
                             alt={`Avatar ${avatarIndex + i + 1}`}
                             className={cn(
                                 "cursor-pointer border hover:border-2 transition-all duration-300 object-contain",
                                 avatar === av.src ? "border-accent4 border-2 scale-105" : ""
                             )}
+                            onClick={() => setAvatar(av.src)}
                         />
                         ))}
                     </div>
