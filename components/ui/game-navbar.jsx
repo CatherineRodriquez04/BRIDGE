@@ -1,5 +1,7 @@
 "use client";
 
+import { usePlayer } from "@/components/ui/PlayerContent";
+
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "@/lib/firebase";
@@ -11,29 +13,26 @@ import { cn } from "@/lib/utils";
 import DayModal from "@/components/ui/day-modal.jsx";
 
 function Navbar() {
-  const [coins, setCoins] = useState("");
-  const [gems, setGems] = useState("");
+  const { coins, gems } = usePlayer();
   const [days, setDays] = useState("");
 
   const [isDayModalOpen, setIsDayModalOpen] = useState(false)
 
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const docRef = doc(db, "players", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setCoins(data.coins || "");
-          setGems(data.gems || "");
-          setDays(data.days || "1");
+      const auth = getAuth();
+      const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const docRef = doc(db, "players", user.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            setDays(data.days || "1");
+          }
         }
-      }
-    });
-    return () => unsubscribe();
-  }, []);
+      });
+      return () => unsubscribe();
+    }, []);
 
   function NavButton({ label, href, index }) {
     const isLeftSide = index < 6;
@@ -87,7 +86,7 @@ function Navbar() {
         {/* Coins */}
         <div className="top-8 right-[270px] absolute">
           <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
-            {coins}
+            {coins ?? "Loading..."}
           </p>
           <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="absolute left-2 top-2" />
           <Link href="/exchange">
@@ -100,7 +99,7 @@ function Navbar() {
         {/* Gems */}
         <div className="top-8 right-[109px] absolute">
           <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
-            {gems}
+            {gems ?? "Loading..."}
           </p>
           <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gems" className="absolute left-2 top-[11px]" />
           <Link href="/exchange">

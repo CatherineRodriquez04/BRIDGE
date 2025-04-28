@@ -2,10 +2,15 @@
 
 "use client"
 
-import Link from "next/link";
-import { useState } from "react";
-import { useMemo } from "react";
+import { usePlayer } from "@/components/ui/PlayerContent";
 
+import Link from "next/link";
+import { useState, useEffect, useMemo } from "react";
+
+// database
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 //import Poster from "/assets/poster.png";
 
@@ -23,10 +28,40 @@ const cardPack = [
 
 
 export default function Packs() {
-  const [isCarouselOpen, setIsCarouselOpen] = useState(false)
-  const [isAnimating, setIsAnimating] = useState(false); //pack psin opening animation
+  const { coins, gems, setCoins, setGems, userId } = usePlayer();
+  const [isCarouselOpen, setIsCarouselOpen] = useState(false);
+  const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
   const [animatingPack, setAnimatingPack] = useState(null);
- 
+
+  const handlePurchase = async (cost, currency) => {
+    if (userId === null) return;
+
+    if (currency === "coins") {
+      if (coins >= cost) {
+        const newCoins = coins - cost;
+        setCoins(newCoins);
+        await updateDoc(doc(db, "players", userId), { coins: newCoins });
+        openPackAnimation();
+      } else {
+        setShowNotEnoughModal(true);
+      }
+    } else if (currency === "gems") {
+      if (gems >= cost) {
+        const newGems = gems - cost;
+        setGems(newGems);
+        await updateDoc(doc(db, "players", userId), { gems: newGems });
+        openPackAnimation();
+      } else {
+        setShowNotEnoughModal(true);
+      }
+    }
+  };
+
+  const openPackAnimation = () => {
+    setAnimatingPack('pack1');
+    setTimeout(() => setAnimatingPack(null), 800);
+    setTimeout(() => setIsCarouselOpen(true), 900);
+  };
   return (
     <>
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
@@ -83,12 +118,13 @@ export default function Packs() {
                       Wish:  3/5
                     </div>
                   {/* Purchase buttons */}
-                  <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
-                  <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
+                  <button type="button" onClick={() => handlePurchase(100, "coins")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                      <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                       100 Coins
                   </button>
-                  <button type="button" onClick={() => { setAnimatingPack('pack1'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }}  className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
-                      <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
+
+                  <button type="button" onClick={() => handlePurchase(750, "coins")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                      <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                       750 Coins
                   </button>
               </div>
@@ -101,20 +137,21 @@ export default function Packs() {
                           Wish:  3/15
                         </div>
                   {/* Purchase buttons */}
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
-                              <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
-                              500 coins
-                              </button>
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
-                              <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
+                          <button type="button" onClick={() => handlePurchase(500, "coins")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                              <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
+                              500 Coins
+                          </button>
+
+                          <button type="button" onClick={() => handlePurchase(150, "gems")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
+                              <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
                               150 Gems
                           </button>
                       </div>
                       <div className="">
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                          <button type="button" onClick={() => handlePurchase(2500, "coins")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                               2500 coins</button>
-                          <button type="button" onClick={() => { setAnimatingPack('pack2'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
+                          <button type="button" onClick={() => handlePurchase(450, "gems")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
                               <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
                               450 gems</button>
                       </div>
@@ -128,19 +165,32 @@ export default function Packs() {
                       Wish:  3/10
                     </div>
                   {/* Purchase buttons */}
-                  <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
-                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
-                      600 gems
+                  <button type="button" onClick={() => handlePurchase(600, "gems")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
+                      600 Gems
                   </button>
-                  <button type="button" onClick={() => { setAnimatingPack('pack3'); setTimeout(() => setAnimatingPack(null), 800); setTimeout(() => setIsCarouselOpen(true), 900); }} className="flex items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
-                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>                    
-                      1200 gems
+                  <button type="button" onClick={() => handlePurchase(1200, "gems")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
+                      1200 Gems
                   </button>
               </div>
           </div>
         </div>
 
       </div>
+
+      {/* Not Enough Money Modal */}
+      {showNotEnoughModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg relative w-[400px]">
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNotEnoughModal(false)}>
+                ×
+              </button>
+              <p className="text-black text-3xl text-center">Not enough money available!</p>
+            </div>
+          </div>
+        )}
+
       </div> 
     </>
   );

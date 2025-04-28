@@ -3,6 +3,8 @@
 import "./globals.css";
 import localFont from 'next/font/local';
 
+import { PlayerProvider } from "@/components/ui/PlayerContent";
+
 const jersey20 = localFont({
   src: '../public/fonts/Jersey20-Regular.ttf', 
   variable: '--font-jersey',  
@@ -25,7 +27,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`flex flex-col flex-grow ${jersey20.className}`}>
         {/* <Header /> */}
-        <div className="">{children}</div>
+        <PlayerProvider>{children}</PlayerProvider>
         {/* <Footer /> */}
       </body>
     </html>
