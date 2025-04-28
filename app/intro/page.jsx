@@ -8,7 +8,7 @@ import { getDocs, collection, query, where, doc, setDoc } from "firebase/firesto
 // next/link and hooks
 import { useState } from "react";
 import Image from "next/image";
-// import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 
@@ -142,7 +142,22 @@ export default function Intro() {
             days: 1,
             wins: 0,
             score: 0,
-            cash: 100
+            cash: 100,
+            shopDay1: 0,
+            battlesDay1: 0,
+            packsDay1: 0,
+            shopDay2: 0,
+            battlesDay2: 0,
+            packsDay2: 0,
+            shopDay3: 0,
+            battlesDay3: 0,
+            packsDay3: 0,
+            shopDay4: 0,
+            battlesDay4: 0,
+            packsDay4: 0,
+            shopDay5: 0,
+            battlesDay5: 0,
+            packsDay5: 0,
             });
             window.location.href = "/homescreen";
         } catch (error) {
