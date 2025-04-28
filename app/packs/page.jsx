@@ -31,12 +31,7 @@ export default function Packs() {
   const [isAnimating, setIsAnimating] = useState(false); //pack psin opening animation
 
   const [animatingPack, setAnimatingPack] = useState(null);
-
-  
-
   const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
-  
-
 
   return (
     <>
