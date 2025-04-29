@@ -112,7 +112,7 @@ export default function Packs() {
                   Buy 3
               </div>
               <div className="flip-card">   
-                  <img src="/assets/standard-pack.svg" height={400} width={260} alt="Temp-Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
+                  <img src="/assets/standard-pack.svg" height={400} width={260} alt="Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
                   {/* Wish display/ tracker */}
                     <div className="relative  flex justify-center mx-auto text-3xl top-4">
                       Wish:  3/5
@@ -130,7 +130,7 @@ export default function Packs() {
               </div>
               {/* 2nd pack */}
               <div className="relative bottom-4 flip-card left-3.5">
-                  <img src="/assets/medium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-2" id="pack2"className={`w-[280px] flip-pack-inner ${animatingPack === 'pack2' ? 'animate-spin' : ''}`}></img>
+                  <img src="/assets/medium-pack.svg" height={400} width={260} alt="Card-Pack-2" id="pack2"className={`w-[280px] flip-pack-inner ${animatingPack === 'pack2' ? 'animate-spin' : ''}`}></img>
                       <div className="ml-2">
                         {/* Wish display/ tracker */}
                         <div className="relative flex justify-center mx-auto text-3xl top-4 -left-2">
@@ -159,7 +159,7 @@ export default function Packs() {
 
               {/* 3rd pack */}
               <div className="flip-card">
-                  <img src="/assets/premium-pack.svg" height={400} width={260} alt="Temp-Card-Pack-3" id="pack3" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack3' ? 'animate-spin' : ''}`}></img>
+                  <img src="/assets/premium-pack.svg" height={400} width={260} alt="Card-Pack-3" id="pack3" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack3' ? 'animate-spin' : ''}`}></img>
                     {/* Wish display/ tracker */}
                     <div className="relative  flex justify-center mx-auto text-3xl top-4">
                       Wish:  3/10
