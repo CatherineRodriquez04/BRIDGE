@@ -3,6 +3,7 @@ import TaskTabs from "@/components/ui/task-tabs.jsx";
 import TaskResults from "@/components/ui/task-results.jsx";
 import TaskSpending from "@/components/ui/task-spending.jsx";
 import TaskTactics from "@/components/ui/task-tactics.jsx";
+import TaskGatcha from "@/components/ui/task-gatcha.jsx";
 
 function TaskDisplay() {
     return (
@@ -36,6 +37,16 @@ const tabData = [
         </div>
       ),
     },
+    {
+      id: "Gatcha",
+      title: "Gatcha",
+      content: (
+        <div>
+          <TaskGatcha/>
+        </div>
+      ),
+    },
+    
     {
       id: "Tactics",
       title: "Tactics",

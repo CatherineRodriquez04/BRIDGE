@@ -63,12 +63,12 @@ function LeaderboardDisplay() {
   return (
     <>
       {/* Player's Current Day Display */}
-      <div className="absolute top-[420px] left-[11%] z-30 text-white text-xl bg-[#0B0C2A] border-2 border-[#86CEBC] rounded-lg px-4 py-2">
+      <div className="absolute top-[46.5%] left-[11%] z-30 text-white text-xl bg-[#0B0C2A] border-2 border-[#86CEBC] rounded-lg px-4 py-2">
         Current Day: {currentDay || "Loading..."}
       </div>
 
       {/* Filter Dropdown */}
-      <div className="absolute top-[420px] right-[11%] z-30">
+      <div className="absolute top-[46.5%] right-[11%] z-30">
         <CustomSelect
           options={[
             { value: "coin", label: "Most Coins" },
@@ -85,33 +85,33 @@ function LeaderboardDisplay() {
 
       {/* Top 3 display */}
       <div>
-        {topThree[0] && (
-          <div className="absolute h-[14%] w-[7%] top-[250px] left-[46%] flex bg-black border-4 border-[#C4F7BC]">
-            <div className="absolute text-3xl bottom-[145px]">1st Place</div>
+      {topThree[0] && (
+          <div className="absolute h-[14%] w-[7%] top-[27%] left-[46%] flex bg-black border-4 border-[#C4F7BC]">
+            <div className="absolute text-4xl bottom-[110%]">1st Place</div>
             <img src={topThree[0].avatar || "/assets/avatarTemp.png"} width={100} height={330} alt="1st-Place-User-Icon" className="absolute left-[10px]" />
-            <img src="/assets/first-badge.svg" width={160} height={400} alt="First-Place-Badge" className="fixed top-[336px] left-[871px]" />
+            <img src="/assets/first-badge.svg" width={160} height={400} alt="First-Place-Badge" className="fixed top-[36%] left-[45.35%]" />
           </div>
         )}
 
         {topThree[2] && (
-          <div className="absolute h-[14%] w-[7%] top-[290px] left-[36%] flex bg-black border-4 border-[#C4F7BC]">
-            <div className="absolute text-3xl bottom-[145px]">3rd Place</div>
+          <div className="absolute h-[14%] w-[7%] top-[32%] left-[36%] flex bg-black border-4 border-[#C4F7BC]">
+            <div className="absolute text-[34px] bottom-[100%]">3rd Place</div>
             <img src={topThree[2].avatar || "/assets/avatarTemp3.png"} width={100} height={330} alt="3rd-Place-User-Icon" className="absolute left-[10px]" />
-            <img src="/assets/second-badge.svg" width={160} height={400} alt="Second-Place-Badge" className="fixed top-[373px] left-[679px]" />
+            <img src="/assets/second-badge.svg" width={160} height={400} alt="Second-Place-Badge" className="fixed top-[41%] left-[35.35%]" />
           </div>
         )}
 
         {topThree[1] && (
-          <div className="absolute h-[14%] w-[7%] top-[290px] left-[56%] flex bg-black border-4 border-[#C4F7BC]">
-            <div className="absolute text-3xl bottom-[145px]">2nd Place</div>
+          <div className="absolute h-[14%] w-[7%] top-[32%] left-[56%] flex bg-black border-4 border-[#C4F7BC]">
+            <div className="absolute text-[34px] bottom-[100%]">2nd Place</div>
             <img src={topThree[1].avatar || "/assets/avatarTemp2.png"} width={100} height={330} alt="2nd-Place-User-Icon" className="absolute left-[10px]" />
-            <img src="/assets/third-badge.svg" width={160} height={400} alt="Third-Place-Badge" className="fixed top-[374px] right-[698px]" />
+            <img src="/assets/third-badge.svg" width={160} height={400} alt="Third-Place-Badge" className="fixed top-[41%] right-[36.35%]" />
           </div>
         )}
       </div>
 
       {/* Leaderboard Table */}
-      <div className="fixed left-[10%] w-[80%] top-[480px] max-h-[500px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-auto z-20">
+      <div className="fixed left-[10%] w-[80%] top-[54%] max-h-[500px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-auto z-20">
         <table className="table-fixed w-full text-center text-2xl">
           <thead className="bg-[#0B0C2A] text-2xl sticky top-0 z-30">
             <tr>
