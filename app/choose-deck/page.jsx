@@ -221,16 +221,30 @@ const ChooseDeck = () => {
           ))}
 
           <div className="absolute top-[77%] left-[12%] w-[40%]">
-            <div className="absolute bottom-[35%] left-[25%] z-20 text-white text-4xl">
+            <div className="absolute bottom-[36%] left-[26%] z-20 text-white text-4xl">
               Limit {battleCount}/5
             </div>
             <div onClick={handleBattleStart}>
               <button
                 type="button"
-                className="absolute w-[30%] left-[18%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 border-4"
+                className="group absolute w-[30%] left-[18%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 border-4 overflow-hidden"
               >
-                Ready
+                {/* Default text (shown normally) */}
+                <span className="group-hover:hidden block transition duration-300">
+                  Battle
+                </span>
+
+                {/* Hover content (shown on hover only) */}
+                <span className="hidden group-hover:flex items-center gap-2 transition duration-300">
+                  <img src="/assets/icon-coin.svg" width={30} height={30} alt="Coins" className="inline " />
+                  50
+                </span>
               </button>
+            </div>
+            <div className="absolute -bottom-[7rem] left-[16rem] transform -translate-x-1/2 text-white text-3xl">
+              A battle costs 
+              <img src="/assets/icon-coin.svg" width={30} height={30} alt="Coins" className="inline-block mx-2 mb-1" />
+              50 coins
             </div>
           </div>
         </div>
@@ -244,10 +258,6 @@ const ChooseDeck = () => {
               )
             ))}
           </div>
-        </div>
-
-        <div className="absolute bottom-2 left-[170px] transform -translate-x-1/2 text-white text-3xl">
-          A battle costs 50 coins
         </div>
       </div>
     </DndProvider>
