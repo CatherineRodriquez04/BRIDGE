@@ -1,4 +1,4 @@
-//Packs Page
+// Choose Deck Page
 
 "use client"
 
@@ -12,7 +12,7 @@ import { HTML5Backend } from "react-dnd-html5-backend"
 import DragItem from "/components/ui/drag-item.jsx"
 import DropZone from "/components/ui/drop-zone.jsx"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 const ChooseDeck = () => {
@@ -31,15 +31,27 @@ const ChooseDeck = () => {
   const [playerCards, setPlayerCards] = useState([]);
   const [filteredCards, setFilteredCards] = useState([]);
   const [filter, setFilter] = useState("0");
+  const [battleCount, setBattleCount] = useState(0);
+  const [days, setDays] = useState(1);
+  const [userId, setUserId] = useState(null);
+  const [coins, setCoins] = useState(0);
+  const [showLimitModal, setShowLimitModal] = useState(false);
+  const [showNoCoinsModal, setShowNoCoinsModal] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
+        setUserId(user.uid);
         const docRef = doc(db, "players", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
+          setDays(data.days || 1);
+          setCoins(data.coins || 0);
+          const battleKey = `battlesDay${data.days}`;
+          setBattleCount(data[battleKey] || 0);
+
           const cards = Object.entries(data.characterCards || {}).flatMap(([id, qty]) =>
             Array(qty).fill(id)
           );
@@ -123,11 +135,62 @@ const ChooseDeck = () => {
     });
   };
 
+  const handleBattleStart = async (e) => {
+    e.preventDefault();
+  
+    if (battleCount >= 5) {
+      setShowLimitModal(true);
+      return;
+    }
+    if (coins < 50 || userId === null) {
+      setShowNoCoinsModal(true);
+      return;
+    }
+  
+    const selectedCardIds = [
+      ...(dropzones.Tank.items.map((item) => item.cardId)),
+      ...(dropzones.Attack.items.map((item) => item.cardId)),
+      ...(dropzones.Support.items.map((item) => item.cardId)),
+    ];
+  
+    // Save selected cards to localStorage
+    localStorage.setItem("selectedCards", JSON.stringify(selectedCardIds));
+  
+    const playerRef = doc(db, "players", userId);
+    const battleKey = `battlesDay${days}`;
+  
+    await updateDoc(playerRef, {
+      coins: coins - 50,
+      [battleKey]: (battleCount + 1),
+    });
+  
+    // Redirect to battle page
+    window.location.href = "/battle";
+  };
+
   const usedCardIds = Object.values(dropzones).flatMap(zone => zone.items.map(item => item.cardId));
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overscroll-y-none">
+        {showLimitModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg relative w-[400px]">
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowLimitModal(false)}>×</button>
+              <p className="text-black text-3xl text-center">You have reached today's battle limit!</p>
+            </div>
+          </div>
+        )}
+
+        {showNoCoinsModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg relative w-[400px]">
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNoCoinsModal(false)}>×</button>
+              <p className="text-black text-3xl text-center">Not enough coins to start a battle!</p>
+            </div>
+          </div>
+        )}
+
         <Link href="/homescreen">
           <button className="absolute top-[10px] left-6 text-2xl z-10 flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg px-5 py-1.5 mt-2 border-4">
             Return to Home
@@ -157,17 +220,11 @@ const ChooseDeck = () => {
             </div>
           ))}
 
-
-          
-            {/* Ready Up Button (start battle / go to page) */}
           <div className="absolute top-[77%] left-[12%] w-[40%]">
-          {/* Limit / battle chances per day */}
-          {/* Battle Limit Display */}
-          {/* Right above Ready button for now */}
-          <div className=" absolute bottom-[35%] left-[25%] z-20 text-white text-4xl">
-              Limit {}#/5 {/*daily battle limit to be insterted here      */}
-          </div>
-            <Link href="/battle">
+            <div className="absolute bottom-[35%] left-[25%] z-20 text-white text-4xl">
+              Limit {battleCount}/5
+            </div>
+            <Link onClick={handleBattleStart}>
               <button
                 type="button"
                 className="absolute w-[30%] left-[18%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 border-4"
@@ -187,6 +244,10 @@ const ChooseDeck = () => {
               )
             ))}
           </div>
+        </div>
+
+        <div className="absolute bottom-2 left-[170px] transform -translate-x-1/2 text-white text-3xl">
+          A battle costs 50 coins
         </div>
       </div>
     </DndProvider>

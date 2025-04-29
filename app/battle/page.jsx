@@ -1,27 +1,38 @@
 
-import BattleOpponentDisplay from "@/components/ui/battle-opponent-display";
-import BattlePlayerDisplay from "@/components/ui/battler-player-display";
+"use client";
 
+import { useEffect, useState } from "react";
+import BattleOpponentDisplay from "@/components/ui/battle-opponent-display"; 
+import BattlePlayerDisplay from "@/components/ui/battler-player-display";
 import BattleVictoryDisplay from "@/components/ui/battle-victory-display";
 import BattleLossDisplay from "@/components/ui/battle-loss-display";
 
 function Battle() {
-    return (
-      <>
-        <div className="h-screen w-screen fade-in bg-gradient-to-b from-accent to-accent2 relative overscroll-y-none relative">{/*  (for some reason, breaks styling / placement of cards*/}
-            <div className="">
-                <BattleOpponentDisplay/>
-                <BattlePlayerDisplay/>
-            </div>
+  const [selectedCards, setSelectedCards] = useState([]);
 
-        {/* Functionality to pop up victory or loss display */}
-                {/* <BattleVictoryDisplay/> */}
-                {/* <BattleLossDisplay/> */}
-        </div> 
-      </>
-    )
-  }
-    export default Battle
+  useEffect(() => {
+    const cards = JSON.parse(localStorage.getItem("selectedCards") || "[]");
+    setSelectedCards(cards);
+  }, []);
+
+  return (
+    <>
+      <div className="h-screen w-screen fade-in bg-gradient-to-b from-accent to-accent2 relative overscroll-y-none">
+        <div className="">
+          <BattleOpponentDisplay />
+          <BattlePlayerDisplay selectedCards={selectedCards} />
+        </div>
+
+        {/* Later you can toggle victory/loss here */}
+        {/* <BattleVictoryDisplay/> */}
+        {/* <BattleLossDisplay/> */}
+      </div>
+    </>
+  );
+}
+
+export default Battle;
+
 
 //page needs
 //1. Border frame
