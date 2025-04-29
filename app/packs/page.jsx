@@ -72,9 +72,12 @@ export default function Packs() {
           </Link>
         </div>
 
-      <div className="relative top-[12%] text-6xl left-[58%]">
+      <div className="relative top-[10.5%] text-7xl left-[61.5%]">
             Packs
       </div>
+      <div className=" absolute top-[18%] right-[31.3%] z-20 text-white text-4xl">
+              Limit {}#/5 {/*daily battle limit to be insterted here      */}
+          </div>
       {/* Conditionally render when opening a pack */}
       <PackOpenCarousel cards={cardPack} isOpen={isCarouselOpen} onClose={() => setIsCarouselOpen(false)} />
 
@@ -105,10 +108,10 @@ export default function Packs() {
           {/* Packs Display */}
             <div className="flex space-x-8 top-[25%] absolute right-[10%]">
               {/* 1st pack */}
-              <div className="absolute bottom-[17%] -left-6 text-4xl">
+              <div className="absolute bottom-[18.3%] -left-[2.4%] text-4xl">
                   Buy 1
               </div>
-              <div className="absolute bottom-[2%] -left-16 text-4xl">
+              <div className="absolute bottom-[4.9%] -left-[6%] text-4xl">
                   Buy 3
               </div>
               <div className="flip-card">   
