@@ -1,3 +1,5 @@
+
+
 function ExchangeDisplay() {
     return (
         <>
@@ -14,10 +16,10 @@ function ExchangeDisplay() {
                 <p className="z-10 text-[20px] top-[40px] relative flex justify-center text-xl ">
                     100 Gems
                 </p>
-                <div className=" h-[110px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-xl">
-                    Image Location
+                <div className=" h-[130px] w-[200px] bg-[#181030] m-auto border-[5px] border-[#86CEBC] top-11 relative z-10 text-center flex justify-center items-center text-xl rounded-sm">
+                    <img src="/assets/gem-pile.svg" height={130} width={200} alt="Gem-Pile-Image" className="z-10"></img>
                 </div>
-                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[55px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
                 </button>
           </div>
@@ -30,10 +32,10 @@ function ExchangeDisplay() {
                 <p className="z-10 text-[20px] top-[40px] relative flex justify-center text-xl ">
                     250 Gems
                 </p>
-                <div className=" h-[110px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-xl">
-                    Image Location
+                <div className=" h-[130px] w-[200px] bg-[#181030] m-auto border-[5px] border-[#86CEBC] top-11 relative z-10 text-center flex justify-center items-center text-xl rounded-sm">
+                    <img src="/assets/gem-sack.svg" height={130} width={200} alt="Gem-Sack-Image" className="z-10"></img>
                 </div>
-                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[55px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $4.99
                 </button>
           </div>
@@ -46,10 +48,10 @@ function ExchangeDisplay() {
                 <p className="z-10  text-[20px] top-[40px] relative flex justify-center text-xl ">
                     500 Gems
                 </p>
-                <div className=" h-[110px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
-                    Image Location
+                <div className=" h-[130px] w-[200px] bg-[#181030] m-auto border-[5px] border-[#86CEBC] top-11 relative z-10 text-center flex justify-center items-center text-2xl rounded-sm">
+                    <img src="/assets/gem-chest.svg" height={130} width={200} alt="Gem-Chest-Image" className="z-10"></img>
                 </div>
-                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[55px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $9.99
                 </button>
           </div>
@@ -58,7 +60,7 @@ function ExchangeDisplay() {
           <div className="col-start-3 col-span-4 row-start-2 h-[350px] w-[350px]">
           <img src={'/assets/mini-poster.svg'} width={350} height={350} alt="Exchange Box" className="absolute -z-1"></img>
           <div className="relative top-[320px] left-[180px] flex justify-center items-center">
-            <img src={'/assets/250-gem-bonus.svg'} width={250} height={250} alt="500-gem-bonus" className="absolute z-20"></img>
+            <img src={'/assets/250-gem-bonus.svg'} width={250} height={250} alt="250-gem-bonus" className="absolute z-30 rotate-[10deg]"></img>
           </div>
           <div className="bg-[#13122A] h-[60px] w-[200px] m-auto border-4 border-[#86CEBC] top-8 z-10 text-center relative flex justify-center items-center text-2xl ">
                     Crate of Gems
@@ -66,10 +68,10 @@ function ExchangeDisplay() {
                 <p className="z-10  text-[20px] top-[40px] relative flex justify-center text-2xl ">
                     1250 Gems
                 </p>
-                <div className=" h-[145px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
-                    Image Location
+                <div className=" h-[155px] w-[200px] bg-[#181030] m-auto border-[5px] border-[#86CEBC] top-11 relative z-10 text-center flex justify-center items-center text-2xl rounded-sm">
+                    <img src="/assets/gem-crate.svg" height={155} width={200} alt="Gem-Crate-Image" className="z-10"></img>
                 </div>
-                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $24.99
                 </button>
           </div>
@@ -77,8 +79,8 @@ function ExchangeDisplay() {
           {/* Last column - starts at row 2, spans from column 7 to 11 */}
           <div className="col-start-7 col-span-4 row-start-2 h-[350px] w-[350px]">
             <img src={'/assets/mini-poster.svg'} width={350} height={350} alt="Exchange Bix" className="absolute -z-1"></img>
-            <div className="relative top-[320px] left-[180px] flex justify-center items-center">
-                <img src={'/assets/500-gem-bonus.svg'} width={250} height={250} alt="500-gem-bonus" className="absolute z-20"></img>
+            <div className="relative top-[310px] left-[180px] flex justify-center items-center rotate-[10deg]">
+                <img src={'/assets/500-gem-bonus.svg'} width={250} height={250} alt="500-gem-bonus" className="absolute z-30"></img>
             </div>
             <div className="bg-[#13122A] h-[60px] w-[200px] m-auto border-4 border-[#86CEBC] top-8 z-10 text-center relative flex justify-center items-center text-2xl ">
                     Stockpile of Gems
@@ -86,10 +88,10 @@ function ExchangeDisplay() {
                 <p className="z-10  text-[20px] top-[40px] relative flex justify-center text-2xl ">
                     3000 Gems
                 </p>
-                <div className=" h-[145px] w-[200px] m-auto border-4 border-[#86CEBC] top-12 relative z-10 text-center flex justify-center items-center text-2xl">
-                    Image Location
+                <div className=" h-[155px] w-[200px] bg-[#181030] m-auto border-[5px] border-[#86CEBC] top-11 relative z-10 text-center flex justify-center items-center text-2xl rounded-sm">
+                    <img src="/assets/gem-stockpile.svg" height={155} width={200} alt="Gem-Stockpile-Image" className="z-10"></img>
                 </div>
-                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[70px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                <button className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $49.99
                 </button>
           </div>
