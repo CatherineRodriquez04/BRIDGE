@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import DayModal from "@/components/ui/day-modal.jsx";
 
 function Navbar() {
-  const { coins, gems } = usePlayer();
+  const { coins, gems, cash } = usePlayer();
   const [days, setDays] = useState("");
 
   const [isDayModalOpen, setIsDayModalOpen] = useState(false)
@@ -71,7 +71,7 @@ function Navbar() {
         ))}
       </nav>
 
-      <div className="relative left-[1%] top-[5px]">
+      <div className="relative top-[6px] right-[7rem]">
         <Link href="/task">
           <button
             type="button"
@@ -84,7 +84,7 @@ function Navbar() {
 
       <div className="fixed top-0 right-0 left-0 z-10">
         {/* Coins */}
-        <div className="top-8 right-[14.5%] absolute">
+        <div className="top-8 right-[21%] absolute">
           <p className="h-10 w-38 min-w-[10rem] pl-[4rem] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {coins ?? "Loading..."}
           </p>
@@ -97,7 +97,7 @@ function Navbar() {
         </div>
 
         {/* Gems */}
-        <div className="top-8 right-[5.5%] absolute">
+        <div className="top-8 right-[11.5%] absolute">
           <p className="h-10 w-38 min-w-[10rem] pl-[4rem] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {gems ?? "Loading..."}
           </p>
@@ -107,6 +107,14 @@ function Navbar() {
               <p className="text-2xl text-black font-bold">+</p>
             </div>
           </Link>
+        </div>
+        
+        {/* Cash (Real Money)*/}
+        <div className="top-8 right-[5.7%] absolute">
+          <p className="h-10 w-38 min-w-[6rem] pl-[3rem] pr-[1rem] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
+            {cash ?? "Loading..."}
+          </p>
+          <img src="/assets/money-icon.svg" width={25} height={25} alt="Cash" className="absolute left-2 top-[11.5px]" />
         </div>
 
         {/* Day Display */}
