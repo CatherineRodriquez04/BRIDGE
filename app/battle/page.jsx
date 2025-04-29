@@ -7,6 +7,9 @@ import BattlePlayerDisplay from "@/components/ui/battler-player-display";
 import BattleVictoryDisplay from "@/components/ui/battle-victory-display";
 import BattleLossDisplay from "@/components/ui/battle-loss-display";
 
+//backgrounds 
+import 
+
 function Battle() {
   const [selectedCards, setSelectedCards] = useState([]);
 
