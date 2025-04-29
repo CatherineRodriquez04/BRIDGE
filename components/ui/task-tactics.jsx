@@ -133,29 +133,63 @@ function TaskTactics() {
                                     The Shop seres serves as an alternative method of aquiring new cards in the game. Players can purchase cards using various 
                                     forms of in-game currency, both freemium(coins) and premium (gems). The shop is designed to lull players into feeling like they are gettng a good deal
                                     by offering an "alternative" to packs. The illusion of choice is created by allowing the player to openly view the cards available for the day with prices
-                                    and direct feedback. The catch, however, is that the cards in the shop are randomized daily, meaning there is no guarantee the card you want wil be available 
-                                    each day. This works hand in hand with the packs, lowering player skepticism and serving as an "safe" avenue for players
+                                    and direct feedback. The catch, however, is that the cards in the shop are randomized daily, meaning there is no guarantee the card you want will be available 
+                                    to purchase. This works hand in hand with the packs, lowering player skepticism and serving as an "safe" avenue for players
                                     who are weary of packs to still use their currency. This corners a central goal of these tactics, which encourages players to waste as much currrency as
                                     possible in pursuit of the items they desire. The relationship between Packs and the Shop are visible in the Limited Poster events. Players yearning for a
                                     specific card are incorrectly led to believe the card they want will "eventually" be available in the shop. This may be true, but it once again
                                     turns into a "game of chance", as the odds of that specific card being in the shop each day are low.
                                      The shop is skewed towards the purchase of premium currency, as it is necessary to purchase the most powerful cards.
-
+                                    Tip: The shop CAN be a good tool for creating good pairings for cheap, as well as avoiding the more directly chance based packs. Spend what you can when it apppears,
+                                    but don't chase down any specific cards/characters for best results.
                                 </p>
 
                                 <h3 className="pl-12 text-3xl tracking-wide mb-6">Leaderboard</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
-                                    Fill in later
+                                    The leaderboard serves as a major social avenue for players by displaying each's stats, card's collected, earnings, and # of victories. While a fun feature for competitive
+                                    players or those who like to collect, it can also be utilized as a major social pressure by companies. By showing you what others "like you" have earned, the game can capitalize
+                                    on the "keeping up with the jonses" effect to encourage you to spend more to stay competitive. In a "pay to win" situation, those who spend more premium currency (and in turn 
+                                    real life money) will succeed above others. This creates a pressure for those who want to climb the leaderboard and continue to win for status. 
+                                    Tip: While it is ok to be competitive, focus on creating better team combinations to earn victories against "stronger" opponents, and recognize that sometimes its better to be the 
+                                    best of the fair instead of the best of them all. (Secret Hint: Looking at the "Most coins" tab can hint at who is playing "free to play" over buying lots of gems, which could be a
+                                    more healthy metric to follow )
                                 </p>
 
                                 <h3 className="pl-12 text-3xl tracking-wide mb-6">Currency Manipulation</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
-                                    Fill in later
+                                    The exchange page faciliates the transfer of currencies, with the hierarchy of those currencies (from most valuable to least) being Cash (Real Money $$$), Gems (Premium Currency), 
+                                    and Coins (Freemium Currency). In many games, all purchases are completed using the two in-game currencies, those being premium(Gems) and freemium(Coins). The goal of these currencies
+                                    is to seperate the player from the direct monetary value of the items they are purchasing. Most people have a defined sense of value associated with a dollar amount, whether that be 
+                                    for something like a cheap drink or expensive sneakers. By requiring the conversion (or exchange) of money for less well understood currencies, the game can manipulate how the player 
+                                    percieves the value of items and the ammount they are spending. For example, a $10 cosmetic can seem expensive for most, but in a game where players can buy bundles of up to 100,000 Coins,
+                                    1000 coins seems like a small price to pay. By having both paid(cost money) and free(earnable in game) currencies, this effect can be maximized as players become accustomed to spending large
+                                    sums of free currency regularly. Then, when it comes time to spend a few gems, it can seem a lot more stomachable, despite inherently being MUCH more valuable in reality. This can be combined
+                                    with BUNDLE ADVANTAGE, or the prepackaging of currency in preset "bundles" or packages / tiers. This requires a certain amount of real money to be spend to gain a preset amount of gems. This 
+                                    encourages BULK buying, as the alure of slightly more coins for slightly more money can be hard to pass up. The exchange page emphasises this vision, using the size of the boxes, more visually 
+                                    impressive images for large bundles, and "bonus" gems to entice players. In use, this practice can be extended to the shop and packs system by intentionally pricing items in a way that makes it
+                                    impossible to completely spend your earned currency evenly(to 0). For example, a player may only be able to buy a pack of 900 gems, but packs only cost 800 each. This leaves 100 gems remaining,
+                                    encouraging purchase of more gems in the future to "get your money's worth" from the gems you are unable to spend.
+                                    Tip: While it is recommended NOT to exchange real money for gems, if you do intend to do so, do it in small quantities and ONLY buy as much as you need at the moment. The second you think "well if
+                                    I buy more I can afford this thing too" and so on, you are in danger of falling for their TRAP!
                                 </p>
 
                                 <h3 className="pl-12 text-3xl tracking-wide mb-6">Artificial Scarcity</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
-                                    Fill in later
+                                    Scarcity, or the lack of availability of certain items, is often one of the most powerful forces driving rarity and value. This effect is most prominent in real life through the heigh price /
+                                    value of gold and diamonds due to their extreme rarity and the difficulty of obtaining them. While a real concern in the material world, scarcity is nearly nonexistant in the digital realm,
+                                    creating a conflict of interest for companies seeking to sell their products for the highest price possible. To combat this, many games enforce "artificial scarcity" or the forced limiting of 
+                                    availability of certain items,currencies, or cosmetics to increase their value through rarity. In functional terms, a digital card has no inherent value, so by making it difficult to earn,
+                                    the cards become a status symbol of either achievement or power (in game stats wise). This creates a similar "keeping up with the jonses" effect to the leaderboard, which works directly with this 
+                                    effect. Further building on this tactic is the daily limits on progression. By restricting the user from grinding for cards through gameplay or mass buying cards, each attempt becomes inherently more 
+                                    valuable. So, for example, a "free to play" player seeking to earn cards through gameplay alone may struggle to progress if they can't aquire wins against premium (paying) players within their daily allotment
+                                    of battles. This means that players are incentivized to maximize the potential of winning each battle (by having better cards) that usually require spending real money to aquire quickly. Extending this technique
+                                    to both the Shop and Packs further pressures players, as they are incentivized to maximize the chances of getting a higher card (by buying more expensive cards/packs) in the hopes of securing higher tiered cards.
+                                    By creating the fear of falling behind in players minds (like/with the leaderboard), the game can force those who choose to "grind" gameplay progression to buy packs to progress, as well as encouraging those who 
+                                    go the packs route to maximize the value of their limited chances to pull good cards. In real world scenarios, this often forces players to return to the game day after day to remain competitive, taking advantage
+                                    of those seeking to grind by forcing them to expose themselves to the game for longer periods (making them more likely to consider spending real money).                                 
+                                    Tip: While there is sadly no realistic way to fully overcome this tactic, the best way to deal with it is to identify it and prioritize maximizing your strategy in battle to win and gain more currency / free packs
+                                    with the limited chances you have. In the real world, take this as a good limiter to excess play time, and be weary of the thought process of "needing to maximize my limits/ chances for each day."
+
                                 </p>
                         </div>
                     </div>
