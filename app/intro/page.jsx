@@ -20,12 +20,12 @@ import avatar4 from "@/public/assets/racoon.svg";
 import avatar5 from "@/public/assets/swan.svg";
 import avatar6 from "@/public/assets/orca.svg";
 import avatar7 from "@/public/assets/platypus.svg";
-//import avatar8 from "@/public/assets/squid.svg";
+import avatar8 from "@/public/assets/squid.svg";
 import avatar9 from "@/public/assets/parrot.svg";
 import avatar10 from "@/public/assets/swordfish.svg";
 import avatar11 from "@/public/assets/hippo.svg";
 //import avatar12 from "@/public/assets/harpy-eagle.svg";
-//import avatar13 from "@/public/assets/crow.svg";
+import avatar13 from "@/public/assets/crow.svg";
 import avatar14 from "@/public/assets/whale.svg";
 import avatar15 from "@/public/assets/hamster.svg";
 import avatar16 from "@/public/assets/ladybug.svg";
@@ -40,12 +40,12 @@ const avatars = [
     { src: "/assets/swan.svg", image: avatar5 },
     { src: "/assets/orca.svg", image: avatar6 },
     { src: "/assets/platypus.svg", image: avatar7 },
-    //{ src: "/assets/squid.svg", image: avatar8 },
+    { src: "/assets/squid.svg", image: avatar8 },
     { src: "/assets/parrot.svg", image: avatar9 },
     { src: "/assets/swordfish.svg", image: avatar10 },
     { src: "/assets/hippo.svg", image: avatar11 },
     //{ src: "/assets/harpy-eagle.svg", image: avatar12 },
-    //{ src: "/assets/crow.svg", image: avatar13 },
+    { src: "/assets/crow.svg", image: avatar13 },
     { src: "/assets/whale.svg", image: avatar14 },
     { src: "/assets/hamster.svg", image: avatar15 },
     { src: "/assets/ladybug.svg", image: avatar16 },
