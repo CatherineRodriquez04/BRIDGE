@@ -112,6 +112,7 @@ export default function Intro() {
 
         // Query Firestore for each class
         const getCardsByClass = async (role) => {
+            // rank C only
             const q = query(
                 collection(db, "characterCards"),
                 where("class", "==", role),
