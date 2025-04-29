@@ -164,13 +164,13 @@ const ChooseDeck = () => {
           {/* Limit / battle chances per day */}
           {/* Battle Limit Display */}
           {/* Right above Ready button for now */}
-          <div className=" absolute bottom-[35%] left-[38%] text-[#0B0C2A] z-20 text-white text-4xl">
+          <div className=" absolute bottom-[35%] left-[25%] z-20 text-white text-4xl">
               Limit {}#/5 {/*daily battle limit to be insterted here      */}
           </div>
             <Link href="/battle">
               <button
                 type="button"
-                className="absolute w-[30%] left-[31%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 border-4"
+                className="absolute w-[30%] left-[18%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 border-4"
               >
                 Ready
               </button>
