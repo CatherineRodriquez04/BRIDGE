@@ -104,9 +104,7 @@ export default function Packs() {
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
         
         <div className="top-6 right-[520px] absolute z-50">
-          <Link href="/packs">
               <GameNavbar/>
-          </Link>
         </div>
 
       <div className="relative top-[10.5%] text-7xl left-[61.5%]">
