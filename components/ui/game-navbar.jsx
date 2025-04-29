@@ -71,7 +71,7 @@ function Navbar() {
         ))}
       </nav>
 
-      <div className="relative left-[20px] top-[5px]">
+      <div className="relative left-[1%] top-[5px]">
         <Link href="/task">
           <button
             type="button"
@@ -84,8 +84,8 @@ function Navbar() {
 
       <div className="fixed top-0 right-0 left-0 z-10">
         {/* Coins */}
-        <div className="top-8 right-[270px] absolute">
-          <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
+        <div className="top-8 right-[14.5%] absolute">
+          <p className="h-10 w-38 min-w-[10rem] pl-[4rem] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {coins ?? "Loading..."}
           </p>
           <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="absolute left-2 top-2" />
@@ -97,8 +97,8 @@ function Navbar() {
         </div>
 
         {/* Gems */}
-        <div className="top-8 right-[109px] absolute">
-          <p className="h-10 w-38 pl-[80px] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
+        <div className="top-8 right-[5.5%] absolute">
+          <p className="h-10 w-38 min-w-[10rem] pl-[4rem] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {gems ?? "Loading..."}
           </p>
           <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gems" className="absolute left-2 top-[11px]" />
