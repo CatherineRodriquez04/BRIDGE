@@ -6,30 +6,27 @@ function TaskGatcha() {
                 {/* Left Page */}
                 <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
-                        Spending
+                        Gatcha
                     </div>
                     {/* Scores(progressbars) */}
                     <div className="relative flex flex-col items-center top-[27%] h-[30%] w-full text-3xl pt-4 ">
-                        By Currency:
+                        By Pack:
                         <div className="absolute pt-16 text-2xl left-[18%] text-[32px]">
-                            Gold
+                            Standard
                         </div>
                         <div className="absolute pt-28 text-2xl left-[18%]">
                             ###
                         </div>
- 
-
 
                         <div className="absolute pt-16 text-2xl flex justify-center text-[32px]">
-                            Gems
+                            Medium
                         </div>
                         <div className="absolute pt-28 text-2xl flex justify-center">
                             ###
                         </div>
 
-                        
                         <div className="absolute pt-16 text-2xl left-[73%] text-[32px]">
-                            Cash
+                            Premium
                         </div>
                         <div className="absolute pt-28 text-2xl left-[74%]">
                             ###

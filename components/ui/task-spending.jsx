@@ -46,10 +46,10 @@ function TaskSpending() {
 
                 {/* Right Page */}
                 <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto scrollbar-hidden">
-                    <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
+                    <div className="relative flex flex-col items-center top-[7%] h-[1%] text-5xl ">
                         Currency Breakdown
                     </div>
-                    <div className="absolute w-full text-[#a3ffb0] top-[25%]">
+                    <div className="absolute w-full text-[#a3ffb0] top-[20%] pt-8 border-t-4 ">
                         <h2 className="text-center text-3xl tracking-wide mb-6">Currency Types</h2>
 
                         <div className="relative w-full mx-auto">
@@ -75,20 +75,7 @@ function TaskSpending() {
                                 <img src="/assets/money-icon.svg" height={70} width={70} alt="USD-Bundle" className="absolute left-[78%] top-11"></img>
                             </div>
                             </div>
-
-                            {/* Bottom row - 2 items positioned in the gaps */}
-                            {/* <div className="flex justify-evenly"> */}
-                            {/* <div className="text-center w-1/3 ml-[8.33%]">
-                                <p className="text-3xl mb-1">Leaderboard</p>
-                                <p className="text-2xl">2 hrs 30 mins</p>
-                            </div> */}
-
-                            {/* <div className="text-center w-1/3 mr-[8.33%]">
-                                <p className="text-3xl mb-1">Collection</p>
-                                <p className="text-2xl">2 hrs 30 mins.</p>
-                            </div> */}
-                            {/* </div> */}
-                            <h2 className="text-center text-3xl tracking-wide mb-6 mt-24">Currency Breakdown</h2>
+                            <h2 className="text-center text-3xl tracking-wide mb-6 mt-24 pt-8 border-t-4">Currency Breakdown</h2>
 
                                 <h3 className="pl-12 text-3xl tracking-wide mb-6">Coins (Freemium)</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">

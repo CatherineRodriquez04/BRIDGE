@@ -10,6 +10,7 @@ const PlayerContext = createContext();
 export function PlayerProvider({ children }) {
     const [coins, setCoins] = useState(null);
     const [gems, setGems] = useState(null);
+    const [cash, setCash] = useState(null);
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
@@ -23,6 +24,7 @@ export function PlayerProvider({ children }) {
             const data = docSnap.data();
             setCoins(data.coins ?? 0);
             setGems(data.gems ?? 0);
+            setCash(data.cash ?? 0);
             }
         }
         });
@@ -33,8 +35,10 @@ export function PlayerProvider({ children }) {
     const value = {
         coins,
         gems,
+        cash,
         setCoins,
         setGems,
+        setCash,
         userId,
     };
 
