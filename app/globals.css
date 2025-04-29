@@ -38,6 +38,19 @@
     }
 }
 
+/* Scrollbar hidden in elements utlity classes */
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+}
+
 /* Fade In when switching between pages */
 @layer utilities {
     @keyframes fadeIn {

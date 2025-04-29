@@ -45,7 +45,7 @@ function TaskGatcha() {
                 </div>
 
                 {/* Right Page */}
-                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto">
+                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto scrollbar-hidden">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
                         Currency Breakdown
                     </div>
