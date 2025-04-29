@@ -33,6 +33,43 @@ export default function Packs() {
   const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
   const [animatingPack, setAnimatingPack] = useState(null);
 
+  const [packCount, setPackCount] = useState(0); // State to track the number of packs opened
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUserId(user.uid);
+        const docRef = doc(db, "players", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setDays(data.days || 1);
+          setCoins(data.coins || 0);
+
+          const packKey = `packDay${data.days}`; //set pack key
+
+          setPackCount(data[packKey] || 0); //set pack count from db
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  if (packCount >= 3) {
+    // setShowNotEnoughModal(true); // Show modal if pack count exceeds 3
+  }
+
+  // const playerRef = doc(db, "players", userId);
+  // const battleKey = `packDay${days}`;
+
+  //find another way (prob onClick to update packKey packCountS)
+  // await updateDoc(playerRef, {
+  //   coins: coins - 50,
+  //   [packKey]: (packCount + 1),
+  // });
+
+
   const handlePurchase = async (cost, currency, packId) => {
     if (userId === null) return;
 
@@ -76,7 +113,7 @@ export default function Packs() {
             Packs
       </div>
       <div className=" absolute top-[18%] right-[31.3%] z-20 text-white text-4xl">
-              Limit {}#/5 {/*daily battle limit to be insterted here      */}
+              Limit {packCount}/5 {/*daily battle limit to be insterted here  packCount    */} 
       </div>
       {/* Conditionally render when opening a pack */}
       <PackOpenCarousel cards={cardPack} isOpen={isCarouselOpen} onClose={() => setIsCarouselOpen(false)} />
