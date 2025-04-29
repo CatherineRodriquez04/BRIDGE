@@ -1,134 +1,172 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import { useMemo } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react"
-import Card from "@/components/ui/card.jsx"
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { db } from "@/lib/firebase";
+import { collection, getDocs, doc, updateDoc, getDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import Card from "@/components/ui/card.jsx";
 
-// import { Link } from "next/link"
+function PackOpenCarousel({ isOpen, onClose, selectedPack }) {
+  const [cardPool, setCardPool] = useState([]);
+  const [displayCards, setDisplayCards] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [userId, setUserId] = useState(null);
+  const carouselRef = useRef(null);
 
-function getRandomId() {
-    const num = Math.floor(Math.random() * 18) + 1; // 1–18
-    return num < 10 ? `0${num}` : `${num}`; // pad with leading zero
-  }
+  useEffect(() => {
+    const auth = getAuth();
+    const unsub = auth.onAuthStateChanged((user) => {
+      if (user) setUserId(user.uid);
+    });
+    return () => unsub();
+  }, []);
 
-function PackOpenCarousel({ cards, isOpen, onClose }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const carouselRef = useRef(null)
+  useEffect(() => {
+    if (!isOpen || !selectedPack) return;
 
-  const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
+    const fetchCards = async () => {
+      const snapshot = await getDocs(collection(db, "characterCards"));
+      const allCards = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
- 
+      let filtered = [];
 
+      if (selectedPack === "pack1") {
+        filtered = allCards.filter(c => c.rank === "A" || c.rank === "B");
+      } else if (selectedPack === "pack2") {
+        filtered = allCards.filter(c => c.rank === "A" || c.rank === "S");
+      } else if (selectedPack === "pack3") {
+        const ssr = allCards.filter(c => c.rank === "SSR");
+        const ss = allCards.filter(c => c.rank === "SS");
+
+        const chosen = [];
+        if (ssr.length > 0) {
+          chosen.push(ssr[Math.floor(Math.random() * ssr.length)]); // 1 SSR
+        }
+        while (chosen.length < 3 && ss.length > 0) {
+          const index = Math.floor(Math.random() * ss.length);
+          chosen.push(ss.splice(index, 1)[0]);
+        }
+        setCardPool(chosen);
+        return;
+      }
+
+      const chosen = [];
+      while (chosen.length < 3 && filtered.length > 0) {
+        const index = Math.floor(Math.random() * filtered.length);
+        chosen.push(filtered.splice(index, 1)[0]);
+      }
+
+      setCardPool(chosen);
+    };
+
+    fetchCards();
+  }, [isOpen, selectedPack]);
+
+  const handleClaim = async () => {
+    if (!userId || cardPool.length === 0) return;
+
+    const playerRef = doc(db, "players", userId);
+    const snap = await getDoc(playerRef);
+    if (!snap.exists()) return;
+
+    const current = snap.data().characterCards || {};
+    const updated = { ...current };
+
+    for (const card of cardPool) {
+      if (!(card.id in updated)) {
+        updated[card.id] = 1;
+      }
+    }
+
+    await updateDoc(playerRef, { characterCards: updated });
+    onClose();
+  };
 
   const goToNext = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length)
-    setTimeout(() => setIsTransitioning(false), 300)
-  }
+    setCurrentIndex((prev) => (prev + 1) % cardPool.length);
+  };
 
   const goToPrevious = () => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length)
-    setTimeout(() => setIsTransitioning(false), 300)
-  }
+    setCurrentIndex((prev) => (prev - 1 + cardPool.length) % cardPool.length);
+  };
 
-   if (!isOpen || !cards || cards.length === 0) return null
+  if (!isOpen || cardPool.length === 0) return null;
 
   return (
-    <div className="relative flex h-[80%] w-[60%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4 z-50  items-center justify-center mx-auto my-auto overflow-y-none space-x-10">
-      <div className="relative w-full max-w-8xl h-[104%] p-6 flex flex-col" ref={carouselRef}>
-        {/* Close button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+      <div className="relative w-[60%] h-[80%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4">
         <button
           onClick={onClose}
-          className="absolute top-4 right-2 text-white hover:text-gray-300 transition-colors z-30"
-          aria-label="Close"
+          className="absolute top-4 right-4 text-white hover:text-gray-300"
         >
           <X size={32} />
         </button>
 
-        {/* Carousel container */}
-        <div className="flex-1 flex items-center justify-center relative z-10">
-          {/* Navigation buttons */}
+        {/* Carousel */}
+        <div
+          className="relative flex items-center justify-center h-full"
+          ref={carouselRef}
+        >
           <button
             onClick={goToPrevious}
-            className="absolute left-2 z-40 bg-indigo-800 bg-opacity-50 hover:bg-opacity-70 rounded-full p-2 text-white transition-all"
-            aria-label="Previous card"
+            className="absolute left-4 z-10 bg-black bg-opacity-40 hover:bg-opacity-60 p-2 rounded-full"
           >
-            <ChevronLeft size={36} />
+            <ChevronLeft size={36} color="white" />
           </button>
 
-          {/* Cards */}
-          <div className="relative flex items-center justify-center w-full h-full perspective-1000">
-            {randomCardIds.map((cardId, index) => {
+          <div className="flex justify-center items-center w-full h-full transition-transform duration-300">
+            {cardPool.map((card, index) => {
+              let position = (index - currentIndex + cardPool.length) % cardPool.length;
+              if (position > cardPool.length / 2) position -= cardPool.length;
 
-              // Calculate position relative to current card
-              let position = (index - currentIndex + cards.length) % cards.length
-
-              // Normalize position to be between -2 and 2
-              if (position > cards.length / 2) {
-                position = position - cards.length
-              }
-
-              // Determine card position classes
-              let positionClass = ""
-              let zIndex = 0
+              let transform = "";
+              let zIndex = 10;
 
               if (position === 0) {
-                // Center card (focused)
-                positionClass = "scale-150 translate-y-0"
-                zIndex = 30
+                transform = "scale-150";
+                zIndex = 30;
               } else if (position === -1) {
-                // Left card
-                positionClass = "-translate-x-52 scale-90 opacity-100" //originially 90
-                zIndex = 20
+                transform = "-translate-x-52 scale-90";
+                zIndex = 20;
               } else if (position === 1) {
-                // Right card
-                positionClass = "translate-x-52 scale-90 opacity-100" //originally 90
-                zIndex = 20
-              } else if (position === -2) {
-                // Far left card
-                positionClass = "-translate-x-80 scale-75 opacity-95" //originally 70
-                zIndex = 10
-              } else if (position === 2) {
-                // Far right card
-                positionClass = "translate-x-80 scale-75 opacity-95" //originally 70
-                zIndex = 10
+                transform = "translate-x-52 scale-90";
+                zIndex = 20;
               } else {
-                // Hide other cards
-                positionClass = "opacity-0"
-                zIndex = 0
+                transform = "opacity-0";
               }
 
               return (
                 <div
-                  key={index}
-                  className={`absolute transition-all duration-300 ease-in-out transform-gpu ${positionClass}`}
+                  key={card.id}
+                  className={`absolute transition-all duration-300 ease-in-out transform-gpu ${transform}`}
                   style={{ zIndex }}
                 >
-                    {/* Cards for display */}
-                <div className="">
-                    <Card cardId={cardId} />
+                  <Card cardId={card.id} />
                 </div>
-                </div>
-              )
+              );
             })}
           </div>
 
           <button
             onClick={goToNext}
-            className="absolute right-2 z-40 bg-indigo-800 bg-opacity-50 hover:bg-opacity-70 rounded-full p-2 text-white transition-all"
-            aria-label="Next card"
+            className="absolute right-4 z-10 bg-black bg-opacity-40 hover:bg-opacity-60 p-2 rounded-full"
           >
-            <ChevronRight size={36} />
+            <ChevronRight size={36} color="white" />
+          </button>
+        </div>
+
+        <div className="w-full text-center mt-10">
+          <button
+            onClick={handleClaim}
+            className="bg-green-600 text-white text-xl px-6 py-3 rounded-lg hover:bg-green-700"
+          >
+            Claim These Cards
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default PackOpenCarousel
+export default PackOpenCarousel;

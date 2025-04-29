@@ -1,39 +1,40 @@
-//Packs Page
+// Packs Page
 
 "use client"
 
 import { usePlayer } from "@/components/ui/PlayerContent";
-
 import Link from "next/link";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
-// database
+// Firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
-//import Poster from "/assets/poster.png";
-
+// UI
 import GameNavbar from "@/components/ui/game-navbar.jsx";
-
 import PackOpenCarousel from "@/components/ui/pack-open-carousel.jsx";
 
 const cardPack = [
-  {id: "1"},
-  {id: "2"},
-  {id: "3"},
-  {id: "4"},
-  {id: "5"},
-]
-
+  { id: "1" },
+  { id: "2" },
+  { id: "3" },
+];
 
 export default function Packs() {
-  const { coins, gems, setCoins, setGems, userId } = usePlayer();
+  const { coins, gems, setCoins, setGems } = usePlayer();
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
-  const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
+  const [showLimitModal, setShowLimitModal] = useState(false);
+  const [showNoCoinsModal, setShowNoCoinsModal] = useState(false);
+  const [showNoGemsModal, setShowNoGemsModal] = useState(false);
   const [animatingPack, setAnimatingPack] = useState(null);
+  const [currentPack, setCurrentPack] = useState(null);
 
-  const [packCount, setPackCount] = useState(0); // State to track the number of packs opened
+
+  const [days, setDays] = useState(1);
+  const [packKey, setPackKey] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [packCount, setPackCount] = useState(0);
 
   useEffect(() => {
     const auth = getAuth();
@@ -44,61 +45,68 @@ export default function Packs() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          setDays(data.days || 1);
+          const day = data.days || 1;
+          setDays(day);
+          const packsKey = `packsDay${day}`;
+          setPackKey(packsKey);
+          setPackCount(data[packsKey] || 0);
           setCoins(data.coins || 0);
-
-          const packKey = `packDay${data.days}`; //set pack key
-
-          setPackCount(data[packKey] || 0); //set pack count from db
+          setGems(data.gems || 0);
         }
       }
     });
     return () => unsubscribe();
-  }, []);
-
-  if (packCount >= 3) {
-    // setShowNotEnoughModal(true); // Show modal if pack count exceeds 3
-  }
-
-  // const playerRef = doc(db, "players", userId);
-  // const battleKey = `packDay${days}`;
-
-  //find another way (prob onClick to update packKey packCountS)
-  // await updateDoc(playerRef, {
-  //   coins: coins - 50,
-  //   [packKey]: (packCount + 1),
-  // });
-
+  }, [setCoins, setGems]);
 
   const handlePurchase = async (cost, currency, packId) => {
-    if (userId === null) return;
+    if (!userId || !packKey) return;
+
+    const docRef = doc(db, "players", userId);
+
+    if (packCount >= 5) {
+      setShowLimitModal(true);
+      return;
+    }
 
     if (currency === "coins") {
       if (coins >= cost) {
         const newCoins = coins - cost;
         setCoins(newCoins);
-        await updateDoc(doc(db, "players", userId), { coins: newCoins });
-        openPackAnimation(packId);
+        await updateDoc(docRef, {
+          coins: newCoins,
+          [packKey]: packCount + 1,
+        });
+        setPackCount((prev) => prev + 1);
+        setCurrentPack(packId); // store which pack was clicked
+        openPackAnimation();
       } else {
-        setShowNotEnoughModal(true);
+        setShowNoCoinsModal(true);
       }
     } else if (currency === "gems") {
       if (gems >= cost) {
         const newGems = gems - cost;
         setGems(newGems);
-        await updateDoc(doc(db, "players", userId), { gems: newGems });
-        openPackAnimation(packId);
+        await updateDoc(docRef, {
+          gems: newGems,
+          [packKey]: packCount + 1,
+        });
+        setPackCount((prev) => prev + 1);
+        setCurrentPack(packId); // store which pack was clicked
+        openPackAnimation();
       } else {
-        setShowNotEnoughModal(true);
+        setShowNoGemsModal(true);
       }
     }
   };
 
-  const openPackAnimation = (packId) => {
-    setAnimatingPack(packId);
-    setTimeout(() => setAnimatingPack(null), 800);
-    setTimeout(() => setIsCarouselOpen(true), 900);
+  const openPackAnimation = () => {
+    setAnimatingPack(true);
+    setTimeout(() => {
+      setAnimatingPack(false);
+      setIsCarouselOpen(true);
+    }, 800);
   };
+  
   return (
     <>
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative overflow-none">{/*  (for some reason, breaks styling / placement of cards*/}
@@ -116,7 +124,12 @@ export default function Packs() {
               Limit {packCount}/5 {/*daily battle limit to be insterted here  packCount    */} 
       </div>
       {/* Conditionally render when opening a pack */}
-      <PackOpenCarousel cards={cardPack} isOpen={isCarouselOpen} onClose={() => setIsCarouselOpen(false)} />
+      <PackOpenCarousel
+        isOpen={isCarouselOpen}
+        onClose={() => setIsCarouselOpen(false)}
+        selectedPack={currentPack}
+      />
+
 
 
       <div className="flex items-center h-screen fade-in">
@@ -219,14 +232,29 @@ export default function Packs() {
 
       </div>
 
-      {/* Not Enough Money Modal */}
-      {showNotEnoughModal && (
+      {showLimitModal && (
           <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
             <div className="bg-white p-8 rounded-lg relative w-[400px]">
-              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNotEnoughModal(false)}>
-                ×
-              </button>
-              <p className="text-black text-3xl text-center">Not enough money available!</p>
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowLimitModal(false)}>×</button>
+              <p className="text-black text-3xl text-center">You have reached today's battle limit!</p>
+            </div>
+          </div>
+        )}
+
+        {showNoCoinsModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg relative w-[400px]">
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNoCoinsModal(false)}>×</button>
+              <p className="text-black text-3xl text-center">Not enough coins to purchase a pack!</p>
+            </div>
+          </div>
+        )}
+
+        {showNoGemsModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg relative w-[400px]">
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNoCoinsModal(false)}>×</button>
+              <p className="text-black text-3xl text-center">Not enough gems to purchase a pack!</p>
             </div>
           </div>
         )}
@@ -236,12 +264,3 @@ export default function Packs() {
   );
 }
 
-//Original darrk poster large
-// <div className="fixed w-[30%] h-full -z-1 left-24 top-28">
-// <img src={'/assets/poster-2.svg'} width={1000} height={1000} alt="Poster"></img>
-// </div>
-
-// Limited Paper Poster Option
-// <div className="fixed w-[28%] h-full -z-1 left-[6%] top-[15%]">
-// <img src={'/assets/limited-paper-poster.svg'} width={8000} height={800} alt="Poster"></img>
-// </div>
