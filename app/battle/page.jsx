@@ -1,27 +1,53 @@
+"use client";
 
-import BattleOpponentDisplay from "@/components/ui/battle-opponent-display";
+import { useEffect, useState } from "react";
+import BattleOpponentDisplay from "@/components/ui/battle-opponent-display"; 
 import BattlePlayerDisplay from "@/components/ui/battler-player-display";
-
 import BattleVictoryDisplay from "@/components/ui/battle-victory-display";
 import BattleLossDisplay from "@/components/ui/battle-loss-display";
 
-function Battle() {
-    return (
-      <>
-        <div className="h-screen w-screen fade-in bg-gradient-to-b from-accent to-accent2 relative overscroll-y-none relative">{/*  (for some reason, breaks styling / placement of cards*/}
-            <div className="">
-                <BattleOpponentDisplay/>
-                <BattlePlayerDisplay/>
-            </div>
+// backgrounds
+import water from "@/public/assets/water-battle-bg.svg";
+import trio from "@/public/assets/trio-battle-bg.svg";
+import ground from "@/public/assets/ground-battle-bg.svg";
+import air from "@/public/assets/air-battle-bg.svg";
 
-        {/* Functionality to pop up victory or loss display */}
-                {/* <BattleVictoryDisplay/> */}
-                {/* <BattleLossDisplay/> */}
-        </div> 
-      </>
-    )
-  }
-    export default Battle
+function Battle() {
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [backgroundImage, setBackgroundImage] = useState(null);
+
+  useEffect(() => {
+    const cards = JSON.parse(localStorage.getItem("selectedCards") || "[]");
+    setSelectedCards(cards);
+
+    const backgrounds = [water, trio, ground, air];
+    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    setBackgroundImage(randomBg);
+  }, []);
+
+  return (
+    <>
+      <div
+        className="h-screen w-screen fade-in bg-cover bg-center relative overscroll-y-none"
+        style={{
+          backgroundImage: backgroundImage ? `url(${backgroundImage.src})` : "none"
+        }}
+      >
+        <BattleOpponentDisplay />
+        <BattlePlayerDisplay selectedCards={selectedCards} />
+
+        {/* Optional victory/loss display */}
+        {/* <BattleVictoryDisplay /> */}
+        {/* <BattleLossDisplay /> */}
+      </div>
+    </>
+  );
+}
+
+export default Battle;
+
+
+
 
 //page needs
 //1. Border frame
