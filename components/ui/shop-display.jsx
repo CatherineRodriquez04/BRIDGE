@@ -9,6 +9,9 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
+import ShopSold from "@/components/ui/shop-sold.jsx";
+
+
 function getRandomId() {
   const num = Math.floor(Math.random() * 18) + 1; // 1–18
   return num < 10 ? `0${num}` : `${num}`; // pad with leading zero
@@ -67,6 +70,8 @@ function ShopDisplay() {
             >
               <div className="absolute h-full w-full flex justify-center mx-auto z-10">
                 <Card cardId={cardId} />
+                {/* Crates Created to replace / display when card is purchased */}
+                {/* <ShopSold/> */}
               </div>
               <div className="relative h-[40px] w-[100%] top-[360px] rounded-md bg-[#957046] m-auto z-40" />
               
