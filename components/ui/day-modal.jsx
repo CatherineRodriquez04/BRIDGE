@@ -34,7 +34,7 @@ function DayModal({ isOpen, onClose }) {
 
     return (
         <>
-        <div className="relative top-[170px] left-[33%] z-50 h-[600px] w-[600px] ">
+        <div className="relative top-[170px] left-[35%] z-50 h-[600px] w-[600px] ">
             <img src="/assets/paper-mini-poster.svg" height={600} width={600} alt="Paper-Poster-Image" className="absolute -z-1"></img>
             {/* Close button */}
             <button
