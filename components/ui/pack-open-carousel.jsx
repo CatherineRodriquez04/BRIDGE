@@ -96,12 +96,12 @@ function PackOpenCarousel({ isOpen, onClose, selectedPack }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
       <div className="relative w-[60%] h-[80%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4">
-        <button
+        {/* <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white hover:text-gray-300"
         >
           <X size={32} />
-        </button>
+        </button> */}
 
         {/* Carousel */}
         <div
@@ -159,7 +159,7 @@ function PackOpenCarousel({ isOpen, onClose, selectedPack }) {
         <div className="w-full text-center mt-10">
           <button
             onClick={handleClaim}
-            className="bg-green-600 text-white text-xl px-6 py-3 rounded-lg hover:bg-green-700"
+            className="text-4xl bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg px-5 py-1.5 mt-2 border-4"
           >
             Claim These Cards
           </button>
