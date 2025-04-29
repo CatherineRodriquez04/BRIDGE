@@ -77,7 +77,7 @@ export default function Packs() {
       </div>
       <div className=" absolute top-[18%] right-[31.3%] z-20 text-white text-4xl">
               Limit {}#/5 {/*daily battle limit to be insterted here      */}
-          </div>
+      </div>
       {/* Conditionally render when opening a pack */}
       <PackOpenCarousel cards={cardPack} isOpen={isCarouselOpen} onClose={() => setIsCarouselOpen(false)} />
 
