@@ -33,7 +33,7 @@ export default function Packs() {
   const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
   const [animatingPack, setAnimatingPack] = useState(null);
 
-  const handlePurchase = async (cost, currency) => {
+  const handlePurchase = async (cost, currency, packId) => {
     if (userId === null) return;
 
     if (currency === "coins") {
@@ -41,7 +41,7 @@ export default function Packs() {
         const newCoins = coins - cost;
         setCoins(newCoins);
         await updateDoc(doc(db, "players", userId), { coins: newCoins });
-        openPackAnimation();
+        openPackAnimation(packId);
       } else {
         setShowNotEnoughModal(true);
       }
@@ -50,15 +50,15 @@ export default function Packs() {
         const newGems = gems - cost;
         setGems(newGems);
         await updateDoc(doc(db, "players", userId), { gems: newGems });
-        openPackAnimation();
+        openPackAnimation(packId);
       } else {
         setShowNotEnoughModal(true);
       }
     }
   };
 
-  const openPackAnimation = () => {
-    setAnimatingPack('pack1');
+  const openPackAnimation = (packId) => {
+    setAnimatingPack(packId);
     setTimeout(() => setAnimatingPack(null), 800);
     setTimeout(() => setIsCarouselOpen(true), 900);
   };
@@ -118,12 +118,12 @@ export default function Packs() {
                       Wish:  3/5
                     </div>
                   {/* Purchase buttons */}
-                  <button type="button" onClick={() => handlePurchase(100, "coins")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                  <button type="button" onClick={() => handlePurchase(100, "coins", "pack1")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                       <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                       100 Coins
                   </button>
 
-                  <button type="button" onClick={() => handlePurchase(750, "coins")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                  <button type="button" onClick={() => handlePurchase(750, "coins", "pack1")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
                       <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                       750 Coins
                   </button>
@@ -137,21 +137,21 @@ export default function Packs() {
                           Wish:  3/15
                         </div>
                   {/* Purchase buttons */}
-                          <button type="button" onClick={() => handlePurchase(500, "coins")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                          <button type="button" onClick={() => handlePurchase(500, "coins", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                               500 Coins
                           </button>
 
-                          <button type="button" onClick={() => handlePurchase(150, "gems")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
+                          <button type="button" onClick={() => handlePurchase(150, "gems", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
                               <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
                               150 Gems
                           </button>
                       </div>
                       <div className="">
-                          <button type="button" onClick={() => handlePurchase(2500, "coins")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                          <button type="button" onClick={() => handlePurchase(2500, "coins", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
                               2500 coins</button>
-                          <button type="button" onClick={() => handlePurchase(450, "gems")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
+                          <button type="button" onClick={() => handlePurchase(450, "gems", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10  border-2">
                               <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2"/>
                               450 gems</button>
                       </div>
@@ -165,11 +165,11 @@ export default function Packs() {
                       Wish:  3/10
                     </div>
                   {/* Purchase buttons */}
-                  <button type="button" onClick={() => handlePurchase(600, "gems")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
+                  <button type="button" onClick={() => handlePurchase(600, "gems", "pack3")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
                       <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
                       600 Gems
                   </button>
-                  <button type="button" onClick={() => handlePurchase(1200, "gems")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
+                  <button type="button" onClick={() => handlePurchase(1200, "gems", "pack3")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-8 mx-auto border-2">
                       <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
                       1200 Gems
                   </button>
