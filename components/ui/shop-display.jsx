@@ -49,7 +49,7 @@ function ShopDisplay() {
             characterCards: updatedCards,
           });
 
-          console.log(`Purchased card ${cardID} successfully!`);
+          //console.log(`Purchased card ${cardID} successfully!`);
         }
       } else {
         setShowNotEnoughModal(true);
