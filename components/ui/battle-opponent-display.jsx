@@ -106,15 +106,15 @@ function BattleOpponentDisplay() {
 
             {opponentCards.length > 0 && (
                 <>
-                    <div className="absolute flex rounded-lg p-4 left-[28%] top-[8%]">
+                    <div className="absolute flex rounded-lg p-4 left-[28%] top-[5%]">
                         <Card cardId={opponentCards[0].id} />
                     </div>
 
-                    <div className="absolute flex rounded-lg p-4 top-[12%] left-[42.5%]">
+                    <div className="absolute flex rounded-lg p-4 top-[9%] left-[42.5%]">
                         <Card cardId={opponentCards[1].id} />
                     </div>
 
-                    <div className="absolute flex rounded-lg p-4 right-[28%] top-[8%]">
+                    <div className="absolute flex rounded-lg p-4 right-[28%] top-[5%]">
                         <Card cardId={opponentCards[2].id} />
                     </div>
                 </>
