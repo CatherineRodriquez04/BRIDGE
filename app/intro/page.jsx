@@ -141,7 +141,7 @@ export default function Intro() {
             gems: 150,
             days: 1,
             wins: 0,
-            score: 0,
+            // score: 0,
             cash: 100,
             shopDay1: 0,
             battlesDay1: 0,
