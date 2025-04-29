@@ -4,7 +4,7 @@ function TaskTactics() {
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
                 {/* Left Page */}
-                <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden">
+                <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden ">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
                         Tactics
                     </div>
@@ -48,7 +48,7 @@ function TaskTactics() {
                     </div>
                 </div>
                 {/* Right Page */}
-                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto">
+                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto scrollbar-hidden ">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
                         Tactics Breakdown
                     </div>
