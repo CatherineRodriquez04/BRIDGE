@@ -11,11 +11,11 @@ export default function HomeAnnouncements() {
 
   // Sample gallery images - replace with your actual images later
   const images = [
-    //"/assets/announcements/announce-test.svg?height=400&width=400",
-    "/assets/announcements/CardPackAd.png?height=400&width=400",
-    "/assets/announcements/JumboAdBonus.png?height=400&width=400",
-    "/assets/announcements/LeaderboardAd.png?height=400&width=400",
-    //"/placeholder.svg?height=400&width=400",
+    "/assets/announce-test.svg?height=400&width=400",
+    "/assets/pack-ad.svg?height=400&width=400",
+    "/assets/week-reward-ad.svg?height=400&width=400",
+    "/assets/free-gift-ad.svg?height=400&width=400",
+    "/assets/squidy-sea-ad.svg?height=400&width=400",
   ]
 
   // Auto-advance the carousel
@@ -41,7 +41,7 @@ export default function HomeAnnouncements() {
     <div className="absolute top-24 right-6 w-[30%] h-96">
       <div className="relative w-full rounded-lg overflow-hidden border border-accent3">
         {/* Carousel wrapper */}
-        <div className="relative h-[410px] overflow-hidden rounded-lg bg-[#0B0C2A]">
+        <div className="relative h-[310px] overflow-hidden rounded-lg bg-[#0B0C2A]">
           {/* Gallery items */}
           {images.map((image, index) => (
             <div
