@@ -84,7 +84,7 @@ function Navbar() {
 
       <div className="fixed top-0 right-0 left-0 z-10">
         {/* Coins */}
-        <div className="top-8 right-[21%] absolute">
+        <div className="top-8 right-[20%] absolute">
           <p className="h-10 w-38 min-w-[10rem] pl-[4rem] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {coins ?? "Loading..."}
           </p>
@@ -97,7 +97,7 @@ function Navbar() {
         </div>
 
         {/* Gems */}
-        <div className="top-8 right-[11.5%] absolute">
+        <div className="top-8 right-[11.2%] absolute">
           <p className="h-10 w-38 min-w-[10rem] pl-[4rem] pr-[45px] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {gems ?? "Loading..."}
           </p>
