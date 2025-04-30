@@ -13,10 +13,6 @@ function ExchangeDisplay() {
     const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
     const [showPurchasedModal, setPurchasedModal] = useState(false);
     const [showConversionModal, setConversionModal] = useState(false); // give coins purchased throuhg exchange (from cash)
-    
-    const [totalCashSpentCount, setTotalCashSpentCount] = useState(0);
-    const [totalCashSpentCountKey, setTotalCashSpentCountKey] = useState("");
-
 
 //maybe add in exchangeId for special animation?
     const handlePurchase = async (cost, currency, purchased) => {
@@ -29,11 +25,7 @@ function ExchangeDisplay() {
             setCash(newCash);
             await updateDoc(doc(db, "players", userId), { cash: newCash });
 
-            //total Cash Spent
-            // const userRef = doc(db, "players", userId);
-            // const userSnap = await getDoc(userRef);
-            // const prevTotalSpent = userSnap.data().totalCashSpent || 0;
-            // await updateDoc(userRef, { totalCashSpent: prevTotalSpent + cost });
+            //track total cash spent track
             await updateDoc(doc(db, "players", userId), {
                 totalCashSpent: increment(cost),
               });
@@ -42,6 +34,7 @@ function ExchangeDisplay() {
             const newGems = gems + purchased; //add purchased (gems bundle amount (passed in as arg))
             setGems(newGems);
             await updateDoc(doc(db, "players", userId), { gems: newGems });
+
             // Do animation / function
             //give gems
             setPurchasedModal(true); //not enough money modal
@@ -58,6 +51,12 @@ function ExchangeDisplay() {
             const newGems = gems - cost;
             setGems(newGems);
             await updateDoc(doc(db, "players", userId), { gems: newGems });
+
+            // increment gems spent
+            await updateDoc(doc(db, "players", userId), {
+                totalGemsSpent: increment(cost),
+              });
+
             //facilitate currendy exchange
             setConversionModal(true); //not enough money modal
             //give coins

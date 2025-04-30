@@ -10,8 +10,8 @@ function TaskSpending() {
     const [totalGemsSpent, setTotalGemsSpent] = useState(0);
     const [totalCashSpent, setTotalCashSpent] = useState(0);
 
-    const [userId, setUserId] = useState(null);
-    
+    // const [userId, setUserId] = useState(null);
+
     useEffect(() => {
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -20,7 +20,10 @@ function TaskSpending() {
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               const data = docSnap.data();
-              setTotalCashSpent(data.totalCashSpent || 0); // ✅ Set value here
+              
+              setTotalCoinsSpent(data.totalCoinsSpent || 0);
+              setTotalGemsSpent(data.totalGemsSpent || 0);
+              setTotalCashSpent(data.totalCashSpent || 0);
             }
           }
         });
@@ -44,14 +47,14 @@ function TaskSpending() {
                             Gold
                         </div>
                         <div className="absolute pt-28 text-2xl left-[18%]">
-                            ###
+                            {totalCoinsSpent}
                         </div>
 
                         <div className="absolute pt-16 text-2xl flex justify-center text-[32px]">
                             Gems
                         </div>
                         <div className="absolute pt-28 text-2xl flex justify-center">
-                            ###
+                            {totalGemsSpent}
                         </div>
 
                         
