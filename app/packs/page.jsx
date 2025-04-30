@@ -45,8 +45,6 @@ export default function Packs() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          //const day = data.days || 1;
-          //setDays(day);
           const packsKey = `packsDay${days}`;
           setPackKey(packsKey);
           setPackCount(data[packsKey] || 0);
@@ -56,7 +54,7 @@ export default function Packs() {
       }
     });
     return () => unsubscribe();
-  }, [setCoins, setGems]);
+  }, [days, setCoins, setGems]);
 
   const handlePurchase = async (cost, currency, packId) => {
     if (!userId || !packKey) return;

@@ -56,12 +56,11 @@ function ShopDisplay() {
           setCoins(data.coins || 0);
           setGems(data.gems || 0);
           setOwnedCards(data.characterCards || {});
-
         }
       }
     });
     return () => unsubscribe();
-  }, [setCoins, setGems]);
+  }, [days, setCoins, setGems]);
 
   const handlePurchase = async (cost, currency, cardID) => {
     if (!userId || !shopKey) return;

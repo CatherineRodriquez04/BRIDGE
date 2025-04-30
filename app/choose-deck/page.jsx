@@ -47,11 +47,10 @@ const ChooseDeck = () => {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          setDays(data.days || 1);
           setCoins(data.coins || 0);
-          const battleKey = `battlesDay${data.days}`;
+          const battleKey = `battlesDay${days}`;
           setBattleCount(data[battleKey] || 0);
-
+  
           const cards = Object.entries(data.characterCards || {}).flatMap(([id, qty]) =>
             Array(qty).fill(id)
           );
@@ -60,7 +59,7 @@ const ChooseDeck = () => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [days]);
 
   useEffect(() => {
     const applyFilter = async () => {
