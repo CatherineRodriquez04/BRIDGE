@@ -16,7 +16,7 @@ function TaskTactics() {
                             {/* Top row - 3 items */}
                             <div className="flex justify-between mb-8">
                             <div className="text-center w-1/3">
-                                <button onClick="" className="text-3xl mb-1">Packs/Gatcha</button>
+                                <button className="text-3xl mb-1">Packs/Gatcha</button>
                                 <p className="text-2xl ">1/5</p>
                                 {/* Fillable value later */}
                             </div>
@@ -60,7 +60,7 @@ function TaskTactics() {
                             {/* Top row - 3 items */}
                             <div className="flex justify-between mb-8">
                             <div className="text-center w-1/3">
-                                <button onclick="" className="text-4xl mb-1">Packs/Gatcha</button>
+                                <button className="text-4xl mb-1">Packs/Gatcha</button>
                                 <p className="text-2xl ">Pack Visuals</p>
                                 <p className="text-2xl ">Card Rarity</p>
                                 <p className="text-2xl ">Pricing Structure</p>

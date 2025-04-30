@@ -41,13 +41,13 @@ function TaskResults() {
                     <div className="relative flex flex-col items-center top-[5%] h-[1%] text-[58px]">
                         Results
                     </div>
-                        <div className="relative w-full mx-auto pt-[35%]">
+                        <div className="relative w-full mx-auto pt-[30%]">
                             <h2 className="text-center text-5xl tracking-wide mb-6">Daily Limits</h2>
 
                             {/* Top row - 3 items */}
                             <div className="flex justify-between mb-8">
                                 <div className="text-center w-1/3">
-                                    <button onClick="" className="text-5xl mb-1">Shop</button>
+                                    <button className="text-5xl mb-1">Shop</button>
                                     <p className="text-4xl ">{shopCount}/3</p>
                                     {/* Fillable value later */}
                                 </div>

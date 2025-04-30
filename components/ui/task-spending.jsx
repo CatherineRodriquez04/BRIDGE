@@ -6,6 +6,28 @@ import Link from "next/link";
 
 function TaskSpending() {
 
+    const [totalCoinsSpent, setTotalCoinsSpent] = useState(0);
+    const [totalGemsSpent, setTotalGemsSpent] = useState(0);
+    const [totalCashSpent, setTotalCashSpent] = useState(0);
+
+    const [userId, setUserId] = useState(null);
+    
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            const docRef = doc(db, "players", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              setTotalCashSpent(data.totalCashSpent || 0); // ✅ Set value here
+            }
+          }
+        });
+      
+        return () => unsubscribe();
+      }, []);
+
 
     return (
         <>
@@ -24,8 +46,6 @@ function TaskSpending() {
                         <div className="absolute pt-28 text-2xl left-[18%]">
                             ###
                         </div>
- 
-
 
                         <div className="absolute pt-16 text-2xl flex justify-center text-[32px]">
                             Gems
@@ -39,7 +59,7 @@ function TaskSpending() {
                             Cash
                         </div>
                         <div className="absolute pt-28 text-2xl left-[74%]">
-                            ###
+                            {totalCashSpent}
                         </div>
                     </div>
                     {/* Overall Score: */}

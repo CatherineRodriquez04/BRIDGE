@@ -3,7 +3,8 @@ import { usePlayer } from "@/components/ui/PlayerContent";
 
 // firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
+
 import { db } from "@/lib/firebase";
 
 function ExchangeDisplay() {
@@ -12,6 +13,10 @@ function ExchangeDisplay() {
     const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
     const [showPurchasedModal, setPurchasedModal] = useState(false);
     const [showConversionModal, setConversionModal] = useState(false); // give coins purchased throuhg exchange (from cash)
+    
+    const [totalCashSpentCount, setTotalCashSpentCount] = useState(0);
+    const [totalCashSpentCountKey, setTotalCashSpentCountKey] = useState("");
+
 
 //maybe add in exchangeId for special animation?
     const handlePurchase = async (cost, currency, purchased) => {
@@ -23,11 +28,20 @@ function ExchangeDisplay() {
             const newCash = cash - cost;
             setCash(newCash);
             await updateDoc(doc(db, "players", userId), { cash: newCash });
+
+            //total Cash Spent
+            // const userRef = doc(db, "players", userId);
+            // const userSnap = await getDoc(userRef);
+            // const prevTotalSpent = userSnap.data().totalCashSpent || 0;
+            // await updateDoc(userRef, { totalCashSpent: prevTotalSpent + cost });
+            await updateDoc(doc(db, "players", userId), {
+                totalCashSpent: increment(cost),
+              });
+      
             // give/add gems
             const newGems = gems + purchased; //add purchased (gems bundle amount (passed in as arg))
             setGems(newGems);
             await updateDoc(doc(db, "players", userId), { gems: newGems });
-            
             // Do animation / function
             //give gems
             setPurchasedModal(true); //not enough money modal
@@ -135,7 +149,7 @@ function ExchangeDisplay() {
                     <img src="/assets/gem-crate.svg" height={155} width={200} alt="Gem-Crate-Image" className="z-10"></img>
                 </div>
                 <button 
-                onClick={() => handlePurchase(25, "cash, 1500")}
+                onClick={() => handlePurchase(25, "cash", 1500)}
                 className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $24.99
                 </button>
