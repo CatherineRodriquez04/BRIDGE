@@ -178,7 +178,7 @@ function ExchangeDisplay() {
     </div>
                 {/* Convert button (transfer ## gold -> gems (CHange amount each day (advertise)) */}
               {/* Convert Currency Button */}
-              <div className="relative bottom-[1.5rem] left-[83%]">
+              <div className="relative bottom-[4rem] left-[83%]">
                     <button 
                     onClick={() => handleConversion(100, "gems", 1000)}
                     className="absolute h-[60px] w-[160px] flex items-center justify-center  bg-[#A67C4E] border-[#5E4112] font-medium rounded-lg text-3xl px-5 py-4 border-[5px] text-black transition active:scale-95 z-50">

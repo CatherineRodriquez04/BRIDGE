@@ -126,13 +126,13 @@ function TaskResults() {
 
               //Do same as above for tactics score
 
-
-
-              //for final score
               const tacticsScore = data.tacticsScore || 0; // Make sure this is stored in Firestore
                 setTacticsScore(tacticsScore);
 
+
+
                 // ✅ Use locally-calculated values
+                //Final Score
                 const totalScore = calcTotalScore(score, gatchaScore, tacticsScore);
                 setTotalScore(totalScore);
 
