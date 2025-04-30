@@ -24,15 +24,15 @@ export default function Exchange() {
           <ExchangeDisplay/>
 
         <div className="absolute bottom-0 right-16 ">
-          <div className=" h-[53px] w-[160px] top-[275px] relative z-10 m-auto text-[#13122A] text-4xl bold flex justify-center  ">
+          <div className=" h-[53px] w-[160px] top-[264px] relative z-10 m-auto text-[#13122A] text-4xl bold flex justify-center  ">
             Conversion
           </div>
           <div className="">
              
               {/* Gem */}
-              <div className=" h-[60px] w-[150px]  top-[260px] left-[20px] relative z-10 text-[#13122A] text-3xl bold ">
+              <div className=" h-[60px] w-[150px]  top-[16.2rem] left-[20px] relative z-10 text-[#13122A] text-3xl bold ">
                 <img src={'/assets/single-gem.svg'} width={90} height={90} alt="Exchange Sign Gems" className=""></img>
-                <p className="absolute text-white bottom-[35px] left-[25px]">100 </p>
+                <p className="absolute text-white bottom-[35px] left-[25px]">100</p>
               </div>
               {/* Arrow Left -> Right  */}
               <div className=" h-[60px] w-[150px] top-[205px] left-[105px] relative z-10 text-[#13122A] text-3xl bold ">
@@ -40,9 +40,9 @@ export default function Exchange() {
               </div>
               
               {/* Coin */}
-              <div className=" h-[60%] w-[150px] top-[160px] left-[190px] relative z-10 text-[#13122A] text-3xl bold ">
+              <div className=" h-[60%] w-[150px] top-[10.1rem] left-[190px] relative z-10 text-[#13122A] text-3xl bold ">
                 <img src={'/assets/coins-bundle.svg'} width={90} height={90} alt="Exchange Sign Coins" className=""></img>
-                <p className="absolute text-white bottom-[50px] right-[85px]">1000 </p>
+                <p className="absolute text-white bottom-[50px] right-[85px]">1000</p>
 
               </div>
           </div>
