@@ -176,15 +176,6 @@ function ExchangeDisplay() {
                 </button>
             </div>
     </div>
-                {/* Convert button (transfer ## gold -> gems (CHange amount each day (advertise)) */}
-              {/* Convert Currency Button */}
-              <div className="relative bottom-[4rem] left-[83%]">
-                    <button 
-                    onClick={() => handleConversion(100, "gems", 1000)}
-                    className="absolute h-[60px] w-[160px] flex items-center justify-center  bg-[#A67C4E] border-[#5E4112] font-medium rounded-lg text-3xl px-5 py-4 border-[5px] text-black transition active:scale-95 z-50">
-                        Convert
-                    </button>
-              </div>
                 
                 {/* Not Enough Money Modal */}
                 {showNotEnoughModal && (
@@ -246,6 +237,42 @@ function ExchangeDisplay() {
                 </div>
                     )}
             </div>
+                        {/* Exchange Sign */}
+                        <div className="absolute bottom-0 right-16 ">
+                    <div className=" h-[53px] w-[160px] top-[264px] relative z-10 m-auto text-[#13122A] text-4xl bold flex justify-center  ">
+                        Conversion
+                    </div>
+                <div className="">
+                    
+                    {/* Gem */}
+                    <div className=" h-[60px] w-[150px]  top-[16.2rem] left-[20px] relative z-10 text-[#13122A] text-3xl bold ">
+                        <img src={'/assets/single-gem.svg'} width={90} height={90} alt="Exchange Sign Gems" className=""></img>
+                        <p className="absolute text-white bottom-[35px] left-[25px]">100</p>
+                    </div>
+                    {/* Arrow Left -> Right  */}
+                    <div className=" h-[60px] w-[150px] top-[205px] left-[105px] relative z-10 text-[#13122A] text-3xl bold ">
+                        <img src={'/assets/exchange-arrow.svg'} width={80} height={80} alt="Exchange Sign Gems" className=""></img>
+                    </div>
+                    
+                    {/* Coin */}
+                    <div className=" h-[60%] w-[150px] top-[10.1rem] left-[190px] relative z-10 text-[#13122A] text-3xl bold ">
+                        <img src={'/assets/coins-bundle.svg'} width={90} height={90} alt="Exchange Sign Coins" className=""></img>
+                        <p className="absolute text-white bottom-[50px] right-[85px]">1000</p>
+
+                        {/* Convert button (transfer ## gold -> gems (CHange amount each day (advertise)) */}
+                    {/* Convert Currency Button */}
+                    <div className="relative top-[0.6rem] right-[80%]">
+                            <button 
+                            onClick={() => handleConversion(100, "gems", 1000)}
+                            className="absolute h-[60px] w-[160px] flex items-center justify-center  bg-[#A67C4E] border-[#5E4112] font-medium rounded-lg text-3xl px-5 py-4 border-[5px] text-black transition active:scale-95 z-50">
+                                Convert
+                            </button>
+                    </div>
+                    </div>
+                </div>
+                <img src={'/assets/wood-sign.svg'} width={300} height={300} alt="Exchange Sign" className="-z-1"></img> {/*Can Swap with sign.svg for bright version  */}
+                
+                </div>
         </>
     );
 
