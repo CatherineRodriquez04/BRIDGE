@@ -85,7 +85,7 @@ function DayModal({ isOpen, onClose }) {
           </div>
           <div className="text-center w-1/3">
             <p className="text-5xl mb-1">Packs</p>
-            <p className="text-4xl">{packCount}/3</p>
+            <p className="text-4xl">{packCount}/5</p>
           </div>
         </div>
       </div>
