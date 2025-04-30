@@ -1,37 +1,31 @@
-"use client";
-
 import { usePlayer } from "@/components/ui/PlayerContent";
-
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "@/lib/firebase";
-
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
 import DayModal from "@/components/ui/day-modal.jsx";
 
 function Navbar() {
-  const { coins, gems, cash, days } = usePlayer();
+  const { coins, gems, cash, days, setDay } = usePlayer(); // include setDays
 
-  const [isDayModalOpen, setIsDayModalOpen] = useState(false)
-
+  const [isDayModalOpen, setIsDayModalOpen] = useState(false);
 
   useEffect(() => {
-      const auth = getAuth();
-      const unsubscribe = onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          const docRef = doc(db, "players", user.uid);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            //setDays(data.days || "1");
-          }
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, "players", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setDay(data.days || "1");  // Update the context when Firestore data changes
         }
-      });
-      return () => unsubscribe();
-    }, []);
+      }
+    });
+    return () => unsubscribe();
+  }, [setDay]);  // Ensure that the effect runs only once and subscribes to updates
 
   function NavButton({ label, href, index }) {
     const isLeftSide = index < 6;
@@ -108,7 +102,7 @@ function Navbar() {
           </Link>
         </div>
         
-        {/* Cash (Real Money)*/}
+        {/* Cash (Real Money) */}
         <div className="top-8 right-[5.7%] absolute">
           <p className="h-10 w-38 min-w-[6rem] pl-[3rem] pr-[1rem] text-[20px] rounded-lg border border-[#C8E3B8] text-white bg-[#382966] flex items-center">
             {cash ?? "Loading..."}
@@ -124,7 +118,7 @@ function Navbar() {
             </div>
               <img src="/assets/paper-mini-poster.svg" width={300} height={300} alt="Day Poster" className="absolute " />    
         </button>
-        <DayModal isOpen={isDayModalOpen} onClose={() => setIsDayModalOpen(false)}/> 
+        <DayModal isOpen={isDayModalOpen} onClose={() => setIsDayModalOpen(false)} /> 
 
       </div>
     </>

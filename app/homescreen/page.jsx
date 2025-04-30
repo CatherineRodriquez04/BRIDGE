@@ -176,8 +176,9 @@ export default function HomeScreen() {
             </div>
             {/* Set to popup at beginning of day */}
             
-            <DailyRewardPopup isOpen={isDailyRewardPopupOpen} onClose={() => setIsDailyRewardPopupOpen(false)}/> 
             <HomeAnnouncements />
+            <DailyRewardPopup isOpen={isDailyRewardPopupOpen} onClose={() => setIsDailyRewardPopupOpen(false)}/> 
+            
             
             {/* Temp for display/ open popup for now until day functionality is in */}
             <button
