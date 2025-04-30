@@ -123,7 +123,7 @@ function LeaderboardDisplay() {
         )}
       </div>
 
-      <div className="fixed left-[10%] w-[80%] top-[54%] max-h-[500px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-auto z-20">
+      <div className="fixed left-[10%] w-[80%] top-[54%] max-h-[475px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-auto z-20">
         <table className="table-fixed w-full text-center text-2xl">
           <thead className="bg-[#0B0C2A] text-2xl sticky top-0 z-30">
             <tr>
