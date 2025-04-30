@@ -4,13 +4,32 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "@/lib/firebase";
 import Link from "next/link";
 
+function CalcSpendingScore(totalCashSpent) {
+    let spendingScore;
+  
+    if (totalCashSpent < 2) {
+      spendingScore = 500;
+    } else if (totalCashSpent <= 5) {
+      spendingScore = 400;
+    } else if (totalCashSpent <= 10) {
+      spendingScore = 300;
+    } else if (totalCashSpent <= 25) {
+      spendingScore = 200;
+    } else if (totalCashSpent <= 50) {
+      spendingScore = 100;
+    } else {
+      spendingScore = 0;
+    }
+
+    return spendingScore;
+  }
+
 function TaskSpending() {
 
     const [totalCoinsSpent, setTotalCoinsSpent] = useState(0);
     const [totalGemsSpent, setTotalGemsSpent] = useState(0);
     const [totalCashSpent, setTotalCashSpent] = useState(0);
-
-    // const [userId, setUserId] = useState(null);
+    const [spendingScore, setSpendingScore] = useState(0);
 
     useEffect(() => {
         const auth = getAuth();
@@ -20,17 +39,21 @@ function TaskSpending() {
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
               const data = docSnap.data();
-              
+      
               setTotalCoinsSpent(data.totalCoinsSpent || 0);
               setTotalGemsSpent(data.totalGemsSpent || 0);
-              setTotalCashSpent(data.totalCashSpent || 0);
+      
+              const cashSpent = data.totalCashSpent || 0; // ✅ define this first
+              setTotalCashSpent(cashSpent);
+      
+              const score = CalcSpendingScore(cashSpent); // ✅ use the correct variable
+              setSpendingScore(score);
             }
           }
         });
       
         return () => unsubscribe();
       }, []);
-
 
     return (
         <>
@@ -43,25 +66,25 @@ function TaskSpending() {
                     {/* Scores(progressbars) */}
                     <div className="relative flex flex-col items-center top-[27%] h-[30%] w-full text-3xl pt-4 ">
                         By Currency:
-                        <div className="absolute pt-16 text-2xl left-[18%] text-[32px]">
+                        <div className="absolute pt-16 text-4xl left-[18%] text-[32px]">
                             Coins
                         </div>
-                        <div className="absolute pt-28 text-2xl left-[18%]">
+                        <div className="absolute pt-28 text-3xl left-[20.5%]">
                             {totalCoinsSpent}
                         </div>
 
-                        <div className="absolute pt-16 text-2xl flex justify-center text-[32px]">
+                        <div className="absolute pt-16 text-4xl flex justify-center text-[32px]">
                             Gems
                         </div>
-                        <div className="absolute pt-28 text-2xl flex justify-center">
+                        <div className="absolute pt-28 text-3xl flex justify-center">
                             {totalGemsSpent}
                         </div>
 
                         
-                        <div className="absolute pt-16 text-2xl left-[73%] text-[32px]">
+                        <div className="absolute pt-16 text-4xl left-[73%] text-[32px]">
                             Cash
                         </div>
-                        <div className="absolute pt-28 text-2xl left-[74%]">
+                        <div className="absolute pt-28 text-3xl left-[76.5%]">
                             {totalCashSpent}
                         </div>
                     </div>
@@ -69,7 +92,9 @@ function TaskSpending() {
                     <div className="relative flex flex-col pt-4 items-center top-[37%] h-[20%] w-full text-4xl ">
                         Overall Score:
                         <div className="pt-8 text-2xl">
-                            75% Survivability
+                            {/* 75% Survivability  */}
+                            {spendingScore}
+                            {/* Show /500? */}
                         </div>
                     </div>
                 </div>

@@ -101,18 +101,7 @@ function TaskResults() {
                             </div>
                             </div>
 
-                            {/* Bottom row - 2 items positioned in the gaps */}
-                            <div className="flex justify-evenly">
-                            {/* <div className="text-center w-1/3 ml-[8.33%]">
-                                <p className="text-3xl mb-1">Leaderboard</p>
-                                <p className="text-2xl">2 hrs 30 mins</p>
-                            </div> */}
 
-                            {/* <div className="text-center w-1/3 mr-[8.33%]">
-                                <p className="text-3xl mb-1">Collection</p>
-                                <p className="text-2xl">2 hrs 30 mins.</p>
-                            </div> */}
-                            </div>
                             <h2 className="text-center text-3xl tracking-wide mb-6">Category Breakdown</h2>
 
                                 <h3 className="pl-12 text-3xl tracking-wide mb-6">Spending</h3>
@@ -157,3 +146,24 @@ function TaskResults() {
 }
 
 export default TaskResults
+
+//fiunal score pkanning
+
+//Calcs:
+
+//spoending:
+
+// functino that tracks / checks if each currency < value
+//give score based on if else if else
+///500
+
+//Gatcha
+//just take pack daily limitt
+//find a way to track total over alldays, or just each day
+//totalPackOpened
+//just take 1/5 score or 1/25 and mult by 10 to get /500
+
+//Tactics:
+//cummulation of daily limits
+//eventually based on clicking certain buttons (tacticsTotal)
+

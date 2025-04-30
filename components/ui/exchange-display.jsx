@@ -34,7 +34,7 @@ function ExchangeDisplay() {
             const newGems = gems + purchased; //add purchased (gems bundle amount (passed in as arg))
             setGems(newGems);
             await updateDoc(doc(db, "players", userId), { gems: newGems });
-
+            
             // Do animation / function
             //give gems
             setPurchasedModal(true); //not enough money modal

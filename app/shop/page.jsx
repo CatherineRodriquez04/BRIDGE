@@ -16,10 +16,7 @@ function Shop() {
       <div className="h-screen w-screen flex fade-in bg-gradient-to-b from-accent to-accent2 relative">
 
         <div className="top-6 right-[520px] absolute z-40">
-        <Link href="/shop">
             <GameNavbar/>
-        </Link>
-
         <div className="fixed top-[10%] text-7xl left-[46.7%]">
             Shop
         </div>
