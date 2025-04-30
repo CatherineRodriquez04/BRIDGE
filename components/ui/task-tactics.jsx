@@ -1,5 +1,60 @@
+import { useEffect, useState } from "react";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "@/lib/firebase";
+import Link from "next/link";
+
+function CalcTacticsScore(totalGemsSpent) {
+    let tacticsScore;
+//   Adjust these values later
+    if (totalGemsSpent <= 150) {
+      tacticsScore = 500;
+    } else if (totalGemsSpent <= 250) {
+        tacticsScore = 400;
+    } else if (totalGemsSpent <= 500) {
+        tacticsScore = 300;
+    } else if (totalGemsSpent <= 750) {
+        tacticsScore = 200;
+    } else if (totalGemsSpent <= 1000) {
+        tacticsScore = 100;
+    } else {
+        tacticsScore = 0;
+    }
+
+    return tacticsScore;
+  }
+
 
 function TaskTactics() {
+
+    //var setup
+    const [totalGemsSpent, setTotalGemsSpent] = useState(0);
+    const [tacticsScore, setTacticsScore] = useState(0); // Placeholder for tactics score
+
+        useEffect(() => {
+            const auth = getAuth();
+            const unsubscribe = onAuthStateChanged(auth, async (user) => {
+              if (user) {
+                const docRef = doc(db, "players", user.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                  const data = docSnap.data();
+            
+                //Do same as above for tactics score
+                const gemsSpent = data.totalGemsSpent || 0; // ✅ define this first
+                setTotalGemsSpent(gemsSpent);
+                    
+                const tacticsScore = CalcTacticsScore(gemsSpent); // ✅ use the correct variable
+                    setTacticsScore(tacticsScore);
+                    await updateDoc(docRef, { tacticsScore: tacticsScore });
+                }
+              }
+            });
+          
+            return () => unsubscribe();
+          }, []);
+
+
     return (
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
@@ -45,8 +100,19 @@ function TaskTactics() {
                             </div>
                             </div>
                         </div>
+                            {/* Overall Score: */}
+                        <div className="relative flex flex-col pt-16 items-center top-[37%] h-[20%] w-full text-5xl ">
+                            Overall Score:
+                            <div className="pt-8 text-4xl">
+                                {/* 75% Survivability  */}
+                                {Math.round((tacticsScore / 500) * 100)}% Survivability
+                                {/* Show /500? */}
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
+
                 {/* Right Page */}
                 <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto scrollbar-hidden ">
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">

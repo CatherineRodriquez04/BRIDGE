@@ -88,7 +88,6 @@ function TaskResults() {
 
     //spending score
     const [spendingScore, setSpendingScore] = useState(0);
-    const [totalGemsSpent, setTotalGemsSpent] = useState(0);
     const [totalCashSpent, setTotalCashSpent] = useState(0);
 
     // gatcha score
@@ -98,7 +97,7 @@ function TaskResults() {
     const [gatchaScore, setGatchaScore] = useState(0);
 
     //Tactics Score
-
+    const [totalGemsSpent, setTotalGemsSpent] = useState(0);
     const [tacticsScore, setTacticsScore] = useState(0); // Placeholder for tactics score
     
 
@@ -147,6 +146,7 @@ function TaskResults() {
                 
               const tacticsScore = CalcTacticsScore(gemsSpent); // ✅ use the correct variable
                 setTacticsScore(tacticsScore);
+                await updateDoc(docRef, { tacticsScore: tacticsScore });
 
 
 

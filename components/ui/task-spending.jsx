@@ -96,7 +96,7 @@ function TaskSpending() {
                         Overall Score:
                         <div className="pt-8 text-4xl">
                             {/* 75% Survivability  */}
-                            {spendingScore} / 500
+                            {Math.round((spendingScore / 500) * 100)}% Survivability
                             {/* Show /500? */}
                         </div>
                     </div>
