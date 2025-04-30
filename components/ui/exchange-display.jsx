@@ -182,7 +182,7 @@ function ExchangeDisplay() {
                          text-white text-7xl hover:text-red-500" onClick={() => setShowNotEnoughModal(false)}>
                             ×
                         </button>
-                        <p className="absolute text-7xl text-white text-center top-[30%] ">Insufficient Funds!</p>
+                        <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
                         {/* Designated Large close button */}
                             <button 
                             onClick={() => setShowNotEnoughModal(false)}
@@ -202,7 +202,7 @@ function ExchangeDisplay() {
                      text-white text-7xl hover:text-red-500" onClick={() => setPurchasedModal(false)}>
                         ×
                     </button>
-                    <p className="absolute  text-7xl text-white top-[30%] ">Purchase Successful!</p>
+                    <p className="absolute  text-5xl text-white top-[25%] ">Purchase Successful!</p>
                     {/* Designated Large close button */}
                     <button 
                     onClick={() => setPurchasedModal(false)}
@@ -222,7 +222,7 @@ function ExchangeDisplay() {
                      text-white text-7xl hover:text-red-500" onClick={() => setConversionModal(false)}>
                         ×
                     </button>
-                    <p className="absolute  text-7xl text-white top-[30%] ">Conversion Successful!</p>
+                    <p className="absolute  text-5xl text-white top-[25%] ">Conversion Successful!</p>
                     {/* Designated Large close button */}
                     <button 
                     onClick={() => setConversionModal(false)}

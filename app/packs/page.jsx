@@ -24,7 +24,7 @@ const cardPack = [
 export default function Packs() {
   const { coins, gems, setCoins, setGems } = usePlayer();
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
-  const [showLimitModal, setShowLimitModal] = useState(false);
+  const [showHitLimitModal, setShowHitLimitModal] = useState(false);
   const [showNoCoinsModal, setShowNoCoinsModal] = useState(false);
   const [showNoGemsModal, setShowNoGemsModal] = useState(false);
   const [animatingPack, setAnimatingPack] = useState(null);
@@ -64,7 +64,7 @@ export default function Packs() {
     const docRef = doc(db, "players", userId);
 
     if (packCount >= 5) {
-      setShowLimitModal(true);
+      setShowHitLimitModal(true);
       return;
     }
 
@@ -205,32 +205,79 @@ export default function Packs() {
 
       </div>
 
-      {showLimitModal && (
+      {/*showHitLimitModal  */}
+      {showHitLimitModal && (
           <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
             <div className="bg-white p-8 rounded-lg relative w-[400px]">
-              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowLimitModal(false)}>×</button>
+              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowHitLimitModal(false)}>×</button>
               <p className="text-black text-3xl text-center">You have reached today's battle limit!</p>
             </div>
           </div>
         )}
 
-        {showNoCoinsModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-            <div className="bg-white p-8 rounded-lg relative w-[400px]">
-              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNoCoinsModal(false)}>×</button>
-              <p className="text-black text-3xl text-center">Not enough coins to purchase a pack!</p>
+        {/*  */}
+        {showHitLimitModal && (
+           <div className="fixed inset-0 bg-opacity-70 flex justify-center items-center z-50">
+              <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex  justify-center">
+               {/* Close button */}
+                <button className="absolute top-1 right-6
+                 text-white text-7xl hover:text-red-500" onClick={() => setShowHItLimitModal(false)}>
+                ×
+                </button>
+                <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
+                {/* Designated Large close button */}
+                <button 
+                  onClick={() => setShowNotEnoughModal(false)}
+                  className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                    Close
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {showNoGemsModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-            <div className="bg-white p-8 rounded-lg relative w-[400px]">
-              <button className="absolute top-2 right-2 text-black text-3xl hover:text-red-500" onClick={() => setShowNoCoinsModal(false)}>×</button>
-              <p className="text-black text-3xl text-center">Not enough gems to purchase a pack!</p>
-            </div>
-          </div>
-        )}
+
+
+        
+
+        {/* ShowNoCoinsModal */}
+        {showNoCoinsModal && (
+                    <div className="fixed inset-0 bg-opacity-70 flex justify-center items-center z-50">
+                        <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex  justify-center">
+                            {/* Close button */}
+                        <button className="absolute top-1 right-6
+                         text-white text-7xl hover:text-red-500" onClick={() => setShowNoCoinsModal(false)}>
+                            ×
+                        </button>
+                        <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
+                        {/* Designated Large close button */}
+                            <button 
+                            onClick={() => setShowNotEnoughModal(false)}
+                            className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                    )}
+
+          {/* ShowNoGemsModal */}
+          {showNoGemsModal && (
+                    <div className="fixed inset-0 bg-opacity-70 flex justify-center items-center z-50">
+                        <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex  justify-center">
+                            {/* Close button */}
+                        <button className="absolute top-1 right-6
+                         text-white text-7xl hover:text-red-500" onClick={() => setShowNoGemsModal(false)}>
+                            ×
+                        </button>
+                        <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
+                        {/* Designated Large close button */}
+                            <button 
+                            onClick={() => setShowNotEnoughModal(false)}
+                            className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                    )}
 
       </div> 
     </>
