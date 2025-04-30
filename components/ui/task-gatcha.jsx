@@ -28,6 +28,8 @@ function TaskGatcha() {
 
                     const score = calcGatchaScore(standard, medium, premium);
                     setGatchaScore(score);
+
+                    await updateDoc(docRef, { gatchaScore: score });
                 }
             }
         });
@@ -39,15 +41,11 @@ function TaskGatcha() {
         const maxPacks = 25;
         const maxScore = 500;
 
-        // Lower spending is better, so the fewer packs bought, the better the score
-        const usagePenalty = totalPacks / maxPacks; // 0 to 1
-
-        // Weighted by cost impact: Standard = 1, Medium = 2, Premium = 3
+        const usagePenalty = totalPacks / maxPacks;
         const weightedPenalty = (standard * 1) + (medium * 2) + (premium * 3);
-        const worstCasePenalty = maxPacks * 3; // if all were premium
+        const worstCasePenalty = maxPacks * 3;
 
-        // Combine the effects
-        const efficiencyScore = 1 - (weightedPenalty / worstCasePenalty); // 0 to 1
+        const efficiencyScore = 1 - (weightedPenalty / worstCasePenalty);
         const finalScore = Math.round(efficiencyScore * maxScore);
 
         return finalScore;
@@ -145,5 +143,7 @@ function TaskGatcha() {
 }
 
 export default TaskGatcha;
+
+
 //Gatcha Score calculated / coded in page
 //track total # of each pack opened

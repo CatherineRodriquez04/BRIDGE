@@ -169,6 +169,7 @@ export default function Intro() {
             totalMediumPacks: 0,
             totalPremiumPacks: 0,
             totalStandardPacks: 0,
+            gatchaScore: 0,
             });
             window.location.href = "/homescreen";
         } catch (error) {
