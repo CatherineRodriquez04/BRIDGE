@@ -26,6 +26,9 @@ function ShopDisplay() {
   const [userId, setUserId] = useState(null);
   const [days, setDays] = useState(1);
 
+  const [ownedCards, setOwnedCards] = useState({});
+
+
   const dayCardMap = {
     1: ["15", "11", "12", "07", "05"],
     2: ["14", "12", "10", "09", "01"],
@@ -54,6 +57,8 @@ function ShopDisplay() {
           setShopCount(data[shopKey] || 0);
           setCoins(data.coins || 0);
           setGems(data.gems || 0);
+          setOwnedCards(data.characterCards || {});
+
         }
       }
     });
@@ -116,6 +121,11 @@ function ShopDisplay() {
       [shopKey]: shopCount + 1,
     });
 
+    setOwnedCards((prev) => ({
+      ...prev,
+      [cardID]: 1,
+    }));
+
     setShopCount(prev => prev + 1);
   };
 
@@ -148,17 +158,38 @@ function ShopDisplay() {
               >
                 <div className="absolute h-full w-full flex justify-center mx-auto z-10">
                   <Card cardId={cardId} />
+                  {ownedCards[String(cardId)] && <ShopSold />}
                 </div>
+
+
 
                 <div className="relative h-[40px] w-[100%] top-[360px] rounded-md bg-[#957046] m-auto z-40" />
 
                 <button
-                  onClick={() => handlePurchase(cost, currency, cardId)}
-                  className="absolute w-[60%] flex items-center justify-center left-[19%] top-[120%] rotate-[3deg] bg-[#C9B080] border-[#A67C4E] font-medium rounded-lg text-2xl px-5 py-2 mt-4 border-[7px] text-white transition active:scale-95 z-50"
+                  onClick={() => {
+                    if (!ownedCards[cardId]) {
+                      handlePurchase(cost, currency, cardId);
+                    }
+                  }}
+                  disabled={ownedCards[cardId]}
+                  className={`absolute w-[60%] flex items-center justify-center left-[19%] top-[120%] rotate-[3deg] 
+                    border-[#A67C4E] font-medium rounded-lg text-2xl px-5 py-2 mt-4 border-[7px] transition z-50
+                    ${ownedCards[cardId] ? "bg-[#C9B080] text-white cursor-not-allowed" : "bg-[#C9B080] text-white hover:bg-[#A67C4E] active:scale-95"}
+                  `}
                 >
-                  <img src={icon} width={25} height={25} alt={label} className="inline-block mr-3" />
-                  {cost} {label}
+                  {!ownedCards[cardId] && (
+                    <img
+                      src={icon}
+                      width={25}
+                      height={25}
+                      alt={label}
+                      className="inline-block mr-3"
+                    />
+                  )}
+                  {ownedCards[cardId] ? "Owned" : `${cost} ${label}`}
                 </button>
+
+
               </div>
             );
           })}
