@@ -163,6 +163,9 @@ export default function Intro() {
             shopDay5: 0,
             battlesDay5: 0,
             packsDay5: 0,
+            totalCashSpent: 0,
+            totalGemsSpent: 0,
+            totalCoinsSpent: 0,
             });
             window.location.href = "/homescreen";
         } catch (error) {
