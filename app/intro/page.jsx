@@ -166,6 +166,9 @@ export default function Intro() {
             totalCashSpent: 0,
             totalGemsSpent: 0,
             totalCoinsSpent: 0,
+            totalMediumPacks: 0,
+            totalPremiumPacks: 0,
+            totalStandardPacks: 0,
             });
             window.location.href = "/homescreen";
         } catch (error) {

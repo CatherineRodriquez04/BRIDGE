@@ -181,12 +181,12 @@ export default function HomeScreen() {
             
             
             {/* Temp for display/ open popup for now until day functionality is in */}
-            <button
+            {/* <button
                 type="button"
                 onClick={() => setIsDailyRewardPopupOpen(true)}
                 className="absolute w-[20%] top-[68%] right-[5%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-4 border-4">
                     Daily Reward Popup
-              </button>
+              </button> */}
             <HomeDailyRewards />
 
             {/* Logo + Play */}
