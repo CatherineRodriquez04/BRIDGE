@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { usePlayer } from "@/components/ui/PlayerContent";
+import { useEffect, useState, useRef } from "react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { db } from "@/lib/firebase";
@@ -9,7 +10,8 @@ import CustomSelect from "/components/ui/custom-select.jsx";
 function LeaderboardDisplay() {
   const [players, setPlayers] = useState([]);
   const [sortOption, setSortOption] = useState("score");
-  const [currentDay, setCurrentDay] = useState(null);
+  const { days, setDay } = usePlayer();
+  const lastDayRef = useRef(null);
 
   const sortPlayers = (data, option) => {
     switch (option) {
@@ -31,43 +33,55 @@ function LeaderboardDisplay() {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+
+    const fetchDayIfChanged = async () => {
+      const user = auth.currentUser;
       if (user) {
         const docRef = doc(db, "players", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          const data = docSnap.data();
-          setCurrentDay(data.days || 1);
+          const newDay = docSnap.data().days || 1;
+          if (lastDayRef.current !== newDay) {
+            lastDayRef.current = newDay;
+            setDay(newDay);
+          }
         }
       }
+    };
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchDayIfChanged();
+        const interval = setInterval(fetchDayIfChanged, 5000);
+        return () => clearInterval(interval);
+      }
     });
+
     return () => unsubscribe();
-  }, []);
+  }, [setDay]);
 
   useEffect(() => {
     const fetchPlayers = async () => {
       const querySnapshot = await getDocs(collection(db, "players"));
       const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      const sameDayPlayers = data.filter(p => (p.days || 1) === currentDay);
+      const sameDayPlayers = data.filter(p => (p.days || 1) === days);
       const sorted = sortPlayers([...sameDayPlayers], sortOption);
       setPlayers(sorted);
     };
 
-    if (currentDay !== null) {
+    if (days !== null) {
       fetchPlayers();
     }
-  }, [sortOption, currentDay]);
+  }, [sortOption, days]);
 
   const topThree = players.slice(0, 3);
 
   return (
     <>
-      {/* Player's Current Day Display */}
       <div className="absolute top-[46.5%] left-[11%] z-30 text-white text-xl bg-[#0B0C2A] border-2 border-[#86CEBC] rounded-lg px-4 py-2">
-        Current Day: {currentDay || "Loading..."}
+        Current Day: {days || "Loading..."}
       </div>
 
-      {/* Filter Dropdown */}
       <div className="absolute top-[46.5%] right-[11%] z-30">
         <CustomSelect
           options={[
@@ -83,9 +97,8 @@ function LeaderboardDisplay() {
         />
       </div>
 
-      {/* Top 3 display */}
       <div>
-      {topThree[0] && (
+        {topThree[0] && (
           <div className="absolute h-[14%] w-[7%] top-[27%] left-[46%] flex bg-black border-4 border-[#C4F7BC]">
             <div className="absolute text-4xl bottom-[110%]">1st Place</div>
             <img src={topThree[0].avatar || "/assets/avatarTemp.png"} width={100} height={330} alt="1st-Place-User-Icon" className="absolute left-[10px]" />
@@ -110,7 +123,6 @@ function LeaderboardDisplay() {
         )}
       </div>
 
-      {/* Leaderboard Table */}
       <div className="fixed left-[10%] w-[80%] top-[54%] max-h-[500px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-auto z-20">
         <table className="table-fixed w-full text-center text-2xl">
           <thead className="bg-[#0B0C2A] text-2xl sticky top-0 z-30">
