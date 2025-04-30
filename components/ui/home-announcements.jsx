@@ -12,10 +12,10 @@ export default function HomeAnnouncements() {
   // Sample gallery images - replace with your actual images later
   const images = [
     "/assets/announce-test.svg?height=400&width=400",
-    "/placeholder.svg?height=400&width=400",
-    "/placeholder.svg?height=400&width=400",
-    "/placeholder.svg?height=400&width=400",
-    "/placeholder.svg?height=400&width=400",
+    "/assets/pack-ad.svg?height=400&width=400",
+    "/assets/week-reward-ad.svg?height=400&width=400",
+    "/assets/free-gift-ad.svg?height=400&width=400",
+    "/assets/squidy-sea-ad.svg?height=400&width=400",
   ]
 
   // Auto-advance the carousel
