@@ -66,24 +66,29 @@ function TaskSpending() {
                     {/* Scores(progressbars) */}
                     <div className="relative flex flex-col items-center top-[24%] h-[30%] w-full  pt-4 ">
                         <h2 className="text-center text-5xl tracking-wide ">By Currency:</h2>
-                        <div className="absolute pt-16 text-4xl left-[18%] text-[32px]">
+                        
+                        <img src="/assets/coins-bundle.svg" height={70} width={70} alt="Coins-Bundle" className="absolute left-[18%] top-20"></img>
+
+                        <div className="absolute pt-16 text-4xl top-16 left-[18%] text-[32px]">
                             Coins
                         </div>
-                        <div className="absolute pt-28 text-4xl left-[21.7%]">
+                        <div className="absolute pt-28 text-4xl top-16 left-[18.5%]">
                             {totalCoinsSpent}
                         </div>
 
-                        <div className="absolute pt-16 text-4xl flex justify-center text-[32px]">
+                        <img src="/assets/gems-bundle.svg" height={100} width={100} alt="Gems-Bundle" className="absolute left-[43%] top-[3.95rem] "></img>
+                        <div className="absolute pt-16 text-4xl top-16 flex justify-center text-[32px]">
                             Gems
                         </div>
-                        <div className="absolute pt-28 text-4xl flex justify-center">
+                        <div className="absolute pt-28 text-4xl top-16 flex justify-center">
                             {totalGemsSpent}
                         </div>
-                    
-                        <div className="absolute pt-16 text-4xl left-[73%] text-[32px]">
+
+                        <img src="/assets/money-icon.svg" height={70} width={70} alt="USD-Bundle" className="absolute left-[72.5%] top-[4.4rem]"></img>
+                        <div className="absolute pt-16 text-4xl top-16 left-[73%] text-[32px]">
                             Cash
                         </div>
-                        <div className="absolute pt-28 text-4xl left-[76.5%]">
+                        <div className="absolute pt-28 text-4xl top-16 left-[76.5%]">
                             {totalCashSpent}
                         </div>
                     </div>
