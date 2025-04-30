@@ -186,13 +186,15 @@ export default TaskResults
 
 //Calcs:
 
-
-
 //Gatcha
 //just take pack daily limitt
 //find a way to track total over alldays, or just each day
 //totalPackOpened
 //just take 1/5 score or 1/25 and mult by 10 to get /500
+
+//IDEA:
+//create full tracking # for each pack, use directly for wishing
+///one for each pack
 
 //Tactics:
 //cummulation of daily limits

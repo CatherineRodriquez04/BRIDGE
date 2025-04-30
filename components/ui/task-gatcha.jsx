@@ -1,5 +1,64 @@
 
+import { useEffect, useState } from "react";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "@/lib/firebase";
+import Link from "next/link";
+
+// function CalcGatchaScore(total, total, total) {
+//     let spendingScore;
+  
+//     if (totalCashSpent < 2) {
+//       spendingScore = 500;
+//     } else if (totalCashSpent <= 5) {
+//       spendingScore = 400;
+//     } else if (totalCashSpent <= 10) {
+//       spendingScore = 300;
+//     } else if (totalCashSpent <= 25) {
+//       spendingScore = 200;
+//     } else if (totalCashSpent <= 50) {
+//       spendingScore = 100;
+//     } else {
+//       spendingScore = 0;
+//     }
+
+//     return spendingScore;
+//   }
+
 function TaskGatcha() {
+
+    const [totalStandardPacks, setTotalStandardPacks] = useState(0);
+    const [totalMediumPacks, setTotalMediumPacks] = useState(0);
+    const [totalPremiumPacks, setTotalPremiumPacks] = useState(0);
+    const [gatchaScore, setGatchaScore] = useState(0);
+
+        useEffect(() => {
+            const auth = getAuth();
+            const unsubscribe = onAuthStateChanged(auth, async (user) => {
+              if (user) {
+                const docRef = doc(db, "players", user.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                  const data = docSnap.data();
+          
+                //   setTotalCoinsSpent(data.totalCoinsSpent || 0);
+                //   setTotalGemsSpent(data.totalGemsSpent || 0);
+                //recreate w/ pack open ammount
+                setTotalStandardPacks(data.totalStandardPacks || 0);
+                setTotalMediumPacks(data.totalMediumPacks || 0);
+                setTotalPremiumPacks(data.totalPremiumPacks || 0);
+                //   const cashSpent = data.totalCashSpent || 0; // ✅ define this first
+                //   setTotalCashSpent(cashSpent);
+          
+                  const score = CalcGatchaScore(); // ✅ use the correct variable
+                  setGatchaScore(score);cashSpent
+                }
+              }
+            });
+          
+            return () => unsubscribe();
+          }, []);
+    
     return (
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
@@ -15,21 +74,22 @@ function TaskGatcha() {
                             Standard
                         </div>
                         <div className="absolute pt-28 text-2xl left-[18%]">
-                            ###
+                            {totalStandardPacks}
                         </div>
 
                         <div className="absolute pt-16 text-2xl flex justify-center text-[32px] left-[45%]">
                             Medium
                         </div>
                         <div className="absolute pt-28 text-2xl flex justify-center left-[48%]">
-                            ###
+                            {totalMediumPacks}
+
                         </div>
 
                         <div className="absolute pt-16 text-2xl left-[72%] text-[32px]">
                             Premium
                         </div>
                         <div className="absolute pt-28 text-2xl left-[76%]">
-                            ###
+                            {totalPremiumPacks}
                         </div>
                     </div>
                     {/* Overall Score: */}
@@ -106,3 +166,6 @@ function TaskGatcha() {
 }
 
 export default TaskGatcha
+
+//Gatcha Score calculated / coded in page
+//track total # of each pack opened
