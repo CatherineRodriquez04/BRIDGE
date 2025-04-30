@@ -69,10 +69,10 @@ function TaskSpending() {
                         
                         <img src="/assets/coins-bundle.svg" height={70} width={70} alt="Coins-Bundle" className="absolute left-[18%] top-20"></img>
 
-                        <div className="absolute pt-16 text-4xl top-16 left-[18%] text-[32px]">
+                        <div className="absolute pt-16 text-4xl top-16 left-[18%] text-[32px] ">
                             Coins
                         </div>
-                        <div className="absolute pt-28 text-4xl top-16 left-[18.5%]">
+                        <div className="absolute pt-28 text-4xl top-16 left-[18.5%]  text-white">
                             {totalCoinsSpent}
                         </div>
 
@@ -80,7 +80,7 @@ function TaskSpending() {
                         <div className="absolute pt-16 text-4xl top-16 flex justify-center text-[32px]">
                             Gems
                         </div>
-                        <div className="absolute pt-28 text-4xl top-16 flex justify-center">
+                        <div className="absolute pt-28 text-4xl top-16 flex justify-center  text-white">
                             {totalGemsSpent}
                         </div>
 
@@ -88,7 +88,7 @@ function TaskSpending() {
                         <div className="absolute pt-16 text-4xl top-16 left-[73%] text-[32px]">
                             Cash
                         </div>
-                        <div className="absolute pt-28 text-4xl top-16 left-[76.5%]">
+                        <div className="absolute pt-28 text-4xl top-16 left-[76.5%]  text-white">
                             {totalCashSpent}
                         </div>
                     </div>

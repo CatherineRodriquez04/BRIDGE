@@ -57,29 +57,29 @@ function TaskGatcha() {
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
                 <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-y-auto scrollbar-hidden">
-                    <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
+                    <div className="relative flex flex-col items-center top-[9%] h-[1%] text-6xl">
                         Gatcha
                     </div>
-                    <div className="relative flex flex-col items-center top-[25%] h-[30%] w-full text-4xl pt-4 ">
-                        By Pack:
-                        <div className="absolute pt-16 text-2xl left-[13%] text-[32px]">
+                    <div className="relative flex flex-col items-center top-[25%] h-[30%] w-full pt-4 ">
+                    <h2 className="text-center text-5xl tracking-wide ">By Pack:</h2>
+                        <div className="absolute pt-20 text-4xl left-[13%] text-[32px] ">
                             Standard
                         </div>
-                        <div className="absolute pt-28 text-2xl left-[18%]">
+                        <div className="absolute pt-32 text-4xl left-[20.6%]  text-white">
                             {totalStandardPacks}
                         </div>
 
-                        <div className="absolute pt-16 text-2xl flex justify-center text-[32px] left-[45%]">
+                        <div className="absolute pt-20 text-4xl flex justify-center text-[32px] left-[44%]">
                             Medium
                         </div>
-                        <div className="absolute pt-28 text-2xl flex justify-center left-[48%]">
+                        <div className="absolute pt-32 text-4xl flex justify-center left-[49.6%]  text-white">
                             {totalMediumPacks}
                         </div>
 
-                        <div className="absolute pt-16 text-2xl left-[72%] text-[32px]">
+                        <div className="absolute pt-20 text-4xl left-[72%] text-[32px]">
                             Premium
                         </div>
-                        <div className="absolute pt-28 text-2xl left-[76%]">
+                        <div className="absolute pt-32 text-4xl left-[78.7%] text-white">
                             {totalPremiumPacks}
                         </div>
                     </div>

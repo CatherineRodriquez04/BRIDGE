@@ -79,21 +79,21 @@ function TaskResults() {
                             <h2 className="text-center text-5xl tracking-wide mb-6">Scores</h2>
 
                             {/* Top row - 3 items */}
-                            <div className="flex justify-between mb-8">
+                            <div className="flex justify-between pt-12 ">
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Spending</button>
-                                    <p className="text-4xl ">{spendingScore}/500</p>
+                                    <p className="text-4xl  text-white ">{spendingScore}/500</p>
                                     {/* Fillable value later */}
                                 </div>
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Gatcha</button>
-                                    <p className="text-4xl ">{battleCount}/500</p>
+                                    <p className="text-4xl  text-white">{battleCount}/500</p>
                                 </div>
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Tactics</button>
-                                    <p className="text-4xl">{packCount}/500</p>
+                                    <p className="text-4xl  text-white">{packCount}/500</p>
                                 </div>
                             </div>
                         </div>
