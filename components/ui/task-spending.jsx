@@ -44,7 +44,7 @@ function TaskSpending() {
                     <div className="relative flex flex-col items-center top-[27%] h-[30%] w-full text-3xl pt-4 ">
                         By Currency:
                         <div className="absolute pt-16 text-2xl left-[18%] text-[32px]">
-                            Gold
+                            Coins
                         </div>
                         <div className="absolute pt-28 text-2xl left-[18%]">
                             {totalCoinsSpent}

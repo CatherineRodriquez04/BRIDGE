@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 
 // Firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 // UI
@@ -76,6 +76,12 @@ export default function Packs() {
           coins: newCoins,
           [packKey]: packCount + 1,
         });
+
+        //track total coins spent track
+      await updateDoc(doc(db, "players", userId), {
+        totalCoinsSpent: increment(cost),
+       });
+
         setPackCount((prev) => prev + 1);
         setCurrentPack(packId); // store which pack was clicked
         openPackAnimation();
@@ -90,6 +96,11 @@ export default function Packs() {
           gems: newGems,
           [packKey]: packCount + 1,
         });
+        
+        //track total gems spent track
+      await updateDoc(doc(db, "players", userId), {
+        totalGemsSpent: increment(cost),
+       });
         setPackCount((prev) => prev + 1);
         setCurrentPack(packId); // store which pack was clicked
         openPackAnimation();
@@ -115,10 +126,10 @@ export default function Packs() {
               <GameNavbar/>
         </div>
 
-      <div className="relative top-[10.5%] text-7xl left-[61.5%]">
+      <div className="relative top-[10.5%] text-7xl left-[61.7%]">
             Packs
       </div>
-      <div className=" absolute top-[18%] right-[31.3%] z-20 text-white text-4xl">
+      <div className=" absolute top-[19%] right-[31.3%] z-20 text-white text-4xl">
               Limit {packCount}/5 {/*daily battle limit to be insterted here  packCount    */} 
       </div>
       {/* Conditionally render when opening a pack */}

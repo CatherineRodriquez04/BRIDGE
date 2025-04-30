@@ -97,7 +97,7 @@ function ShopDisplay() {
       setCoins(newCoins);
       await updateDoc(playerRef, { coins: newCoins });
 
-      //track total cash spent track
+      //track total coins spent track
       await updateDoc(doc(db, "players", userId), {
        totalCoinsSpent: increment(cost),
       });
@@ -114,6 +114,12 @@ function ShopDisplay() {
       const newGems = gems - cost;
       setGems(newGems);
       await updateDoc(playerRef, { gems: newGems });
+
+      //track total gems spent track
+      await updateDoc(doc(db, "players", userId), {
+        totalGemsSpent: increment(cost),
+       });
+      
     }
 
     // Add or increment card in characterCards
