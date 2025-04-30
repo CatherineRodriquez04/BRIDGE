@@ -35,6 +35,7 @@ export default function Packs() {
   const [packKey, setPackKey] = useState("");
   const [userId, setUserId] = useState(null);
   const [packCount, setPackCount] = useState(0);
+  // const [] = useState(0);
 
   useEffect(() => {
     const auth = getAuth();
@@ -84,7 +85,7 @@ export default function Packs() {
 
         setPackCount((prev) => prev + 1);
         setCurrentPack(packId); // store which pack was clicked
-        openPackAnimation();
+        openPackAnimation(packId);
       } else {
         setShowNoCoinsModal(true);
       }
@@ -96,22 +97,23 @@ export default function Packs() {
           gems: newGems,
           [packKey]: packCount + 1,
         });
-        
+
         //track total gems spent track
       await updateDoc(doc(db, "players", userId), {
         totalGemsSpent: increment(cost),
        });
+
         setPackCount((prev) => prev + 1);
         setCurrentPack(packId); // store which pack was clicked
-        openPackAnimation();
+        openPackAnimation(packId);
       } else {
         setShowNoGemsModal(true);
       }
     }
   };
 
-  const openPackAnimation = () => {
-    setAnimatingPack(true);
+  const openPackAnimation = (packId) => {
+    setAnimatingPack(packId);
     setTimeout(() => {
       setAnimatingPack(false);
       setIsCarouselOpen(true);
@@ -168,12 +170,28 @@ export default function Packs() {
                   <img src="/assets/standard-pack.svg" height={400} width={260} alt="Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
                   {/* Wish display/ tracker */}
                     <div className="relative  flex justify-center mx-auto text-3xl top-4">
-                      Wish:  3/5
+                      Wish: 3/5
                     </div>
                   {/* Purchase buttons */}
-                  <button type="button" onClick={() => handlePurchase(100, "coins", "pack1")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
-                      <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
-                      100 Coins
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handlePurchase(100, "coins", "pack1");
+
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
+
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalStandardPacks: increment(1),
+                        });
+                      })();
+                    }}
+                    className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2"
+                  >
+                    <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
+                    100 Coins
                   </button>
 
               </div>
@@ -186,15 +204,47 @@ export default function Packs() {
                           Wish:  3/15
                         </div>
                   {/* Purchase buttons */}
-                          <button type="button" onClick={() => handlePurchase(500, "coins", "pack2")} className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 mr-2 border-2 -left-2">
-                              <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
-                              500 Coins
-                          </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handlePurchase(500, "coins", "pack2");
 
-                          <button type="button" onClick={() => handlePurchase(150, "gems", "pack2")} className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 border-2 -left-2">
-                              <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
-                              150 Gems
-                          </button>
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
+
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalMediumPacks: increment(1),
+                        });
+                      })();
+                    }}
+                    className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 mr-2 border-2 -left-2"
+                  >
+                    <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
+                    500 Coins
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handlePurchase(150, "gems", "pack2");
+
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
+
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalMediumPacks: increment(1),
+                        });
+                      })();
+                    }}
+                    className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 border-2 -left-2"
+                  >
+                    <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
+                    150 Gems
+                  </button>
                       </div>
                       </div>
 
@@ -206,9 +256,25 @@ export default function Packs() {
                       Wish:  3/10
                     </div>
                   {/* Purchase buttons */}
-                  <button type="button" onClick={() => handlePurchase(600, "gems", "pack3")} className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2">
-                      <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
-                      600 Gems
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handlePurchase(600, "gems", "pack3");
+
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
+
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalPremiumPacks: increment(1),
+                        });
+                      })();
+                    }}
+                    className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2"
+                  >
+                    <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
+                    600 Gems
                   </button>
               </div>
           </div>
