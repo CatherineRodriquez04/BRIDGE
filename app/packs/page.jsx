@@ -156,7 +156,7 @@ export default function Packs() {
           {/* Packs Display */}
             <div className="flex space-x-8 top-[25%] absolute right-[10%]">
               {/* 1st pack */}
-              <div className="absolute bottom-[18.3%] -left-[2.4%] text-4xl">
+              <div className="absolute bottom-[5%] -left-[2.4%] text-4xl">
                   Buy 1
               </div>
               <div className="flip-card">   
@@ -185,11 +185,11 @@ export default function Packs() {
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                               500 Coins
                           </button>
-                      </div>
-                      <div className="">
-                          <button type="button" onClick={() => handlePurchase(2500, "coins", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
-                              <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2"/>
-                              2500 coins</button>
+
+                          <button type="button" onClick={() => handlePurchase(150, "gems", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
+                              <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
+                              150 Gems
+                          </button>
                       </div>
                       </div>
 
