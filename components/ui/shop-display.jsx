@@ -24,7 +24,6 @@ function ShopDisplay() {
   const [shopCount, setShopCount] = useState(0);
   const [shopKey, setShopKey] = useState("");
   const [userId, setUserId] = useState(null);
-  const [days, setDays] = useState(1);
 
   const [ownedCards, setOwnedCards] = useState({});
 
@@ -36,10 +35,11 @@ function ShopDisplay() {
     4: ["10", "07", "06", "09", "01"],
     5: ["12", "08", "05", "04", "02"],
   };
+
   
+  const { coins, setCoins, gems, setGems, days } = usePlayer();
+
   const cardIds = dayCardMap[days] || [];
-  
-  const { coins, setCoins, gems, setGems } = usePlayer();
 
   useEffect(() => {
     const auth = getAuth();
@@ -50,9 +50,7 @@ function ShopDisplay() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          const day = data.days || 1;
-          setDays(day);
-          const shopKey = `shopDay${day}`;
+          const shopKey = `shopDay${days}`;
           setShopKey(shopKey);
           setShopCount(data[shopKey] || 0);
           setCoins(data.coins || 0);
