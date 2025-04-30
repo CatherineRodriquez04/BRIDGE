@@ -15,7 +15,8 @@ import Link from "next/link";
 import DailyRewardPopup from "@/components/ui/daily-reward-popup";
 
 function DayModal({ isOpen, onClose }) {
-  const { days } = usePlayer();
+  const { days, setDay } = usePlayer();
+
 
   const [shopCount, setShopCount] = useState(0);
   const [battleCount, setBattleCount] = useState(0);
@@ -24,8 +25,9 @@ function DayModal({ isOpen, onClose }) {
   const [showDailyReward, setShowDailyReward] = useState(false);
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const fetchDayCounts = async () => {
+      const auth = getAuth();
+      const user = auth.currentUser;
       if (user) {
         setUserId(user.uid);
         const docRef = doc(db, "players", user.uid);
@@ -33,15 +35,16 @@ function DayModal({ isOpen, onClose }) {
         if (docSnap.exists()) {
           const data = docSnap.data();
           const currentDay = data.days || 1;
-          //setDays(currentDay);
           setShopCount(data[`shopDay${currentDay}`] || 0);
           setBattleCount(data[`battlesDay${currentDay}`] || 0);
           setPackCount(data[`packsDay${currentDay}`] || 0);
         }
       }
-    });
-    return () => unsubscribe();
-  }, []);
+    };
+  
+    fetchDayCounts();
+  }, [days]); 
+  
 
   const handleNextDay = async () => {
     if (!userId || days >= 5) return;
@@ -50,7 +53,7 @@ function DayModal({ isOpen, onClose }) {
     const docRef = doc(db, "players", userId);
     await updateDoc(docRef, { days: nextDay });
 
-    setDays(nextDay);
+    setDay(nextDay);
     setShopCount(0);
     setBattleCount(0);
     setPackCount(0);
