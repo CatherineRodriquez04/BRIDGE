@@ -56,37 +56,7 @@ function ExchangeDisplay() {
           }
         }
       };
-
-    //   useEffect(() => {
-    //     const awardCoins = async () => {
-    //     const auth = getAuth();
-    //     onAuthStateChanged(auth, async (user) => {
-    //         if (user && !coinsAwarded) {
-    //         const docRef = doc(db, "players", user.uid);
-    //         const docSnap = await getDoc(docRef);
-
-    //         if (docSnap.exists()) {
-    //             const currentCoins = docSnap.data().coins || 0;
-    //             const updatedCoins = currentCoins + 500;
-
-    //             await updateDoc(docRef, { coins: updatedCoins });
-    //             setCoinsAwarded(true); // prevent awarding multiple times
-    //         }
-    //         }
-    //     });
-    //     };
-
-    //     awardCoins();
-    // }, [coinsAwarded]);
-
-
-// either do animation or show purchase popup
-    //   const openPackAnimation = (packId) => {
-    //     setAnimatingPack(packId);
-    //     setTimeout(() => setAnimatingPack(null), 800);
-    //     setTimeout(() => setIsCarouselOpen(true), 900);
-    //   };
-     
+ 
 
     return (
         <>

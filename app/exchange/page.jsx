@@ -32,6 +32,7 @@ export default function Exchange() {
               {/* Gem */}
               <div className=" h-[60px] w-[150px]  top-[260px] left-[20px] relative z-10 text-[#13122A] text-3xl bold ">
                 <img src={'/assets/single-gem.svg'} width={90} height={90} alt="Exchange Sign Gems" className=""></img>
+                <p className="absolute text-white bottom-[35px] left-[25px]">100 </p>
               </div>
               {/* Arrow Left -> Right  */}
               <div className=" h-[60px] w-[150px] top-[205px] left-[105px] relative z-10 text-[#13122A] text-3xl bold ">
@@ -41,19 +42,10 @@ export default function Exchange() {
               {/* Coin */}
               <div className=" h-[60%] w-[150px] top-[160px] left-[190px] relative z-10 text-[#13122A] text-3xl bold ">
                 <img src={'/assets/coins-bundle.svg'} width={90} height={90} alt="Exchange Sign Coins" className=""></img>
+                <p className="absolute text-white bottom-[50px] right-[85px]">1000 </p>
+
               </div>
-              {/* Convert button (transfer ## gold -> gems (CHange amount each day (advertise))
-              Convert Currency Button
-              <div className="absolute top-[71%] left-[24%]">
-                <button className="absolute h-[60px] w-[160px] flex items-center justify-center left-[19%] top-[120%] bg-[#A67C4E] border-[#5E4112] font-medium rounded-lg text-3xl px-5 py-4 border-[5px] text-black transition active:scale-95 z-50">
-                  Convert
-                </button>
-              </div> */}
           </div>
-{/* 
-          <div className="bg-red-500 h-[53px] w-[160px] top-[170px] relative z-10 m-auto text-[#13122A] text-3xl bold flex justify-center">
-            <img src={'/assets/icon-coin.svg'} width={300} height={300} alt="Exchange Sign" className=""></img>
-          </div>  */}
           <img src={'/assets/wood-sign.svg'} width={300} height={300} alt="Exchange Sign" className="-z-1"></img> {/*Can Swap with sign.svg for bright version  */}
           
         </div>
