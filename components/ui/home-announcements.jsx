@@ -13,7 +13,7 @@ export default function HomeAnnouncements() {
   const images = [
     //"/assets/announcements/announce-test.svg?height=400&width=400",
     "/assets/announcements/CardPackAd.png?height=400&width=400",
-    "//assets/announcements/JumboAdBonus.png?height=400&width=400",
+    "/assets/announcements/JumboAdBonus.png?height=400&width=400",
     "/assets/announcements/LeaderboardAd.png?height=400&width=400",
     //"/placeholder.svg?height=400&width=400",
   ]
