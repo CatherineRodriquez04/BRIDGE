@@ -85,9 +85,9 @@ function TaskGatcha() {
                             {totalPremiumPacks}
                         </div>
                     </div>
-                    <div className="relative flex flex-col pt-4 items-center top-[37%] h-[20%] w-full text-4xl ">
+                    <div className="relative flex flex-col pt-8 items-center top-[37%] h-[20%] w-full text-5xl ">
                         Overall Score:
-                        <div className="pt-8 text-2xl">
+                        <div className="pt-8 text-3xl">
                             {Math.round((gatchaScore / 500) * 100)}% Survivability
                         </div>
                     </div>

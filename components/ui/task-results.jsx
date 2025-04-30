@@ -39,19 +39,21 @@ function CalcSpendingScore(totalCashSpent) {
     return gatchaScore;
 };
 
-const calcTotalScore = (standard, medium, premium) => {
-    // const totalPacks = standard + medium + premium;
-    // const maxPacks = 25;
-    // const maxScore = 500;
 
-    // const usagePenalty = totalPacks / maxPacks;
-    // const weightedPenalty = (standard * 1) + (medium * 2) + (premium * 3);
-    // const worstCasePenalty = maxPacks * 3;
+const calcTotalScore = (spendingScore, gatchaScore, tacticsScore) => {
+    const maxIndividualScore = 500; // Max possible score for each category
+    const maxTotalScore = 1500;     // Total max score (3 x 500)
 
-    // const efficiencyScore = 1 - (weightedPenalty / worstCasePenalty);
-    // const finalScore = Math.round(efficiencyScore * maxScore);
+    // Step 1: Sum all individual scores
+    const rawTotal = spendingScore + gatchaScore + tacticsScore;
 
-    // return finalScore;
+    // Step 2: Normalize the score to make sure it doesn't exceed the max
+    const normalizedTotal = Math.min(rawTotal, maxTotalScore);
+
+    // Step 3: Round to nearest integer (optional, if scores could be floats)
+    const finalScore = Math.round(normalizedTotal);
+
+    return finalScore;
 };
 
 
@@ -75,7 +77,13 @@ function TaskResults() {
     const [totalPremiumPacks, setTotalPremiumPacks] = useState(0);
     const [gatchaScore, setGatchaScore] = useState(0);
 
-    //tactics score
+    //Tactics Score
+
+    const [tacticsScore, setTacticsScore] = useState(0); // Placeholder for tactics score
+    
+
+    //Total Score
+    const [totalScore, setTotalScore] = useState(0); // Placeholder for total score
 
     useEffect(() => {
         const auth = getAuth();
@@ -115,6 +123,20 @@ function TaskResults() {
               setGatchaScore(gatchaScore);
 
               await updateDoc(docRef, { gatchaScore: gatchaScore });
+
+              //Do same as above for tactics score
+
+
+
+              //for final score
+              const tacticsScore = data.tacticsScore || 0; // Make sure this is stored in Firestore
+                setTacticsScore(tacticsScore);
+
+                // ✅ Use locally-calculated values
+                const totalScore = calcTotalScore(score, gatchaScore, tacticsScore);
+                setTotalScore(totalScore);
+
+                await updateDoc(docRef, { totalScore: totalScore });
             }
           }
         });
@@ -157,7 +179,8 @@ function TaskResults() {
                         Overall Score:
                         <div className="pt-4 text-4xl">
                             {/* ##% Survivability */}
-                            #### / 1500
+                            {Math.round((totalScore / 1500) * 100)}% Survivability
+                            
                         </div>
                     </div>
                 </div>
