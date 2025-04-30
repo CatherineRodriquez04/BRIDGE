@@ -18,7 +18,7 @@ const tungsten = localFont({
 
 
 export const metadata = {
-  title: "Dead Man Hand",
+  title: "Dead Man's Hand",
   description: "Are You Playing the Game, or is the Game Playing You?",
 };
 
