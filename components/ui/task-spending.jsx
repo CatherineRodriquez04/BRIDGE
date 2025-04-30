@@ -94,7 +94,7 @@ function TaskSpending() {
                     {/* Overall Score: */}
                     <div className="relative flex flex-col pt-4 items-center top-[37%] h-[20%] w-full text-5xl ">
                         Overall Score:
-                        <div className="pt-8 text-4xl">
+                        <div className="pt-8 text-4xl text-white">
                             {/* 75% Survivability  */}
                             {Math.round((spendingScore / 500) * 100)}% Survivability
                             {/* Show /500? */}

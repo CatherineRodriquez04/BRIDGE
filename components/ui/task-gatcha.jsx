@@ -87,7 +87,7 @@ function TaskGatcha() {
                     </div>
                     <div className="relative flex flex-col pt-8 items-center top-[37%] h-[20%] w-full text-5xl ">
                         Overall Score:
-                        <div className="pt-8 text-3xl">
+                        <div className="pt-8 text-3xl text-white">
                             {Math.round((gatchaScore / 500) * 100)}% Survivability
                         </div>
                     </div>

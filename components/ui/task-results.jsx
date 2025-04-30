@@ -195,7 +195,7 @@ function TaskResults() {
                     {/* Overall Score: */}
                     <div className="relative pt-4 flex flex-col items-center top-[20%] h-[20%] w-full text-5xl">
                         Overall Score:
-                        <div className="pt-4 text-4xl">
+                        <div className="pt-4 text-4xl text-white">
                             {/* ##% Survivability */}
                             {Math.round((totalScore / 1500) * 100)}% Survivability
                             
