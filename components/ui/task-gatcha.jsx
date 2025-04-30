@@ -9,26 +9,26 @@ function TaskGatcha() {
                         Gatcha
                     </div>
                     {/* Scores(progressbars) */}
-                    <div className="relative flex flex-col items-center top-[27%] h-[30%] w-full text-3xl pt-4 ">
+                    <div className="relative flex flex-col items-center top-[25%] h-[30%] w-full text-4xl pt-4 ">
                         By Pack:
-                        <div className="absolute pt-16 text-2xl left-[18%] text-[32px]">
+                        <div className="absolute pt-16 text-2xl left-[13%] text-[32px]">
                             Standard
                         </div>
                         <div className="absolute pt-28 text-2xl left-[18%]">
                             ###
                         </div>
 
-                        <div className="absolute pt-16 text-2xl flex justify-center text-[32px]">
+                        <div className="absolute pt-16 text-2xl flex justify-center text-[32px] left-[45%]">
                             Medium
                         </div>
-                        <div className="absolute pt-28 text-2xl flex justify-center">
+                        <div className="absolute pt-28 text-2xl flex justify-center left-[48%]">
                             ###
                         </div>
 
-                        <div className="absolute pt-16 text-2xl left-[73%] text-[32px]">
+                        <div className="absolute pt-16 text-2xl left-[72%] text-[32px]">
                             Premium
                         </div>
-                        <div className="absolute pt-28 text-2xl left-[74%]">
+                        <div className="absolute pt-28 text-2xl left-[76%]">
                             ###
                         </div>
                     </div>
@@ -46,57 +46,53 @@ function TaskGatcha() {
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
                         Currency Breakdown
                     </div>
-                    <div className="absolute w-full text-[#a3ffb0] top-[25%]">
-                        <h2 className="text-center text-3xl tracking-wide mb-6">Currency Types</h2>
+                    <div className="absolute w-full text-[#a3ffb0] top-[23%]">
+                        <h2 className="text-center text-4xl tracking-wide mb-6">Pack Types</h2>
 
                         <div className="relative w-full mx-auto">
                             {/* Top row - 3 items */}
                             <div className="flex justify-between mb-8">
                             <div className="text-center w-1/3">
-                                <p className="text-3xl mb-1">Coins</p>
+                                <p className="text-3xl mb-1">Standard</p>
                                 {/* <p className="text-2xl ">###</p> */}
-                                <img src="/assets/coins-bundle.svg" height={70} width={70} alt="Coins-Bundle" className="absolute left-[11%] top-12"></img>
+                                <img src="/assets/standard-pack.svg" height={70} width={70} alt="Card-Pack-1" className="absolute left-[11%] top-12" />
                                 {/* Fillable value later */}
                             </div>
 
                             <div className="text-center w-1/3">
-                                <p className="text-3xl mb-1">Gems</p>
+                                <p className="text-3xl mb-1">Medium</p>
                                 {/* <p className="text-2xl ">###</p> */}
-                                <img src="/assets/gems-bundle.svg" height={100} width={100} alt="Gems-Bundle" className="absolute left-[43%] top-9"></img>
-
+                                <img src="/assets/medium-pack.svg" height={70} width={70} alt="Card-Pack-1" className="absolute left-[44.7%] top-12" />
                             </div>
 
                             <div className="text-center w-1/3">
-                                <p className="text-3xl mb-1">Cash</p>
+                                <p className="text-3xl mb-1">Premium</p>
                                 {/* <p className="text-2xl">###</p> */}
-                                <img src="/assets/money-icon.svg" height={70} width={70} alt="USD-Bundle" className="absolute left-[78%] top-11"></img>
+                                <img src="/assets/premium-pack.svg" height={70} width={70} alt="Card-Pack-1" className="absolute left-[78%] top-12" />
                             </div>
-                            </div>
-
-                            {/* Bottom row - 2 items positioned in the gaps */}
-                            {/* <div className="flex justify-evenly"> */}
-                            {/* <div className="text-center w-1/3 ml-[8.33%]">
-                                <p className="text-3xl mb-1">Leaderboard</p>
-                                <p className="text-2xl">2 hrs 30 mins</p>
-                            </div> */}
-
-                            {/* <div className="text-center w-1/3 mr-[8.33%]">
-                                <p className="text-3xl mb-1">Collection</p>
-                                <p className="text-2xl">2 hrs 30 mins.</p>
-                            </div> */}
-                            {/* </div> */}
-                            <h2 className="text-center text-3xl tracking-wide mb-6 mt-24">Currency Breakdown</h2>
-
-                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Coins (Freemium)</h3>
+                        </div>
+                            <h2 className="text-center text-3xl tracking-wide mb-6 mt-36">Gatcha/Packs Breakdown</h2>
+{/*                             
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Gatcha</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
                                     Coins
                                 </p>
 
-                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Gems (Premium)</h3>
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Wishing</h3>
+                                <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
+                                    Coins
+                                </p> */}
+
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Standard Pack</h3>
+                                <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
+                                    Coins
+                                </p>
+
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Medium Pack</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
                                     Gems,
                                 </p>
-                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Cash (Real $$$)</h3>
+                                <h3 className="pl-12 text-3xl tracking-wide mb-6">Premium Pack</h3>
                                 <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
                                     USD, 
                                 </p>

@@ -88,20 +88,21 @@ function TaskResults() {
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Gatcha</button>
-                                    <p className="text-4xl ">{battleCount}/5</p>
+                                    <p className="text-4xl ">{battleCount}/500</p>
                                 </div>
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Tactics</button>
-                                    <p className="text-4xl">{packCount}/5</p>
+                                    <p className="text-4xl">{packCount}/500</p>
                                 </div>
                             </div>
                         </div>
                     {/* Overall Score: */}
-                    <div className="relative pt-4 flex flex-col items-center top-[20%] h-[20%] w-full text-4xl">
+                    <div className="relative pt-4 flex flex-col items-center top-[20%] h-[20%] w-full text-5xl">
                         Overall Score:
-                        <div className="pt-6 text-2xl">
-                            ##% Survivability
+                        <div className="pt-4 text-4xl">
+                            {/* ##% Survivability */}
+                            #### / 1500
                         </div>
                     </div>
                 </div>
@@ -120,18 +121,18 @@ function TaskResults() {
                             <div className="flex justify-between mb-8">
                             <div className="text-center w-1/3">
                                 <p className="text-3xl mb-1">Spending</p>
-                                <p className="text-2xl ">/500</p>
+                                <p className="text-2xl ">/ 500</p>
                                 {/* Fillable value later */}
                             </div>
 
                             <div className="text-center w-1/3">
                                 <p className="text-3xl mb-1">Gatcha</p>
-                                <p className="text-2xl ">/500</p>
+                                <p className="text-2xl ">/ 500</p>
                             </div>
 
                             <div className="text-center w-1/3">
                                 <p className="text-3xl mb-1">Tactics</p>
-                                <p className="text-2xl">%?/500</p>
+                                <p className="text-2xl">/ 500</p>
                             </div>
                             </div>
 
@@ -185,11 +186,7 @@ export default TaskResults
 
 //Calcs:
 
-//spoending:
 
-// functino that tracks / checks if each currency < value
-//give score based on if else if else
-///500
 
 //Gatcha
 //just take pack daily limitt

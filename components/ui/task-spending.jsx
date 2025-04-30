@@ -60,38 +60,37 @@ function TaskSpending() {
             <div className="absolute w-full h-full bg-[#0B0C2A]">
                 {/* Left Page */}
                 <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden">
-                    <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
+                    <div className="relative flex flex-col items-center top-[7%] h-[1%] text-6xl">
                         Spending
                     </div>
                     {/* Scores(progressbars) */}
-                    <div className="relative flex flex-col items-center top-[27%] h-[30%] w-full text-3xl pt-4 ">
-                        By Currency:
+                    <div className="relative flex flex-col items-center top-[24%] h-[30%] w-full  pt-4 ">
+                        <h2 className="text-center text-5xl tracking-wide ">By Currency:</h2>
                         <div className="absolute pt-16 text-4xl left-[18%] text-[32px]">
                             Coins
                         </div>
-                        <div className="absolute pt-28 text-3xl left-[20.5%]">
+                        <div className="absolute pt-28 text-4xl left-[21.7%]">
                             {totalCoinsSpent}
                         </div>
 
                         <div className="absolute pt-16 text-4xl flex justify-center text-[32px]">
                             Gems
                         </div>
-                        <div className="absolute pt-28 text-3xl flex justify-center">
+                        <div className="absolute pt-28 text-4xl flex justify-center">
                             {totalGemsSpent}
                         </div>
-
-                        
+                    
                         <div className="absolute pt-16 text-4xl left-[73%] text-[32px]">
                             Cash
                         </div>
-                        <div className="absolute pt-28 text-3xl left-[76.5%]">
+                        <div className="absolute pt-28 text-4xl left-[76.5%]">
                             {totalCashSpent}
                         </div>
                     </div>
                     {/* Overall Score: */}
-                    <div className="relative flex flex-col pt-4 items-center top-[37%] h-[20%] w-full text-4xl ">
+                    <div className="relative flex flex-col pt-4 items-center top-[37%] h-[20%] w-full text-5xl ">
                         Overall Score:
-                        <div className="pt-8 text-2xl">
+                        <div className="pt-8 text-4xl">
                             {/* 75% Survivability  */}
                             {spendingScore} / 500
                             {/* Show /500? */}
@@ -105,7 +104,7 @@ function TaskSpending() {
                         Currency Breakdown
                     </div>
                     <div className="absolute w-full text-[#a3ffb0] top-[20%] pt-8 border-t-4 ">
-                        <h2 className="text-center text-3xl tracking-wide mb-6">Currency Types</h2>
+                        <h2 className="text-center text-4xl tracking-wide mb-6">Currency Types</h2>
 
                         <div className="relative w-full mx-auto">
                             {/* Top row - 3 items */}
