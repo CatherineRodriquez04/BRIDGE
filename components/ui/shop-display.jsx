@@ -7,7 +7,7 @@ import { usePlayer } from "@/components/ui/PlayerContent";
 
 // firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 import ShopSold from "@/components/ui/shop-sold.jsx";
@@ -96,6 +96,12 @@ function ShopDisplay() {
       const newCoins = coins - cost;
       setCoins(newCoins);
       await updateDoc(playerRef, { coins: newCoins });
+
+      //track total cash spent track
+      await updateDoc(doc(db, "players", userId), {
+       totalCoinsSpent: increment(cost),
+      });
+
     }
 
     // Handle gems
