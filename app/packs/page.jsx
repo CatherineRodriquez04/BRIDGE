@@ -113,7 +113,7 @@ export default function Packs() {
   };
 
   const openPackAnimation = (packId) => {
-    setAnimatingPack(true);
+    setAnimatingPack(packId);
     setTimeout(() => {
       setAnimatingPack(false);
       setIsCarouselOpen(true);
@@ -175,16 +175,18 @@ export default function Packs() {
                   {/* Purchase buttons */}
                   <button
                     type="button"
-                    onClick={async () => {
-                      await handlePurchase(100, "coins", "pack1");
+                    onClick={() => {
+                      handlePurchase(100, "coins", "pack1");
 
-                      const user = getAuth().currentUser;
-                      if (!user) return;
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
 
-                      const docRef = doc(db, "players", user.uid);
-                      await updateDoc(docRef, {
-                        totalStandardPacks: increment(1),
-                      });
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalStandardPacks: increment(1),
+                        });
+                      })();
                     }}
                     className="flex items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-5 py-2.5 text-center mt-10 mx-auto border-2"
                   >
@@ -204,16 +206,18 @@ export default function Packs() {
                   {/* Purchase buttons */}
                   <button
                     type="button"
-                    onClick={async () => {
-                      await handlePurchase(500, "coins", "pack2");
+                    onClick={() => {
+                      handlePurchase(500, "coins", "pack2");
 
-                      const user = getAuth().currentUser;
-                      if (!user) return;
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
 
-                      const docRef = doc(db, "players", user.uid);
-                      await updateDoc(docRef, {
-                        totalMediumPacks: increment(1),
-                      });
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalMediumPacks: increment(1),
+                        });
+                      })();
                     }}
                     className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 mr-2 border-2 -left-2"
                   >
@@ -223,16 +227,18 @@ export default function Packs() {
 
                   <button
                     type="button"
-                    onClick={async () => {
-                      await handlePurchase(150, "gems", "pack2");
+                    onClick={() => {
+                      handlePurchase(150, "gems", "pack2");
 
-                      const user = getAuth().currentUser;
-                      if (!user) return;
+                      (async () => {
+                        const user = getAuth().currentUser;
+                        if (!user) return;
 
-                      const docRef = doc(db, "players", user.uid);
-                      await updateDoc(docRef, {
-                        totalMediumPacks: increment(1),
-                      });
+                        const docRef = doc(db, "players", user.uid);
+                        await updateDoc(docRef, {
+                          totalMediumPacks: increment(1),
+                        });
+                      })();
                     }}
                     className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 border-2 -left-2"
                   >
