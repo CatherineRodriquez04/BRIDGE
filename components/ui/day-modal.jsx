@@ -4,6 +4,8 @@
 
 "use client";
 
+import { usePlayer } from "@/components/ui/PlayerContent";
+
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -13,7 +15,8 @@ import Link from "next/link";
 import DailyRewardPopup from "@/components/ui/daily-reward-popup";
 
 function DayModal({ isOpen, onClose }) {
-  const [days, setDays] = useState(1);
+  const { days } = usePlayer();
+
   const [shopCount, setShopCount] = useState(0);
   const [battleCount, setBattleCount] = useState(0);
   const [packCount, setPackCount] = useState(0);
@@ -30,7 +33,7 @@ function DayModal({ isOpen, onClose }) {
         if (docSnap.exists()) {
           const data = docSnap.data();
           const currentDay = data.days || 1;
-          setDays(currentDay);
+          //setDays(currentDay);
           setShopCount(data[`shopDay${currentDay}`] || 0);
           setBattleCount(data[`battlesDay${currentDay}`] || 0);
           setPackCount(data[`packsDay${currentDay}`] || 0);
