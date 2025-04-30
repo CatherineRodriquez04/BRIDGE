@@ -38,7 +38,7 @@ export default function HomeAnnouncements() {
   }
 
   return (
-    <div className="fixed top-24 right-6 w-[30%] h-96 z-10">
+    <div className="absolute top-24 right-6 w-[30%] h-96">
       <div className="relative w-full rounded-lg overflow-hidden border border-accent3">
         {/* Carousel wrapper */}
         <div className="relative h-72 overflow-hidden rounded-lg bg-[#0B0C2A]">
@@ -62,7 +62,7 @@ export default function HomeAnnouncements() {
         {/* Slider controls */}
         <button
           type="button"
-          className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
+          className="absolute top-0 left-0 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
           onClick={prevSlide}
         >
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#0F1550]/70 group-hover:bg-[#0F1550] transition-colors">
@@ -73,7 +73,7 @@ export default function HomeAnnouncements() {
 
         <button
           type="button"
-          className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
+          className="absolute top-0 right-0  flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
           onClick={nextSlide}
         >
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#0F1550]/70 group-hover:bg-[#0F1550] transition-colors">
@@ -83,7 +83,7 @@ export default function HomeAnnouncements() {
         </button>
 
         {/* Indicators */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2  flex space-x-2">
           {images.map((_, index) => (
             <button
               key={index}

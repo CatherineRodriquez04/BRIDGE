@@ -4,102 +4,132 @@
 //have claim reward button
 //auto close once grab reward? or have close button too?
 
-import { X } from "lucide-react"
+"use client";
 
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "@/lib/firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+
+const rewards = [
+  { day: 1, reward: "250 Coins", amount: 250, type: "coins" },
+  { day: 2, reward: "500 Coins", amount: 500, type: "coins" },
+  { day: 3, reward: "750 Coins", amount: 750, type: "coins" },
+  { day: 4, reward: "1000 Coins", amount: 1000, type: "coins" },
+  { day: 5, reward: "300 Gems", amount: 300, type: "gems" },
+];
 
 function DailyRewardPopup({ isOpen, onClose }) {
+  const [userId, setUserId] = useState(null);
+  const [currentDay, setCurrentDay] = useState(1);
+  const [claimedDays, setClaimedDays] = useState([]);
 
-  if (!isOpen ) return null
+  useEffect(() => {
+    const auth = getAuth();
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUserId(user.uid);
+        const docRef = doc(db, "players", user.uid);
+        const snap = await getDoc(docRef);
+        if (snap.exists()) {
+          const data = snap.data();
+          setCurrentDay(data.days || 1);
+          setClaimedDays(data.claimedDays || []);
+        }
+      }
+    });
+    return () => unsub();
+  }, []);
+
+  const claimReward = async (day, amount, type) => {
+    if (!userId || claimedDays.includes(day)) return;
+
+    const docRef = doc(db, "players", userId);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) return;
+
+    const data = docSnap.data();
+    const updatedClaimed = [...(data.claimedDays || []), day];
+    const newValue = (data[type] || 0) + amount;
+
+    await updateDoc(docRef, {
+      [type]: newValue,
+      claimedDays: updatedClaimed,
+    });
+
+    setClaimedDays(updatedClaimed);
+  };
+
+  const collectAllAvailable = () => {
+    rewards.forEach(({ day, amount, type }) => {
+      if ((day === currentDay || day < currentDay) && !claimedDays.includes(day)) {
+        claimReward(day, amount, type);
+      }
+    });
+  };
+
+  if (!isOpen) return null;
 
   return (
-      <>
-        <div className ="fixed flex h-[50%] w-[60%] top-[27%] left-[20%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4 z-50 ">
-          {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-30"
-              aria-label="Close"
-            >
-              <X size={32} />
-            </button>
-          <div className="absolute left-[37%] top-4 text-6xl ">
-              Daily Rewards
-          </div>
-          <div className="relative h-[80%] w-[90%] top-[19%] left-[3%] px-auto">
-            <div className="absolute h-[80%] w-[20%] bg-[#C4F7BC] left-[%] rounded-lg text-black text-4xl flex justify-center pt-4">
-                Day 1
-                <div className="absolute h-[55%] w-[80%]  text-black text-4xl flex justify-center top-[25%]">
-                  <img src="/assets/coins-bundle.svg" height={150} width={150} alt="Coins-Bundle-Image" className="absolute top-[3%] z-30"></img>
-                  <div className="absolute top-[70%] text-[#0B0C2A] ">
-                      250 Coins
-                  </div>
-                </div>
-                <button className="absolute top-[83%] ">
-                  Claim Reward
-                </button>
-            </div>
-            <div className="absolute h-[80%] w-[20%] bg-[#C4F7BC] left-[21%] rounded-lg text-black text-4xl flex justify-center pt-4">
-                Day 2
-                <div className="absolute h-[55%] w-[80%]  text-black text-4xl flex justify-center top-[25%]">
-                  <img src="/assets/coins-bundle.svg" height={150} width={150} alt="Coins-Bundle-Image" className="absolute top-[3%] z-30"></img>
-                <div className="absolute top-[70%] text-[#0B0C2A]">
-                      500 Coins
-                  </div>
-                </div>
-                <button className="absolute top-[83%]">
-                  Claim Reward
-                </button>
-            </div>
-            <div className="absolute h-[80%] w-[20%] bg-[#C4F7BC] left-[42%] rounded-lg text-black text-4xl flex justify-center pt-4">
-              Day 3
-              <div className="absolute h-[55%] w-[80%]  text-black text-4xl flex justify-center top-[25%]">
-                <img src="/assets/coins-bundle.svg" height={150} width={150} alt="Coins-Bundle-Image" className="absolute top-[3%] z-30"></img>
-                  <div className="absolute top-[70%] text-[#0B0C2A]">
-                      750 Coins
-                  </div>
-                </div>
-                <button className="absolute top-[83%]">
-                  Claim Reward
-                </button>
-            </div>
+    <div className="fixed inset-0 z-[9999] bg-black bg-opacity-50 flex items-center justify-center">
+      <div className="relative w-[90%] max-w-[1200px] h-[55%] bg-gradient-to-b from-accent to-accent2 border-4 border-[#C4F7BC] rounded-lg p-4 text-white">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-50"
+        >
+          <X size={32} />
+        </button>
 
-            <div className="absolute h-[80%] w-[20%] bg-[#C4F7BC] left-[63%] rounded-lg text-black text-4xl flex justify-center pt-4">
-                Day 4
-                <div className="absolute h-[55%] w-[80%]  text-black text-4xl flex justify-center top-[25%]">
-                  <img src="/assets/coins-bundle.svg" height={150} width={150} alt="Coins-Bundle-Image" className="absolute top-[3%] z-30"></img>
-                  <div className="absolute top-[70%] text-[#0B0C2A]">
-                      1000 Coins
-                  </div>
-                </div>
-                <button className="absolute top-[83%]">
-                  Claim Reward
-                </button>
-            </div>
+        <div className="text-6xl text-center mb-10">Daily Rewards</div>
 
-            <div className="absolute h-[80%] w-[20%] bg-gradient-to-b from-accent to-accent2 border-4 left-[84%] rounded-xl flex justify-center pt-2 text-5xl ">
-                Day 5
-                <div className="absolute h-[55%] w-[80%] text-black text-4xl flex justify-center top-[25%]">
-                <img src="/assets/gems-bundle.svg" height={180} width={180} alt="Gems-Bundle-Image" className="absolute top-[1%] z-30"></img>
-                  <div className="absolute top-[70%] text-white">
-                      300 Gems
-                  </div>
-                </div>
-                <button className="absolute top-[83%] text-3xl">
-                  Claim Reward
+        <div className="flex justify-between items-start px-8 h-[65%]">
+          {rewards.map(({ day, reward, amount, type }) => {
+            let bgClass = "bg-gradient-to-b from-accent to-accent2";
+            if (day < currentDay) bgClass = "bg-accent4";
+            else if (day === currentDay) bgClass = "bg-accent3";
+
+            const isLocked = day > currentDay;
+
+            return (
+              <div
+                key={day}
+                className={`relative h-full w-[18%] ${bgClass} rounded-lg text-white text-4xl flex flex-col items-center pt-6`}
+              >
+                <p className="text-4xl font-bold mb-2">Day {day}</p>
+                <img
+                  src={type === "coins" ? "/assets/coins-bundle.svg" : "/assets/gems-bundle.svg"}
+                  height={150}
+                  width={150}
+                  alt="Reward Icon"
+                  className="z-30 mb-3"
+                />
+                <p className="text-center mb-4">
+                  {reward}
+                </p>
+                <div className="min-w-[150px] border border-accent2"></div>
+                <button
+                  onClick={() => !isLocked && claimReward(day, amount, type)}
+                  disabled={claimedDays.includes(day) || isLocked}
+                  className={`mt-auto mb-4 text-white px-4 py-2 rounded-lg disabled:opacity-50 cursor-${isLocked ? 'not-allowed' : 'pointer'}`}
+                >
+                  {isLocked ? "Locked" : "Claim Reward"}
                 </button>
-            </div>
-            {/* Collect Rewards Button (add functionality to gather reward) */}
-            <button
-                type="button"
-                onClick={onClose}
-                className="absolute w-[30%] top-[80%] left-[35%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-4 border-4">
-                  Collect Reward
-              </button>
-          </div>
-        </div>       
-      </>
+              </div>
+            );
+          })}
+        </div>
+
+        <button
+          type="button"
+          onClick={collectAllAvailable}
+          className="absolute w-[30%] top-[80%] left-[35%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-4 border-4"
+        >
+          Collect Reward
+        </button>
+      </div>
+    </div>
   );
-
 }
 
-export default DailyRewardPopup
+export default DailyRewardPopup;
