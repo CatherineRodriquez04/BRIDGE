@@ -159,7 +159,7 @@ function PackOpenCarousel({ isOpen, onClose, selectedPack }) {
         <div className="w-full text-center mt-10">
           <button
             onClick={handleClaim}
-            className="text-4xl bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg px-5 py-1.5 mt-2 border-4"
+            className="relative text-4xl bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg px-5 py-1.5 mt-2 border-4 bottom-[7rem]"
           >
             Claim These Cards
           </button>

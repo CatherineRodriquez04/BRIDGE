@@ -1,5 +1,38 @@
+import { useEffect, useState } from "react";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "@/lib/firebase";
+import Link from "next/link";
 
 function TaskResults() {
+
+    const [days, setDays] = useState(1);
+    const [shopCount, setShopCount] = useState(0);
+    const [battleCount, setBattleCount] = useState(0);
+    const [packCount, setPackCount] = useState(0);
+    const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            setUserId(user.uid);
+            const docRef = doc(db, "players", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              const currentDay = data.days || 1;
+              setDays(currentDay);
+    
+              setShopCount(data[`shopDay${currentDay}`] || 0);
+              setBattleCount(data[`battlesDay${currentDay}`] || 0);
+              setPackCount(data[`packsDay${currentDay}`] || 0);
+            }
+          }
+        });
+        return () => unsubscribe();
+      }, []);
+
     return (
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
@@ -8,10 +41,26 @@ function TaskResults() {
                     <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
                         Results
                     </div>
-                    {/* Scores(progressbars) */}
-                    <div className="relative pt-4 flex flex-col items-center top-[30%] h-[10%] w-full text-2xl ">
-                        Progress
-                    </div>
+                        <div className="relative w-full mx-auto pt-[30%]">
+                            {/* Top row - 3 items */}
+                            <div className="flex justify-between mb-8">
+                                <div className="text-center w-1/3">
+                                    <button onClick="" className="text-3xl mb-1">Shop</button>
+                                    <p className="text-2xl ">{shopCount}/3</p>
+                                    {/* Fillable value later */}
+                                </div>
+
+                                <div className="text-center w-1/3">
+                                    <button className="text-3xl mb-1">Battle</button>
+                                    <p className="text-2xl ">{battleCount}/5</p>
+                                </div>
+
+                                <div className="text-center w-1/3">
+                                    <button className="text-3xl mb-1">Packs</button>
+                                    <p className="text-2xl">{packCount}/5</p>
+                                </div>
+                            </div>
+                        </div>
                     <div className="relative pt-4 flex flex-col items-center top-[30%] h-[20%] w-full border-b-4 text-2xl">
                         progress Bars
                     </div>
