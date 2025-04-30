@@ -93,7 +93,7 @@ function TaskSpending() {
                         Overall Score:
                         <div className="pt-8 text-2xl">
                             {/* 75% Survivability  */}
-                            {spendingScore}
+                            {spendingScore} / 500
                             {/* Show /500? */}
                         </div>
                     </div>
