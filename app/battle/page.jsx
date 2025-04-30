@@ -10,7 +10,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
 import water from "@/public/assets/water-battle-bg.svg";
-import trio from "@/public/assets/trio-battle-bg.svg";
+//import trio from "@/public/assets/trio-battle-bg.svg";
 import ground from "@/public/assets/ground-battle-bg.svg";
 import air from "@/public/assets/air-battle-bg.svg";
 
@@ -25,7 +25,7 @@ function Battle() {
     const cards = JSON.parse(localStorage.getItem("selectedCards") || "[]");
     setSelectedCards(cards);
 
-    const backgrounds = [water, trio, ground, air];
+    const backgrounds = [water, ground, air];
     const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     setBackgroundImage(randomBg);
 
