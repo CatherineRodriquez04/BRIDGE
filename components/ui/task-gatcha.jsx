@@ -122,17 +122,23 @@ function TaskGatcha() {
 
                             <h3 className="pl-12 text-3xl tracking-wide mb-6">Standard Pack</h3>
                             <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
-                                Coins
+                                The Standard Pack is the cheapest and most basic pack available. It can be purchased for 100 Coins in the shop page, making it the most
+                                affordable option for players. The pack contains a random selection of cards, though the odds are weighted towards lower tier (C-B) cards.
+
                             </p>
 
                             <h3 className="pl-12 text-3xl tracking-wide mb-6">Medium Pack</h3>
                             <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
-                                Gems
+                                The Medium Pack is the mid-tier pack available. It can be purchased for either 500 coins or 150 gems in the packs page. The pack serves as a middle ground
+                                for players who want to spend a bit more for a better chance at higher tier cards. The pack contains a random selection of cards, though the odds are weighted towards
+                                mid tier (A-S) cards. With the choice between coins(freemium) and gems(premium), this pack serves as a middle ground between spenders and free users.
                             </p>
 
                             <h3 className="pl-12 text-3xl tracking-wide mb-6">Premium Pack</h3>
                             <p className="pl-16 text-xl tracking-wide mb-6 whitespace-normal overflow-hidden max-w-[90%]">
-                                USD
+                                The Premium pack is the most expensive and highest tier pack available. It can be purchased for either 600 gems in the packs page. The pack contains a random selection of cards, 
+                                though the odds are weighted towards higher tier (SS-SSR) cards. This pack serves as a "Whale's" dream, allowing players to drop large sums quickly
+                                to earn the best cards in the game. 
                             </p>
                         </div>
                     </div>
