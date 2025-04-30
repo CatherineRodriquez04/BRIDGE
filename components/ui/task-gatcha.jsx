@@ -62,6 +62,8 @@ function TaskGatcha() {
                     </div>
                     <div className="relative flex flex-col items-center top-[25%] h-[30%] w-full pt-4 ">
                     <h2 className="text-center text-5xl tracking-wide ">By Pack:</h2>
+                    
+                        <img src="/assets/standard-pack.svg" height={70} width={70} alt="Card-Pack-1" className="absolute left-[16.3%] top-[13rem]" />
                         <div className="absolute pt-20 text-4xl left-[13%] text-[32px] ">
                             Standard
                         </div>
@@ -69,6 +71,7 @@ function TaskGatcha() {
                             {totalStandardPacks}
                         </div>
 
+                        <img src="/assets/medium-pack.svg" height={70} width={70} alt="Card-Pack-1" className="absolute left-[45.5%] top-[13rem]" />
                         <div className="absolute pt-20 text-4xl flex justify-center text-[32px] left-[44%]">
                             Medium
                         </div>
@@ -76,6 +79,7 @@ function TaskGatcha() {
                             {totalMediumPacks}
                         </div>
 
+                        <img src="/assets/premium-pack.svg" height={70} width={70} alt="Card-Pack-1" className="absolute left-[74.5%] top-[13rem]" />
                         <div className="absolute pt-20 text-4xl left-[72%] text-[32px]">
                             Premium
                         </div>
