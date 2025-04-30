@@ -21,6 +21,11 @@ function ShopDisplay() {
   const { coins, setCoins, userId } = usePlayer();
   const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
 
+  const [gemsPurchased, setGemsPurchased] = useState(false); // give gems purchased throuhg exchange (from cash)
+
+  const [coinsConverted, setCoinsConverted] = useState(false); //give coins converted from gems
+
+
   const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
 
   const handlePurchase = async (cost, currency, cardID) => {

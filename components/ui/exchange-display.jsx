@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { usePlayer } from "@/components/ui/PlayerContent";
 
 // firebase
@@ -11,36 +11,74 @@ function ExchangeDisplay() {
     const { coins, gems, setCoins, setGems, cash, setCash, userId } = usePlayer();
     const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
     const [showPurchasedModal, setPurchasedModal] = useState(false);
+    const [showConversionModal, setConversionModal] = useState(false); // give coins purchased throuhg exchange (from cash)
 
 //maybe add in exchangeId for special animation?
-    const handlePurchase = async (cost, currency) => {
+    const handlePurchase = async (cost, currency, purchased) => {
         if (userId === null) return;
      
         if (currency === "cash") {
           if (cash >= cost) {
+            //subtract cost(cash)
             const newCash = cash - cost;
             setCash(newCash);
             await updateDoc(doc(db, "players", userId), { cash: newCash });
+            // give/add gems
+            const newGems = gems + purchased; //add purchased (gems bundle amount (passed in as arg))
+            setGems(newGems);
+            await updateDoc(doc(db, "players", userId), { gems: newGems });
+            
             // Do animation / function
             //give gems
             setPurchasedModal(true); //not enough money modal
           } else {
             setShowNotEnoughModal(true); //not enough money modal
           }
-        } else if (currency === "gems") {
+        } 
+      };
+
+      const handleConversion = async (cost, currency, converted) => {
+        if (userId === null) return;
+        if (currency === "gems") {
           if (gems >= cost) {
             const newGems = gems - cost;
             setGems(newGems);
             await updateDoc(doc(db, "players", userId), { gems: newGems });
             //facilitate currendy exchange
-            setPurchasedModal(true); //not enough money modal
+            setConversionModal(true); //not enough money modal
             //give coins
+            const newCoins = coins + converted; 
+            setCoins(newCoins);
+            await updateDoc(doc(db, "players", userId), { coins: newCoins });
 
           } else {
             setShowNotEnoughModal(true); //not enough for conversion
           }
         }
       };
+
+    //   useEffect(() => {
+    //     const awardCoins = async () => {
+    //     const auth = getAuth();
+    //     onAuthStateChanged(auth, async (user) => {
+    //         if (user && !coinsAwarded) {
+    //         const docRef = doc(db, "players", user.uid);
+    //         const docSnap = await getDoc(docRef);
+
+    //         if (docSnap.exists()) {
+    //             const currentCoins = docSnap.data().coins || 0;
+    //             const updatedCoins = currentCoins + 500;
+
+    //             await updateDoc(docRef, { coins: updatedCoins });
+    //             setCoinsAwarded(true); // prevent awarding multiple times
+    //         }
+    //         }
+    //     });
+    //     };
+
+    //     awardCoins();
+    // }, [coinsAwarded]);
+
 
 // either do animation or show purchase popup
     //   const openPackAnimation = (packId) => {
@@ -69,7 +107,7 @@ function ExchangeDisplay() {
                     <img src="/assets/gem-pile.svg" height={130} width={200} alt="Gem-Pile-Image" className="z-10"></img>
                 </div>
                 <button 
-                onClick={() => handlePurchase(2, "cash")}
+                onClick={() => handlePurchase(2, "cash", 100)}
                 className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[55px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $1.99
                 </button>
@@ -87,7 +125,7 @@ function ExchangeDisplay() {
                     <img src="/assets/gem-sack.svg" height={130} width={200} alt="Gem-Sack-Image" className="z-10"></img>
                 </div>
                 <button 
-                onClick={() => handlePurchase(5, "cash")}
+                onClick={() => handlePurchase(5, "cash", 250)}
                 className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[55px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $4.99
                 </button>
@@ -105,7 +143,7 @@ function ExchangeDisplay() {
                     <img src="/assets/gem-chest.svg" height={130} width={200} alt="Gem-Chest-Image" className="z-10"></img>
                 </div>
                 <button 
-                onClick={() => handlePurchase(10, "cash")}
+                onClick={() => handlePurchase(10, "cash", 500)}
                 className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[55px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $9.99
                 </button>
@@ -127,7 +165,7 @@ function ExchangeDisplay() {
                     <img src="/assets/gem-crate.svg" height={155} width={200} alt="Gem-Crate-Image" className="z-10"></img>
                 </div>
                 <button 
-                onClick={() => handlePurchase(25, "cash")}
+                onClick={() => handlePurchase(25, "cash, 1500")}
                 className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $24.99
                 </button>
@@ -149,7 +187,7 @@ function ExchangeDisplay() {
                     <img src="/assets/gem-stockpile.svg" height={155} width={200} alt="Gem-Stockpile-Image" className="z-10"></img>
                 </div>
                 <button 
-                onClick={() => handlePurchase(50, "cash")}
+                onClick={() => handlePurchase(50, "cash", 2500)}
                 className="z-10 h-[65px] w-[160px] bg-[#13122A] border-[7px] border-[#86CEBC] relative flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     $49.99
                 </button>
@@ -159,7 +197,7 @@ function ExchangeDisplay() {
               {/* Convert Currency Button */}
               <div className="relative top-[2rem] left-[82%]">
                     <button 
-                    onClick={() => handlePurchase(100, "gems")}
+                    onClick={() => handleConversion(100, "gems", 1000)}
                     className="absolute h-[60px] w-[160px] flex items-center justify-center  bg-[#A67C4E] border-[#5E4112] font-medium rounded-lg text-3xl px-5 py-4 border-[5px] text-black transition active:scale-95 z-50">
                         Convert
                     </button>
@@ -168,13 +206,13 @@ function ExchangeDisplay() {
                 {/* Not Enough Money Modal */}
                 {showNotEnoughModal && (
                     <div className="fixed inset-0 bg-opacity-70 flex justify-center items-center z-50">
-                        <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex items-center justify-center">
+                        <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex  justify-center">
                             {/* Close button */}
                         <button className="absolute top-1 right-6
                          text-white text-7xl hover:text-red-500" onClick={() => setShowNotEnoughModal(false)}>
                             ×
                         </button>
-                        <p className=" text-7xl text-white text-center ">Insufficient Funds!</p>
+                        <p className="absolute text-7xl text-white text-center top-[30%] ">Insufficient Funds!</p>
                         {/* Designated Large close button */}
                             <button 
                             onClick={() => setShowNotEnoughModal(false)}
@@ -188,16 +226,36 @@ function ExchangeDisplay() {
                 {/* Purchased (succcessful) Modal */}
                 {showPurchasedModal && (
                     <div className="fixed inset-0 bg-opacity-70 flex justify-center items-center z-50">
-                    <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex items-center justify-center">
+                    <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex justify-center">
                         {/* Close button */}
                     <button className="absolute top-1 right-6
                      text-white text-7xl hover:text-red-500" onClick={() => setPurchasedModal(false)}>
                         ×
                     </button>
-                    <p className=" text-7xl text-white text-center ">Purchase Successful!</p>
+                    <p className="absolute  text-7xl text-white top-[30%] ">Purchase Successful!</p>
                     {/* Designated Large close button */}
                     <button 
                     onClick={() => setPurchasedModal(false)}
+                    className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
+                    Close
+                    </button>
+                    </div>
+                </div>
+                    )}
+
+                {/* CONVERSION (gems -> cash)(succcessful) Modal */}
+                {showConversionModal && (
+                    <div className="fixed inset-0 bg-opacity-70 flex justify-center items-center z-50">
+                    <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex justify-center">
+                        {/* Close button */}
+                    <button className="absolute top-1 right-6
+                     text-white text-7xl hover:text-red-500" onClick={() => setConversionModal(false)}>
+                        ×
+                    </button>
+                    <p className="absolute  text-7xl text-white top-[30%] ">Conversion Successful!</p>
+                    {/* Designated Large close button */}
+                    <button 
+                    onClick={() => setConversionModal(false)}
                     className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     Close
                     </button>
