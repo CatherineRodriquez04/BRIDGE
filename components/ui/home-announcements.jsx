@@ -41,7 +41,7 @@ export default function HomeAnnouncements() {
     <div className="absolute top-24 right-6 w-[30%] h-96">
       <div className="relative w-full rounded-lg overflow-hidden border border-accent3">
         {/* Carousel wrapper */}
-        <div className="relative h-[410px] overflow-hidden rounded-lg bg-[#0B0C2A]">
+        <div className="relative h-[310px] overflow-hidden rounded-lg bg-[#0B0C2A]">
           {/* Gallery items */}
           {images.map((image, index) => (
             <div
