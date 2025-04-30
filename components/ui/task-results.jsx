@@ -34,12 +34,25 @@ function CalcSpendingScore(totalCashSpent) {
     const worstCasePenalty = maxPacks * 3;
 
     const efficiencyScore = 1 - (weightedPenalty / worstCasePenalty);
-    const finalScore = Math.round(efficiencyScore * maxScore);
+    const gatchaScore = Math.round(efficiencyScore * maxScore);
 
-    return finalScore;
+    return gatchaScore;
 };
 
+const calcTotalScore = (standard, medium, premium) => {
+    // const totalPacks = standard + medium + premium;
+    // const maxPacks = 25;
+    // const maxScore = 500;
 
+    // const usagePenalty = totalPacks / maxPacks;
+    // const weightedPenalty = (standard * 1) + (medium * 2) + (premium * 3);
+    // const worstCasePenalty = maxPacks * 3;
+
+    // const efficiencyScore = 1 - (weightedPenalty / worstCasePenalty);
+    // const finalScore = Math.round(efficiencyScore * maxScore);
+
+    // return finalScore;
+};
 
 
 
