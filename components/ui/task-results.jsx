@@ -39,6 +39,26 @@ function CalcSpendingScore(totalCashSpent) {
     return gatchaScore;
 };
 
+function CalcTacticsScore(totalGemsSpent) {
+    let tacticsScore;
+//   Adjust these values later
+    if (totalGemsSpent <= 150) {
+      tacticsScore = 500;
+    } else if (totalGemsSpent <= 250) {
+        tacticsScore = 400;
+    } else if (totalGemsSpent <= 500) {
+        tacticsScore = 300;
+    } else if (totalGemsSpent <= 750) {
+        tacticsScore = 200;
+    } else if (totalGemsSpent <= 1000) {
+        tacticsScore = 100;
+    } else {
+        tacticsScore = 0;
+    }
+
+    return tacticsScore;
+  }
+
 
 const calcTotalScore = (spendingScore, gatchaScore, tacticsScore) => {
     const maxIndividualScore = 500; // Max possible score for each category
@@ -100,9 +120,6 @@ function TaskResults() {
               setShopCount(data[`shopDay${currentDay}`] || 0);
               setBattleCount(data[`battlesDay${currentDay}`] || 0);
               setPackCount(data[`packsDay${currentDay}`] || 0);
-
-
-              setTotalGemsSpent(data.totalGemsSpent || 0);
       
               const cashSpent = data.totalCashSpent || 0; // ✅ define this first
               setTotalCashSpent(cashSpent);
@@ -125,8 +142,10 @@ function TaskResults() {
               await updateDoc(docRef, { gatchaScore: gatchaScore });
 
               //Do same as above for tactics score
-
-              const tacticsScore = data.tacticsScore || 0; // Make sure this is stored in Firestore
+              const gemsSpent = data.totalGemsSpent || 0; // ✅ define this first
+              setTotalGemsSpent(gemsSpent);
+                
+              const tacticsScore = CalcTacticsScore(gemsSpent); // ✅ use the correct variable
                 setTacticsScore(tacticsScore);
 
 
@@ -169,8 +188,7 @@ function TaskResults() {
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Tactics</button>
-                                    {/* <p className="text-4xl  text-white">{Math.round((tacticsScore / 500) * 100)}%</p> */}
-                                    <p className="text-4xl  text-white">{Math.round((packCount / 500) * 100)}%</p>
+                                    <p className="text-4xl  text-white">{Math.round((tacticsScore / 500) * 100)}%</p>
                                 </div>
                             </div>
                         </div>
