@@ -48,8 +48,11 @@ const ChooseDeck = () => {
         if (docSnap.exists()) {
           const data = docSnap.data();
           setCoins(data.coins || 0);
-          const battleKey = `battlesDay${days}`;
+          const currentDay = data.days || 1;
+          const battleKey = `battlesDay${currentDay}`;
           setBattleCount(data[battleKey] || 0);
+
+          setDays(currentDay);
   
           const cards = Object.entries(data.characterCards || {}).flatMap(([id, qty]) =>
             Array(qty).fill(id)
