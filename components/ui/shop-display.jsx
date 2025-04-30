@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Card from "@/components/ui/card.jsx";
 import { usePlayer } from "@/components/ui/PlayerContent";
 
@@ -18,18 +18,50 @@ function getRandomId() {
 }
 
 function ShopDisplay() {
-  const { coins, setCoins, userId } = usePlayer();
+  
   const [showNotEnoughModal, setShowNotEnoughModal] = useState(false);
 
   const [gemsPurchased, setGemsPurchased] = useState(false); // give gems purchased throuhg exchange (from cash)
 
   const [coinsConverted, setCoinsConverted] = useState(false); //give coins converted from gems
 
-
   const randomCardIds = useMemo(() => Array.from({ length: 5 }, () => getRandomId()), []);
+  const { coins, setCoins } = usePlayer();
+
+      const [shopCount, setShopCount] = useState(0); // State to track the number of packs opened
+      const [shopKey, setShopKey] = useState("");
+      const [userId, setUserId] = useState(null);
+    
+      useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            setUserId(user.uid);
+            const docRef = doc(db, "players", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+              const data = docSnap.data();
+              const day = data.days || 1;
+              setDays(day);
+              const shopKey = `shopDay${day}`;
+              setShopKey(shopKey);
+              setShopCount(data[shopKey] || 0);
+              setCoins(data.coins || 0);
+            }
+          }
+        });
+        return () => unsubscribe();
+      }, []);
 
   const handlePurchase = async (cost, currency, cardID) => {
     if (!userId) return;
+
+    const docRef = doc(db, "players", userId);
+
+    if (shopCount >= 3) {
+      setShowLimitModal(true);
+      return;
+    }
 
     if (currency === "coins") {
       if (coins >= cost) {
@@ -52,6 +84,7 @@ function ShopDisplay() {
           await updateDoc(playerRef, {
             coins: newCoins,
             characterCards: updatedCards,
+            [shopKey]: shopCount + 1,
           });
 
           //console.log(`Purchased card ${cardID} successfully!`);
@@ -65,6 +98,9 @@ function ShopDisplay() {
   return (
     <>
       <div className="max-w-[100%] w-[100%] mx-auto fixed top-[15%] left-44 right-0 ç">
+        <div className="fixed top-[19%] right-[46.5%] text-white text-4xl">
+             Limit {shopCount}/3 {/*daily battle limit to be insterted here  shopCount    */}
+        </div>
         <div className="grid grid-cols-12 gap-3 auto-rows-[50%]">
           {randomCardIds.map((cardId, index) => (
             <div
