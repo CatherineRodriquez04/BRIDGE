@@ -79,7 +79,7 @@ function CollectionDisplay() {
   const sortedCards = sortCards(cardDetails);
 
   return (
-    <div className="relative flex h-[1000px] w-[80%] left-[10%] top-[280px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll scrollbar-hidden z-20">
+    <div className="relative flex h-[800px] w-[82%] left-[8%] top-[250px] border-4 border-[#86CEBC] bg-[#221B48] rounded-lg overflow-y-scroll scrollbar-hidden z-20">
       <div className="top-2 ">
         <CollectionFilter onFilterChange={setSelectedFilter} />
       </div>
