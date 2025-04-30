@@ -128,8 +128,6 @@ export default function Packs() {
         selectedPack={currentPack}
       />
 
-
-
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}
           <div className="fixed w-[28%] h-full -z-1 left-[6%] top-[15%]">
@@ -151,14 +149,10 @@ export default function Packs() {
               </div>  Inner box for char image in limited*/}
           </div>
 
-        
         <div className="flex m-auto w-[20%] items-center">
           {/* Packs Display */}
-            <div className="flex space-x-8 top-[25%] absolute right-[10%]">
+            <div className="flex space-x-8 top-[30%] absolute right-[10%]">
               {/* 1st pack */}
-              <div className="absolute bottom-[5%] -left-[2.4%] text-4xl">
-                  Buy 1
-              </div>
               <div className="flip-card">   
                   <img src="/assets/standard-pack.svg" height={400} width={260} alt="Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
                   {/* Wish display/ tracker */}
@@ -173,20 +167,20 @@ export default function Packs() {
 
               </div>
               {/* 2nd pack */}
-              <div className="relative bottom-4 flip-card left-3.5">
+              <div className="relative bottom-4 flip-card left-2">
                   <img src="/assets/medium-pack.svg" height={400} width={260} alt="Card-Pack-2" id="pack2"className={`w-[280px] flip-pack-inner ${animatingPack === 'pack2' ? 'animate-spin' : ''}`}></img>
                       <div className="ml-2">
                         {/* Wish display/ tracker */}
-                        <div className="relative flex justify-center mx-auto text-3xl top-4 -left-2">
+                        <div className="relative flex justify-center mx-auto text-3xl -left-2 mt-2">
                           Wish:  3/15
                         </div>
                   {/* Purchase buttons */}
-                          <button type="button" onClick={() => handlePurchase(500, "coins", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 mr-2 border-2">
+                          <button type="button" onClick={() => handlePurchase(500, "coins", "pack2")} className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 mr-2 border-2 -left-2">
                               <img src="/assets/icon-coin.svg" width={25} height={25} alt="Coins" className="inline-block mr-2" />
                               500 Coins
                           </button>
 
-                          <button type="button" onClick={() => handlePurchase(150, "gems", "pack2")} className="items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-10 border-2">
+                          <button type="button" onClick={() => handlePurchase(150, "gems", "pack2")} className="relative items-center bg-[#0B0C2A] text-white hover:bg-[#C4F7BC] font-medium rounded-lg text-xl px-4 py-2.5 text-center mt-6 border-2 -left-2">
                               <img src="/assets/icon-gem.svg" width={25} height={25} alt="Gem" className="inline-block mr-2" />
                               150 Gems
                           </button>
