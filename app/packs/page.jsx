@@ -22,7 +22,8 @@ const cardPack = [
 ];
 
 export default function Packs() {
-  const { coins, gems, setCoins, setGems } = usePlayer();
+  const { days, coins, gems, setCoins, setGems } = usePlayer();
+
   const [isCarouselOpen, setIsCarouselOpen] = useState(false);
   const [showHitLimitModal, setShowHitLimitModal] = useState(false);
   const [showNoCoinsModal, setShowNoCoinsModal] = useState(false);
@@ -30,8 +31,6 @@ export default function Packs() {
   const [animatingPack, setAnimatingPack] = useState(null);
   const [currentPack, setCurrentPack] = useState(null);
 
-
-  const [days, setDays] = useState(1);
   const [packKey, setPackKey] = useState("");
   const [userId, setUserId] = useState(null);
   const [packCount, setPackCount] = useState(0);
@@ -46,9 +45,9 @@ export default function Packs() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          const day = data.days || 1;
-          setDays(day);
-          const packsKey = `packsDay${day}`;
+          //const day = data.days || 1;
+          //setDays(day);
+          const packsKey = `packsDay${days}`;
           setPackKey(packsKey);
           setPackCount(data[packsKey] || 0);
           setCoins(data.coins || 0);
@@ -81,7 +80,7 @@ export default function Packs() {
         //track total coins spent track
       await updateDoc(doc(db, "players", userId), {
         totalCoinsSpent: increment(cost),
-       });
+      });
 
         setPackCount((prev) => prev + 1);
         setCurrentPack(packId); // store which pack was clicked
@@ -101,7 +100,7 @@ export default function Packs() {
         //track total gems spent track
       await updateDoc(doc(db, "players", userId), {
         totalGemsSpent: increment(cost),
-       });
+      });
 
         setPackCount((prev) => prev + 1);
         setCurrentPack(packId); // store which pack was clicked
@@ -119,6 +118,16 @@ export default function Packs() {
       setIsCarouselOpen(true);
     }, 800);
   };
+
+  const leanAnimalMap = {
+    1: "/assets/poster/wanted-swan.svg",
+    2: "/assets/poster/wanted-racoon.svg",
+    3: "/assets/poster/wanted-platypus.svg",
+    4: "/assets/poster/wanted-whale.svg",
+    5: "/assets/poster/wanted-owl.svg"
+  };
+  
+  const leanAnimalSrc = leanAnimalMap[days] || "/assets/swan.svg"; // fallback
   
   return (
     <>
@@ -144,8 +153,8 @@ export default function Packs() {
       <div className="flex items-center h-screen fade-in">
           {/* Poster New Char Display (make component?)*/}
           <div className="fixed w-[28%] h-full -z-1 left-[6%] top-[15%]">
-            <img src={'/assets/limited-paper-poster.svg'} width={500} height={600} alt="Poster" className="-z-1"></img>
-            <img src={'/assets/limited-image-lean.svg'} width={380} height={430} alt="Poster" className="z-20 absolute top-[195px] left-[65px]"></img>
+            <img src={leanAnimalSrc} width={500} height={600} alt="Poster" className="-z-1"></img>
+
 
             {/* <button type="button" className="flex items-center text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:[#0B0C2A] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-10 mx-auto border-2"></button> */}
             <Link href="/shop">
