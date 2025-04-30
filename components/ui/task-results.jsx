@@ -37,38 +37,37 @@ function TaskResults() {
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
                 {/* Left Page */}
-                <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-hidden">
-                    <div className="relative flex flex-col items-center top-[9%] h-[1%] text-4xl">
+                <div className="absolute h-full w-[50%] left-0 bg-[#0B0C2A] rounded-l-lg overflow-y-auto scrollbar-hidden">
+                    <div className="relative flex flex-col items-center top-[5%] h-[1%] text-[58px]">
                         Results
                     </div>
-                        <div className="relative w-full mx-auto pt-[30%]">
+                        <div className="relative w-full mx-auto pt-[35%]">
+                            <h2 className="text-center text-5xl tracking-wide mb-6">Daily Limits</h2>
+
                             {/* Top row - 3 items */}
                             <div className="flex justify-between mb-8">
                                 <div className="text-center w-1/3">
-                                    <button onClick="" className="text-3xl mb-1">Shop</button>
-                                    <p className="text-2xl ">{shopCount}/3</p>
+                                    <button onClick="" className="text-5xl mb-1">Shop</button>
+                                    <p className="text-4xl ">{shopCount}/3</p>
                                     {/* Fillable value later */}
                                 </div>
 
                                 <div className="text-center w-1/3">
-                                    <button className="text-3xl mb-1">Battle</button>
-                                    <p className="text-2xl ">{battleCount}/5</p>
+                                    <button className="text-5xl mb-1">Battle</button>
+                                    <p className="text-4xl ">{battleCount}/5</p>
                                 </div>
 
                                 <div className="text-center w-1/3">
-                                    <button className="text-3xl mb-1">Packs</button>
-                                    <p className="text-2xl">{packCount}/5</p>
+                                    <button className="text-5xl mb-1">Packs</button>
+                                    <p className="text-4xl">{packCount}/5</p>
                                 </div>
                             </div>
                         </div>
-                    <div className="relative pt-4 flex flex-col items-center top-[30%] h-[20%] w-full border-b-4 text-2xl">
-                        progress Bars
-                    </div>
                     {/* Overall Score: */}
-                    <div className="relative pt-4 flex flex-col items-center top-[42%] h-[20%] w-full text-4xl">
+                    <div className="relative pt-4 flex flex-col items-center top-[20%] h-[20%] w-full text-4xl">
                         Overall Score:
                         <div className="pt-6 text-2xl">
-                            96% Survivability
+                            ##% Survivability
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,12 @@
+import { useEffect, useState } from "react";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "@/lib/firebase";
+import Link from "next/link";
 
 function TaskSpending() {
+
+
     return (
         <>
             <div className="absolute w-full h-full bg-[#0B0C2A]">
@@ -45,7 +52,7 @@ function TaskSpending() {
                 </div>
 
                 {/* Right Page */}
-                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto scrollbar-hidden">
+                <div className="absolute h-full w-[50%] right-0 bg-[#0B0C2A] rounded-r-lg border-l-4 overflow-y-auto overflow-y-auto scrollbar-hidden">
                     <div className="relative flex flex-col items-center top-[7%] h-[1%] text-5xl ">
                         Currency Breakdown
                     </div>
