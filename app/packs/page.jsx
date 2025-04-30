@@ -221,13 +221,13 @@ export default function Packs() {
               <div className="bg-[#0B0C2A] border-4 border-[#C4F7BC] p-8 rounded-lg relative w-[40%] h-[30%] flex  justify-center">
                {/* Close button */}
                 <button className="absolute top-1 right-6
-                 text-white text-7xl hover:text-red-500" onClick={() => setShowHItLimitModal(false)}>
+                 text-white text-7xl hover:text-red-500" onClick={() => setShowHitLimitModal(false)}>
                 ×
                 </button>
-                <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
+                <p className="absolute text-5xl text-white text-center top-[30%] ">You've Hit your Daily Limit!</p>
                 {/* Designated Large close button */}
                 <button 
-                  onClick={() => setShowNotEnoughModal(false)}
+                  onClick={() => setShowHitLimitModal (false)}
                   className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                     Close
                 </button>
@@ -251,7 +251,7 @@ export default function Packs() {
                         <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
                         {/* Designated Large close button */}
                             <button 
-                            onClick={() => setShowNotEnoughModal(false)}
+                            onClick={() => setShowNoCoinsModal(false)}
                             className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                                 Close
                             </button>
@@ -271,7 +271,7 @@ export default function Packs() {
                         <p className="absolute text-5xl text-white text-center top-[30%] ">Insufficient Funds!</p>
                         {/* Designated Large close button */}
                             <button 
-                            onClick={() => setShowNotEnoughModal(false)}
+                            onClick={() => setShowNoGemsModal(false)}
                             className="z-10 h-[25%] w-[35%] bg-[#13122A] border-[7px] border-[#86CEBC] absolute top-[70%] flex items-center justify-center top-[60px] m-auto rounded-lg text-3xl text-bold hover:bg-[#86CEBC] hover:text-[#13122A] active:border-8 active:ring-4 active: ring-[#9CF7E1]">
                                 Close
                             </button>
