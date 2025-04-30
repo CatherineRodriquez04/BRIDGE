@@ -11,6 +11,7 @@ export function PlayerProvider({ children }) {
     const [coins, setCoins] = useState(null);
     const [gems, setGems] = useState(null);
     const [cash, setCash] = useState(null);
+    const [days, setDay] = useState(null);
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
@@ -25,6 +26,7 @@ export function PlayerProvider({ children }) {
             setCoins(data.coins ?? 0);
             setGems(data.gems ?? 0);
             setCash(data.cash ?? 0);
+            setDay(data.days ?? 1);
             }
         }
         });
@@ -36,9 +38,11 @@ export function PlayerProvider({ children }) {
         coins,
         gems,
         cash,
+        days,
         setCoins,
         setGems,
         setCash,
+        setDay,
         userId,
     };
 

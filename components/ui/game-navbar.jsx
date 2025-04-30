@@ -13,8 +13,7 @@ import { cn } from "@/lib/utils";
 import DayModal from "@/components/ui/day-modal.jsx";
 
 function Navbar() {
-  const { coins, gems, cash } = usePlayer();
-  const [days, setDays] = useState("");
+  const { coins, gems, cash, days } = usePlayer();
 
   const [isDayModalOpen, setIsDayModalOpen] = useState(false)
 
@@ -27,7 +26,7 @@ function Navbar() {
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
             const data = docSnap.data();
-            setDays(data.days || "1");
+            //setDays(data.days || "1");
           }
         }
       });
