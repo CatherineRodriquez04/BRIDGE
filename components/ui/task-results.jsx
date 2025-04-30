@@ -24,6 +24,25 @@ function CalcSpendingScore(totalCashSpent) {
     return spendingScore;
   }
 
+  const calcGatchaScore = (standard, medium, premium) => {
+    const totalPacks = standard + medium + premium;
+    const maxPacks = 25;
+    const maxScore = 500;
+
+    const usagePenalty = totalPacks / maxPacks;
+    const weightedPenalty = (standard * 1) + (medium * 2) + (premium * 3);
+    const worstCasePenalty = maxPacks * 3;
+
+    const efficiencyScore = 1 - (weightedPenalty / worstCasePenalty);
+    const finalScore = Math.round(efficiencyScore * maxScore);
+
+    return finalScore;
+};
+
+
+
+
+
 function TaskResults() {
 
     const [days, setDays] = useState(1);
@@ -32,10 +51,18 @@ function TaskResults() {
     const [packCount, setPackCount] = useState(0);
     const [userId, setUserId] = useState(null);
 
-
+    //spending score
     const [spendingScore, setSpendingScore] = useState(0);
     const [totalGemsSpent, setTotalGemsSpent] = useState(0);
     const [totalCashSpent, setTotalCashSpent] = useState(0);
+
+    // gatcha score
+    const [totalStandardPacks, setTotalStandardPacks] = useState(0);
+    const [totalMediumPacks, setTotalMediumPacks] = useState(0);
+    const [totalPremiumPacks, setTotalPremiumPacks] = useState(0);
+    const [gatchaScore, setGatchaScore] = useState(0);
+
+    //tactics score
 
     useEffect(() => {
         const auth = getAuth();
@@ -61,6 +88,20 @@ function TaskResults() {
 
               const score = CalcSpendingScore(cashSpent); // ✅ use the correct variable
               setSpendingScore(score);
+
+
+              const standard = data.totalStandardPacks || 0;
+              const medium = data.totalMediumPacks || 0;
+              const premium = data.totalPremiumPacks || 0;
+
+              setTotalStandardPacks(standard);
+              setTotalMediumPacks(medium);
+              setTotalPremiumPacks(premium);
+
+              const gatchaScore = calcGatchaScore(standard, medium, premium);
+              setGatchaScore(gatchaScore);
+
+              await updateDoc(docRef, { gatchaScore: gatchaScore });
             }
           }
         });
@@ -82,18 +123,19 @@ function TaskResults() {
                             <div className="flex justify-between pt-12 ">
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Spending</button>
-                                    <p className="text-4xl  text-white ">{spendingScore}/500</p>
+                                    <p className="text-4xl  text-white ">{Math.round((spendingScore / 500) * 100)}%</p>
                                     {/* Fillable value later */}
                                 </div>
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Gatcha</button>
-                                    <p className="text-4xl  text-white">{battleCount}/500</p>
+                                    <p className="text-4xl  text-white">{Math.round((gatchaScore / 500) * 100)}%</p>
                                 </div>
 
                                 <div className="text-center w-1/3">
                                     <button className="text-5xl mb-1">Tactics</button>
-                                    <p className="text-4xl  text-white">{packCount}/500</p>
+                                    {/* <p className="text-4xl  text-white">{Math.round((tacticsScore / 500) * 100)}%</p> */}
+                                    <p className="text-4xl  text-white">{Math.round((packCount / 500) * 100)}%</p>
                                 </div>
                             </div>
                         </div>

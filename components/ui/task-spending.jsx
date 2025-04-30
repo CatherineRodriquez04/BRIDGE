@@ -68,7 +68,6 @@ function TaskSpending() {
                         <h2 className="text-center text-5xl tracking-wide ">By Currency:</h2>
                         
                         <img src="/assets/coins-bundle.svg" height={70} width={70} alt="Coins-Bundle" className="absolute left-[18%] top-20"></img>
-
                         <div className="absolute pt-16 text-4xl top-16 left-[18%] text-[32px] ">
                             Coins
                         </div>
