@@ -72,18 +72,18 @@ function TaskTactics() {
                             <div className="flex justify-between mb-8">
                             <div className="text-center w-1/3">
                                 <button className="text-3xl mb-1">Packs/Gatcha</button>
-                                <p className="text-2xl ">1/5</p>
+                                {/* <p className="text-2xl ">1/5</p> */}
                                 {/* Fillable value later */}
                             </div>
 
                             <div className="text-center w-1/3">
                                 <button className="text-3xl mb-1">Shop</button>
-                                <p className="text-2xl ">2/5</p>
+                                {/* <p className="text-2xl ">2/5</p> */}
                             </div>
 
                             <div className="text-center w-1/3">
                                 <button className="text-3xl mb-1">Currency Manipulation</button>
-                                <p className="text-2xl">3/5</p>
+                                {/* <p className="text-2xl">3/5</p> */}
                             </div>
                             </div>
 
@@ -91,12 +91,12 @@ function TaskTactics() {
                             <div className="flex justify-evenly">
                             <div className="text-center w-1/3 ml-[8.33%]">
                                 <button className="text-3xl mb-1">Leaderboard</button>
-                                <p className="text-2xl">4/5</p>
+                                {/* <p className="text-2xl">4/5</p> */}
                             </div>
 
                             <div className="text-center w-1/3 mr-[8.33%]">
                                 <button className="text-3xl mb-1">Artificial Scarcity</button>
-                                <p className="text-2xl">5/5</p>
+                                {/* <p className="text-2xl">5/5</p> */}
                             </div>
                             </div>
                         </div>
