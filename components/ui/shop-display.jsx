@@ -165,7 +165,7 @@ function ShopDisplay() {
                   index < 2 ? `col-start-${index === 0 ? 3 : 7}` : 'row-start-2'
                 }`}
               >
-                <div className="absolute h-full w-full flex justify-center mx-auto z-10">
+                <div className="absolute h-full w-full flex justify-center mx-auto z-10 top-2">
                   <Card cardId={cardId} />
                   {ownedCards[String(cardId)] && <ShopSold />}
                 </div>
