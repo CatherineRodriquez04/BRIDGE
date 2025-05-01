@@ -34,7 +34,12 @@ export default function Packs() {
   const [packKey, setPackKey] = useState("");
   const [userId, setUserId] = useState(null);
   const [packCount, setPackCount] = useState(0);
-  // const [] = useState(0);
+
+  const [wishStandardPacks, setWishStandardPacks] = useState();
+  const [wishMediumPacks, setWishMediumPacks] = useState();
+  const [wishPremiumPacks, setWishPremiumPacks] = useState();
+
+
 
   useEffect(() => {
     const auth = getAuth();
@@ -50,6 +55,13 @@ export default function Packs() {
           setPackCount(data[packsKey] || 0);
           setCoins(data.coins || 0);
           setGems(data.gems || 0);
+
+          setWishStandardPacks(data.wishStandardPacks || 0);
+          setWishMediumPacks(data.wishMediumPacks || 0);
+          setWishPremiumPacks(data.wishPremiumPacks || 0);
+
+
+
         }
       }
     });
@@ -177,7 +189,7 @@ export default function Packs() {
                   <img src="/assets/standard-pack.svg" height={400} width={260} alt="Card-Pack-1" className={`w-[280px] flip-pack-inner ${animatingPack === 'pack1' ? 'animate-spin' : ''}`} />
                   {/* Wish display/ tracker */}
                     <div className="relative  flex justify-center mx-auto text-3xl top-4">
-                      Wish: 3/5
+                      Wish: {}3/5
                     </div>
                   {/* Purchase buttons */}
                   <button

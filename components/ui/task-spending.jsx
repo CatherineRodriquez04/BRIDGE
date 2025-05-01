@@ -31,6 +31,8 @@ function TaskSpending() {
     const [totalCashSpent, setTotalCashSpent] = useState(0);
     const [spendingScore, setSpendingScore] = useState(0);
 
+    
+
     useEffect(() => {
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
