@@ -122,7 +122,10 @@ function DailyRewardPopup({ isOpen, onClose }) {
 
         <button
           type="button"
-          onClick={collectAllAvailable}
+          onClick={() => {
+            collectAllAvailable();
+            onClose();
+          }}
           className="absolute w-[30%] top-[80%] left-[35%] flex items-center justify-center bg-[#0B0C2A] text-white hover:text-[#0B0C2A] border-[#C4F7BC] hover:bg-[#C4F7BC] active:ring-4 active:ring-[#C4F7BC] active:outline-none font-medium rounded-lg text-4xl px-5 py-1.5 mt-4 border-4"
         >
           Collect Reward
