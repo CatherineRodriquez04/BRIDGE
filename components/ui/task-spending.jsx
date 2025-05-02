@@ -7,15 +7,15 @@ import Link from "next/link";
 function CalcSpendingScore(totalCashSpent) {
     let spendingScore;
   
-    if (totalCashSpent < 2) {
+    if (totalCashSpent < 5) {
       spendingScore = 500;
-    } else if (totalCashSpent <= 5) {
-      spendingScore = 400;
     } else if (totalCashSpent <= 10) {
-      spendingScore = 300;
+      spendingScore = 400;
     } else if (totalCashSpent <= 25) {
-      spendingScore = 200;
+      spendingScore = 300;
     } else if (totalCashSpent <= 50) {
+      spendingScore = 200;
+    } else if (totalCashSpent <= 75) {
       spendingScore = 100;
     } else {
       spendingScore = 0;
